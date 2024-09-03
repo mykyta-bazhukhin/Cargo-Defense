@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0012itq3obpx"]
+
+[ext_resource type="Script" path="res://Scenes/space_plane.gd" id="1_cnvm1"]
+[ext_resource type="Texture2D" uid="uid://bwa5nwlun1qeb" path="res://Sprites/Player/plane not pixel.png" id="2_0vyyj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0b1i"]
+size = Vector2(93, 84)
+
+[node name="Space_plane" type="CharacterBody2D"]
+collision_mask = 396
+script = ExtResource("1_cnvm1")
+
+[node name="primary_timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="secondary_timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_g0b1i")
+
+[node name="PlaneNotPixel" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_0vyyj")
+
+[connection signal="timeout" from="primary_timer" to="." method="_on_primary_timer_timeout"]
+[connection signal="timeout" from="secondary_timer" to="." method="_on_secondary_timer_timeout"]

@@ -1,0 +1,237 @@
+[gd_scene load_steps=10 format=3 uid="uid://dku3lihfaohyl"]
+
+[ext_resource type="PackedScene" uid="uid://c0012itq3obpx" path="res://Scenes/space_plane.tscn" id="1_7xmnw"]
+[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_kqybl"]
+[ext_resource type="PackedScene" uid="uid://dqgb78b8utrq1" path="res://Scenes/placeholder_enemy.tscn" id="3_awf75"]
+[ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/space_background.tscn" id="4_5wkpi"]
+[ext_resource type="PackedScene" uid="uid://8wvnca1fk8vn" path="res://Scenes/carrier_enemy.tscn" id="4_q3g4c"]
+[ext_resource type="PackedScene" uid="uid://ckid8lcbw8o7o" path="res://Scenes/border.tscn" id="6_kli11"]
+[ext_resource type="PackedScene" uid="uid://cvaj8nq8r3h0r" path="res://Scenes/border_h.tscn" id="7_xd2ry"]
+[ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/scrap.tscn" id="8_07lw2"]
+[ext_resource type="PackedScene" uid="uid://c4eb8ftogdhv2" path="res://Scenes/tower_sample_projectile.tscn" id="9_vo715"]
+
+[node name="Main_scene" type="Node2D"]
+script = ExtResource("1_kqybl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(2, 0)
+anchor_mode = 0
+zoom = Vector2(0.85, 0.85)
+
+[node name="Space_background" parent="." instance=ExtResource("4_5wkpi")]
+
+[node name="Scraps" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Carrier_enemy" parent="Enemies" instance=ExtResource("4_q3g4c")]
+position = Vector2(864, 88)
+
+[node name="placeholder_enemy" parent="Enemies" instance=ExtResource("3_awf75")]
+position = Vector2(1049, 65)
+
+[node name="Projectiles" type="Node2D" parent="."]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="Space_plane" parent="." instance=ExtResource("1_7xmnw")]
+position = Vector2(712, 440)
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(797, -39)
+
+[node name="BorderV" parent="Borders" instance=ExtResource("6_kli11")]
+position = Vector2(-734, 438)
+
+[node name="BorderV2" parent="Borders" instance=ExtResource("6_kli11")]
+position = Vector2(499, 423)
+
+[node name="BorderH" parent="Borders" instance=ExtResource("7_xd2ry")]
+position = Vector2(-67, 838)
+collision_mask = 49
+
+[node name="BorderH2" parent="Borders" instance=ExtResource("7_xd2ry")]
+collision_mask = 49
+
+[node name="Tower_points" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="Row" type="Node2D" parent="Tower_points"]
+position = Vector2(0, 640)
+
+[node name="Row2" type="Node2D" parent="Tower_points"]
+position = Vector2(0, 544)
+
+[node name="Marker2D2" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(488, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(232, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(360, 0)
+
+[node name="Marker2D7" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(872, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(744, 0)
+
+[node name="Marker2D11" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(616, 0)
+
+[node name="Marker2D12" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(1128, 0)
+
+[node name="Marker2D14" type="Marker2D" parent="Tower_points/Row2" groups=["Not Occupied"]]
+position = Vector2(1000, 0)
+
+[node name="Row3" type="Node2D" parent="Tower_points"]
+position = Vector2(0, 448)
+
+[node name="Marker2D2" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(488, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(232, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(360, 0)
+
+[node name="Marker2D7" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(872, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(744, 0)
+
+[node name="Marker2D11" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(616, 0)
+
+[node name="Marker2D12" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(1128, 0)
+
+[node name="Marker2D14" type="Marker2D" parent="Tower_points/Row3" groups=["Not Occupied"]]
+position = Vector2(1000, 0)
+
+[node name="Row4" type="Node2D" parent="Tower_points"]
+position = Vector2(0, 352)
+
+[node name="Marker2D2" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(488, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(232, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(360, 0)
+
+[node name="Marker2D7" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(872, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(744, 0)
+
+[node name="Marker2D11" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(616, 0)
+
+[node name="Marker2D12" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(1128, 0)
+
+[node name="Marker2D14" type="Marker2D" parent="Tower_points/Row4" groups=["Not Occupied"]]
+position = Vector2(1000, 0)
+
+[node name="Row5" type="Node2D" parent="Tower_points"]
+position = Vector2(0, 256)
+
+[node name="Marker2D2" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(488, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(232, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(360, 0)
+
+[node name="Marker2D7" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(872, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(744, 0)
+
+[node name="Marker2D11" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(616, 0)
+
+[node name="Marker2D12" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(1128, 0)
+
+[node name="Marker2D14" type="Marker2D" parent="Tower_points/Row5" groups=["Not Occupied"]]
+position = Vector2(1000, 0)
+
+[node name="Row6" type="Node2D" parent="Tower_points"]
+position = Vector2(0, 160)
+
+[node name="Marker2D2" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(488, 0)
+
+[node name="Marker2D5" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(232, 0)
+
+[node name="Marker2D6" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(360, 0)
+
+[node name="Marker2D7" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(872, 0)
+
+[node name="Marker2D9" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(744, 0)
+
+[node name="Marker2D11" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(616, 0)
+
+[node name="Marker2D12" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(1128, 0)
+
+[node name="Marker2D14" type="Marker2D" parent="Tower_points/Row6" groups=["Not Occupied"]]
+position = Vector2(1000, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(488, 640)
+
+[node name="Marker2D5" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(232, 640)
+
+[node name="Marker2D6" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(360, 640)
+
+[node name="Marker2D7" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(872, 640)
+
+[node name="Marker2D9" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(744, 640)
+
+[node name="Marker2D11" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(616, 640)
+
+[node name="Marker2D12" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(1128, 640)
+
+[node name="Marker2D14" type="Marker2D" parent="Tower_points" groups=["Not Occupied"]]
+position = Vector2(1000, 640)
+
+[node name="Scrap" parent="." instance=ExtResource("8_07lw2")]
+position = Vector2(400, 416)
+
+[node name="test_timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="tower_sample_projectile" parent="." instance=ExtResource("9_vo715")]
+
+[connection signal="enemy_dead" from="Enemies/Carrier_enemy" to="." method="_on_carrier_enemy_enemy_dead"]
+[connection signal="shoot_primary" from="Space_plane" to="." method="_on_space_plane_shoot_primary"]
+[connection signal="shoot_secondary" from="Space_plane" to="." method="_on_space_plane_shoot_secondary"]
+[connection signal="timeout" from="test_timer" to="." method="_on_test_timer_timeout"]
