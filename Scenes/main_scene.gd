@@ -7,9 +7,11 @@ var rocket_scene = preload("res://Scenes/rocket.tscn")
 var tower_sample_scene = preload("res://Scenes/tower_sample.tscn")
 var scrap_scene = preload("res://Scenes/scrap.tscn")
 var enemy_sample_scene = preload("res://Scenes/placeholder_enemy.tscn")
+var carrier_enemy = preload("res://Scenes/carrier_enemy.tscn")
 var tower_sample_projectile_scene = preload("res://Scenes/tower_sample_projectile.tscn")
 
 var tower_selection_array: Array = [null,null,null]
+var enemy_list: Array = [enemy_sample_scene, carrier_enemy]
 var tower_points_array: Array
 
 func _ready():
@@ -96,15 +98,23 @@ func find_closest_tower_point_and_approach(tower):
 				min_dist_colum = row_num_points_array[i]
 		else:
 			print("position occupied")
-	
+
+
 
 func spawn_enemy_random():
-	var enemy = enemy_sample_scene.instantiate()
+	var random_number = randi_range(0, len(enemy_list)-1)
+	var enemy = enemy_list[random_number].instantiate()
 	$Enemies.add_child(enemy)
+	enemy.connect("enemy_dead", _on_enemy_dead)
 	enemy.position = Vector2(randf_range(192, 1168), -200)
 	enemy.speed = 100
 	
+func _on_enemy_dead(pos, val):
 	
+	var scrap = scrap_scene.instantiate()
+	scrap.value = val
+	scrap.position = pos
+	$Scraps.add_child(scrap)
 
 func _on_space_plane_shoot_primary(pos):
 	var laser = laser_scene.instantiate()
@@ -119,6 +129,7 @@ func _on_space_plane_shoot_secondary(pos):
 
 
 func _on_carrier_enemy_enemy_dead(pos, val):
+	print("recieving")
 	var scrap = scrap_scene.instantiate()
 	scrap.value = val
 	scrap.position = pos
