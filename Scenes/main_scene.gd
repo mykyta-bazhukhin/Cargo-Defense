@@ -15,8 +15,9 @@ var enemy_list: Array = [enemy_sample_scene, carrier_enemy]
 var tower_points_array: Array
 
 func _ready():
-	for i in $Tower_points.get_child_count():
-		tower_points_array.append($Tower_points.get_child(i).get_children()) #appends each row's children to one array
+	tower_points_array = $Tower_points.get_children()
+	#for i in $Tower_points.get_child_count():
+	#	tower_points_array.append($Tower_points.get_child(i).get_children()) #appends each row's children to one array
 	tower_selection_array[0] = tower_sample_scene
 	var tower1 = tower_selection_array[0].instantiate() #tower needs to instantiate to be able to acess cost for if states
 	# could be solved by giving each tower its unique cost in global code
@@ -28,20 +29,18 @@ func _on_shoot_turret(pos):
 func _select_tower(number: int):
 	var tower = tower_selection_array[number].instantiate()
 	tower.position = $Space_plane.position
+	print(tower.position)
 	tower.connect("shoot_turret", _on_shoot_turret)
 	$Towers.add_child(tower)
 	find_closest_tower_point_and_approach(tower)
 	Global.scrap -= tower.cost
 func pythagrean_therom(var1, var2): #returns the result of a pathagreon therom(distance) between 2 variables
-	return sqrt(pow(var1.position.x-var2.position.x, 2) + pow(var1.position.y-var2.position.x, 2))
+	return sqrt(pow(var1.position.x-var2.position.x, 2) + pow(var1.position.y-var2.position.y, 2))
 
 func _process(_delta):
-	
-	
-	
 	#tower selection code
 	if (Input.is_action_just_pressed("Place tower 1") and tower_selection_array[0] != null and tower1_cost <= Global.scrap):
-		print("sapwn")
+		#print("sapwn")
 		_select_tower(0)
 	if (Input.is_action_just_pressed("Place tower 2") and tower_selection_array[1] != null and tower_selection_array[1].cost <= Global.scrap):
 		var tower = tower_selection_array[1].instantiate() #fix these two to use select tower func
@@ -65,18 +64,23 @@ func find_closest_tower_point_and_approach(tower):
 	var min_dist = pythagrean_therom(tower_points_array[0], tower)
 	var cur_dist = 0
 	for i in tower_points_array.size():
-		if (tower_points_array[i].is_in_group("Not Occupied")):
-			cur_dist = pythagrean_therom(tower_points_array[i], tower)
-			if (cur_dist <= min_dist):
-				min_dist = cur_dist
-				min_dist_point = tower_points_array[i]
-		else:
-			print("position occupied")
-	final_min_point_position = Vector2(min_dist_point.position.x, min_dist_point.position.y)
-	min_dist_point.remove_from_group("Not Occupied")
-	var tween = get_tree().create_tween()
-	tween.tween_property(tower, "position", final_min_point_position, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	
+		#if (tower_points_array[i].is_in_group("Not Occupied")):
+		cur_dist = pythagrean_therom(tower_points_array[i], tower)
+		#print(str(pythagrean_therom(tower_points_array[i], tower)) + " " + str(i))
+		if (cur_dist <= min_dist):
+			min_dist = cur_dist
+			min_dist_point = tower_points_array[i]
+			#print("position of new min: " + str(i))
+	print(min_dist_point.is_in_group("Not occupied"))
+	if !(min_dist_point.is_in_group("Not occupied")):
+		final_min_point_position = Vector2(min_dist_point.position.x, min_dist_point.position.y)
+		
+		var tween = get_tree().create_tween()
+		tween.tween_property(tower, "position", final_min_point_position, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		min_dist_point.remove_from_group("Not Occupied")
+	else:
+		print("position occupied")
+	'''
 	var min_dist_row = tower_points_array[0]
 	var min_dist_y = abs(tower_points_array[0].position.y - tower.position.y)
 	var cur_dist_y = 0
@@ -98,6 +102,8 @@ func find_closest_tower_point_and_approach(tower):
 				min_dist_colum = row_num_points_array[i]
 		else:
 			print("position occupied")
+	'''
+	
 
 
 
@@ -129,7 +135,7 @@ func _on_space_plane_shoot_secondary(pos):
 
 
 func _on_carrier_enemy_enemy_dead(pos, val):
-	print("recieving")
+	#print("recieving")
 	var scrap = scrap_scene.instantiate()
 	scrap.value = val
 	scrap.position = pos

@@ -17,14 +17,14 @@ func _on_tower_shoot_timer_timeout():
 
 
 func _on_detection_range_body_entered(body):
-	print("start")
+	#print("start")
 	if (enemies == 0):
 		$tower_shoot_timer.start()
 	enemies += 1
 func _on_detection_range_body_exited(body):
 	enemies -= 1
 	if (enemies == 0):
-		print("stop")
+		#print("stop")
 		$tower_shoot_timer.stop()
 
 
