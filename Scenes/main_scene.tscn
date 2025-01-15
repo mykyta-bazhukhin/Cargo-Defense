@@ -22,9 +22,6 @@ zoom = Vector2(0.85, 0.85)
 
 [node name="Scraps" type="Node2D" parent="."]
 
-[node name="Towers" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Carrier_enemy" parent="Enemies" instance=ExtResource("4_q3g4c")]
@@ -32,6 +29,9 @@ position = Vector2(864, 88)
 
 [node name="placeholder_enemy" parent="Enemies" instance=ExtResource("3_awf75")]
 position = Vector2(1049, 65)
+
+[node name="Towers" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="Projectiles" type="Node2D" parent="."]
 unique_name_in_owner = true
