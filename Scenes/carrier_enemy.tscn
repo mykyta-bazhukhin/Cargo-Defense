@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://8wvnca1fk8vn"]
+
+[ext_resource type="Script" path="res://Scenes/Carrier_enemy.gd" id="1_1rqxh"]
+[ext_resource type="Texture2D" uid="uid://bghnejhdf25fb" path="res://Sprites/Enemies/carrier enemy.png" id="2_44jf4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_27a55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_44jf4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thnb3"]
+size = Vector2(90, 141)
+
+[node name="Carrier_enemy" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 20
+script = ExtResource("1_1rqxh")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_27a55")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_thnb3")
