@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqgb78b8utrq1"]
 
-[ext_resource type="Script" path="res://Scenes/placeholder_enemy.gd" id="1_o2cus"]
+[ext_resource type="Script" path="res://Scenes/enemy_placeholder.gd" id="1_hickm"]
 
 [sub_resource type="Gradient" id="Gradient_xr5y4"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
@@ -11,10 +11,10 @@ gradient = SubResource("Gradient_xr5y4")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fn7gc"]
 size = Vector2(74, 73)
 
-[node name="placeholder_enemy" type="CharacterBody2D" groups=["Enemies"]]
+[node name="EnemyPlaceholder" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 2
 collision_mask = 20
-script = ExtResource("1_o2cus")
+script = ExtResource("1_hickm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.78814e-07, -2.32458e-06)

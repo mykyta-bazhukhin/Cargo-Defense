@@ -26,6 +26,3 @@ func _on_detection_range_body_exited(body):
 	if (enemies == 0):
 		#print("stop")
 		$tower_shoot_timer.stop()
-
-
-

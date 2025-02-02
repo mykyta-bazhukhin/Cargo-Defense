@@ -22,7 +22,8 @@ func _process(delta):
 	
 	
 	var direction = (mouse_pos - position).normalized()
-	speed = sqrt(pow(position.x-mouse_pos_x, 2) + pow(position.y-mouse_pos_y, 2))*100
+	speed = position.distance_to(mouse_pos)*100
+	#speed = sqrt(pow(position.x-mouse_pos_x, 2) + pow(position.y-mouse_pos_y, 2))*100
 	velocity = direction*speed
 	
 	

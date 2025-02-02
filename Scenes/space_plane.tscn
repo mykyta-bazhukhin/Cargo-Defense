@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g0b1i"]
 size = Vector2(93, 84)
 
-[node name="Space_plane" type="CharacterBody2D"]
+[node name="SpacePlane" type="CharacterBody2D"]
 collision_mask = 396
 script = ExtResource("1_cnvm1")
 

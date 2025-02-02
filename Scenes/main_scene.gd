@@ -2,65 +2,65 @@ extends Node2D
 
 var tower1_cost
 
-var laser_scene = preload("res://Scenes/laser.tscn")
-var rocket_scene = preload("res://Scenes/rocket.tscn")
-var tower_sample_scene = preload("res://Scenes/tower_sample.tscn")
-var scrap_scene = preload("res://Scenes/scrap.tscn")
-var enemy_sample_scene = preload("res://Scenes/placeholder_enemy.tscn")
-var carrier_enemy = preload("res://Scenes/carrier_enemy.tscn")
-var tower_sample_projectile_scene = preload("res://Scenes/tower_sample_projectile.tscn")
+var LaserScene = preload("res://Scenes/laser.tscn")
+var RocketScene = preload("res://Scenes/rocket.tscn")
+var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
+var ScrapScene = preload("res://Scenes/scrap.tscn")
+var EnemySampleScene = preload("res://Scenes/enemy_placeholder.tscn")
+var EnemyCarrierScene = preload("res://Scenes/enemy_carrier.tscn")
+var TowerSampleProjectileScene = preload("res://Scenes/tower_sample_projectile.tscn")
 
 var tower_selection_array: Array = [null,null,null]
-var enemy_list: Array = [enemy_sample_scene, carrier_enemy]
+var enemy_list: Array = [EnemySampleScene, EnemyCarrierScene]
 var tower_points_array: Array
 
 func _ready():
-	tower_points_array = $Tower_points.get_children()
+	tower_points_array = $TowerPoints.get_children()
 	#for i in $Tower_points.get_child_count():
 	#	tower_points_array.append($Tower_points.get_child(i).get_children()) #appends each row's children to one array
-	tower_selection_array[0] = tower_sample_scene
+	tower_selection_array[0] = TowerSampleScene
 	var tower1 = tower_selection_array[0].instantiate() #tower needs to instantiate to be able to acess cost for if states
 	# could be solved by giving each tower its unique cost in global code
 	tower1_cost = tower1.cost
 func _on_shoot_turret(pos):
-	var ball = tower_sample_projectile_scene.instantiate()
+	var ball = TowerSampleProjectileScene.instantiate()
 	ball.position = pos
 	$Projectiles.add_child(ball)
 
-func pythagrean_therom(var1, var2): #returns the result of a pathagreon therom(distance) between 2 variables
-	return sqrt(pow(var1.position.x-var2.position.x, 2) + pow(var1.position.y-var2.position.y, 2))
+#func pythagrean_therom(var1, var2): #returns the result of a pathagreon therom(distance) between 2 variables
+	#return sqrt(pow(var1.position.x-var2.position.x, 2) + pow(var1.position.y-var2.position.y, 2))
 
 func _process(_delta):
-	#tower selection code
+	#NOTE: tower selection code
 	if (Input.is_action_just_pressed("Place tower 1") and tower_selection_array[0] != null and tower1_cost <= Global.scrap):
 		#print("sapwn")
 		FIND_POINT_spawn_tower_approach_point(0)
 	if (Input.is_action_just_pressed("Place tower 2") and tower_selection_array[1] != null and tower_selection_array[1].cost <= Global.scrap):
 		var tower = tower_selection_array[1].instantiate() #fix these two to use select tower func
-		tower.position = $Space_plane.position
+		tower.position = $SpacePlane.position
 		tower.connect("shoot_turret", _on_shoot_turret)
 		$Towers.add_child(tower)
 	if (Input.is_action_just_pressed("Place tower 3") and tower_selection_array[2] != null and tower_selection_array[2].cost <= Global.scrap):
 		var tower = tower_selection_array[2].instantiate()
-		tower.position = $Space_plane.position
+		tower.position = $SpacePlane.position
 		tower.connect("shoot_turret", _on_shoot_turret)
 		$Towers.add_child(tower)
 		
-	#debug code
+	#NOTE: debug code
 	if (Input.is_action_just_pressed("give_scrap")):
 		Global.scrap += 1
-	
+#NOTE: tower placing code
 func FIND_POINT_spawn_tower_approach_point(num: int):
 	'''this is a super function, a big function that has been split up into three parts
 	with capital letter denoting what happens in the function'''
 	var final_min_point_position: Vector2
 	# first finding the closest row of points to the turret
 	var min_dist_point = tower_points_array[0]
-	var min_dist = pythagrean_therom(tower_points_array[0], $Space_plane)
+	var min_dist = tower_points_array[0].position.distance_to($SpacePlane.position)
 	var cur_dist = 0
 	for i in tower_points_array.size():
 		#if (tower_points_array[i].is_in_group("Not Occupied")):
-		cur_dist = pythagrean_therom(tower_points_array[i], $Space_plane)
+		cur_dist = tower_points_array[i].position.distance_to($SpacePlane.position)
 		#print(str(pythagrean_therom(tower_points_array[i], tower)) + " " + str(i))
 		if (cur_dist <= min_dist):
 			min_dist = cur_dist
@@ -74,7 +74,7 @@ func FIND_POINT_spawn_tower_approach_point(num: int):
 		print("postiion occupied")
 func find_point_SPAWN_TOWER_approach_point(num: int, min_pos):
 	var tower = tower_selection_array[num].instantiate()
-	tower.position = $Space_plane.position
+	tower.position = $SpacePlane.position
 	print(tower.position)
 	tower.connect("shoot_turret", _on_shoot_turret)
 	$Towers.add_child(tower)
@@ -93,31 +93,30 @@ func spawn_enemy_random():
 	enemy.speed = 100
 	
 func _on_enemy_dead(pos, val):
-	
-	var scrap = scrap_scene.instantiate()
+	var scrap = ScrapScene.instantiate()
 	scrap.value = val
 	scrap.position = pos
 	$Scraps.add_child(scrap)
 
 func _on_space_plane_shoot_primary(pos):
-	var laser = laser_scene.instantiate()
+	var laser = LaserScene.instantiate()
 	laser.position = pos
 	$Projectiles.add_child(laser)
 
 
 func _on_space_plane_shoot_secondary(pos):
-	var rocket = rocket_scene.instantiate()
+	var rocket = RocketScene.instantiate()
 	rocket.position = pos
 	$Projectiles.add_child(rocket)
 
-
-func _on_carrier_enemy_enemy_dead(pos, val):
-	#print("recieving")
-	var scrap = scrap_scene.instantiate()
-	scrap.value = val
-	scrap.position = pos
-	$Scraps.add_child(scrap)
-	
+#
+#func _on_carrier_enemy_enemy_dead(pos, val):
+#	#print("recieving")
+#	var scrap = scrap_scene.instantiate()
+#	scrap.value = val
+#	scrap.position = pos
+#	$Scraps.add_child(scrap)
+#	
 
 
 func _on_test_timer_timeout():
