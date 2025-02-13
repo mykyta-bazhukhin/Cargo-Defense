@@ -14,7 +14,7 @@ collision_layer = 64
 collision_mask = 0
 script = ExtResource("1_hl4fg")
 
-[node name="tower_shoot_timer" type="Timer" parent="."]
+[node name="TowerShootTimer" type="Timer" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 7)
@@ -24,16 +24,16 @@ texture = ExtResource("1_6yg8c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ew55c")
 
-[node name="tower_detection_range" type="Area2D" parent="."]
+[node name="TowerDetectionRange" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="tower_detection_range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TowerDetectionRange"]
 position = Vector2(0.5, -341.5)
 shape = SubResource("RectangleShape2D_g5tvc")
 debug_color = Color(0.756863, 0, 0.109804, 0.419608)
 
-[connection signal="timeout" from="tower_shoot_timer" to="." method="_on_tower_shoot_timer_timeout"]
-[connection signal="body_entered" from="tower_detection_range" to="." method="_on_detection_range_body_entered"]
-[connection signal="body_exited" from="tower_detection_range" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="TowerShootTimer" to="." method="_on_tower_shoot_timer_timeout"]
+[connection signal="body_entered" from="TowerDetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="TowerDetectionRange" to="." method="_on_detection_range_body_exited"]

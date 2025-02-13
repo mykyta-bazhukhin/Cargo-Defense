@@ -118,6 +118,5 @@ func _on_space_plane_shoot_secondary(pos):
 #	$Scraps.add_child(scrap)
 #	
 
-
-func _on_test_timer_timeout():
+func _on_spawn_enemy_timer_timeout() -> void:
 	spawn_enemy_random()

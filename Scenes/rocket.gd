@@ -1,17 +1,17 @@
 extends Area2D
 
 
-@export var direction = Vector2.UP
-var speed = 500
-var damage = 15
-var is_dead = false
+@export var direction: Vector2 = Vector2.UP
+var speed: int = 500
+var damage: int = 15
+var is_dead: bool = false
 
 
 var target_array = []
 
 func _ready():
-	$Rocket_explosion_sprite.visible = false
-	$Rocket_sprite.visible = true
+	$RocketExplosionSprite.visible = false
+	$RocketSprite.visible = true
 	
 
 
@@ -26,9 +26,9 @@ func _process(delta):
 func find_min_dist_enemy_pos():
 	var min_dist_enemy = target_array[0]
 	var cur_dist = 0
-	var min_dist = sqrt(pow(position.x-target_array[0].position.x, 2) + pow(position.y-target_array[0].position.y, 2))
+	var min_dist = position.distance_to(target_array[0].position)
 	for i in target_array.size():
-		cur_dist = sqrt(pow(position.x-target_array[i].position.x, 2) + pow(position.y-target_array[i].position.y, 2))
+		cur_dist = position.distance_to(target_array[i].position)
 		if (cur_dist <= min_dist):
 			min_dist = cur_dist
 			min_dist_enemy = target_array[i]

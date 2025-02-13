@@ -70,7 +70,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Rocket_sprite:visible")
+tracks/0/path = NodePath("RocketSprite:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +82,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Rocket_explosion_sprite:visible")
+tracks/1/path = NodePath("RocketExplosionSprite:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -94,7 +94,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Rocket_explosion_sprite:frame")
+tracks/2/path = NodePath("RocketExplosionSprite:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -128,7 +128,7 @@ collision_layer = 16
 collision_mask = 6
 script = ExtResource("1_v24uo")
 
-[node name="Rocket_sprite" type="AnimatedSprite2D" parent="."]
+[node name="RocketSprite" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(7.10543e-15, 0)
 rotation = 1.5708
@@ -138,7 +138,7 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.248009
 
-[node name="Rocket_explosion_sprite" type="AnimatedSprite2D" parent="."]
+[node name="RocketExplosionSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v8olo")
 frame = 1
 
@@ -146,12 +146,12 @@ frame = 1
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_6wjka")
 
-[node name="rocket_detection_range" type="Area2D" parent="."]
+[node name="RocketDetectionRange" type="Area2D" parent="."]
 rotation = 1.5708
 collision_layer = 0
 collision_mask = 2
 
-[node name="detection" type="CollisionShape2D" parent="rocket_detection_range"]
+[node name="DetectionRange" type="CollisionShape2D" parent="RocketDetectionRange"]
 position = Vector2(-1, -118)
 shape = SubResource("RectangleShape2D_njb1o")
 debug_color = Color(0.92549, 0.0862745, 0.192157, 0.419608)
@@ -161,11 +161,11 @@ libraries = {
 "": SubResource("AnimationLibrary_eitxv")
 }
 
-[node name="Timer_timeout" type="Timer" parent="."]
+[node name="TimerTimeout" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_entered" from="rocket_detection_range" to="." method="_on_detection_range_body_entered"]
-[connection signal="body_exited" from="rocket_detection_range" to="." method="_on_detection_range_body_exited"]
-[connection signal="timeout" from="Timer_timeout" to="." method="_on_timer_timeout_timeout"]
+[connection signal="body_entered" from="RocketDetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="RocketDetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="timeout" from="TimerTimeout" to="." method="_on_timer_timeout_timeout"]
