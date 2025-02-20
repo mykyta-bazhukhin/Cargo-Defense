@@ -7,7 +7,7 @@ colors = PackedColorArray(0.303233, 0.303233, 0.303233, 1, 0.325441, 0.325441, 0
 gradient = SubResource("Gradient_o7ydi")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkxuu"]
-size = Vector2(130, 2613)
+size = Vector2(128, 2613)
 
 [node name="BorderV" type="StaticBody2D"]
 collision_layer = 4

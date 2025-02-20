@@ -21,6 +21,8 @@ Global="*res://global.gd"
 
 [display]
 
+window/size/viewport_width=1360
+window/size/viewport_height=784
 window/size/initial_position=Vector2i(465, 1465)
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
@@ -59,3 +61,7 @@ give_scrap={
 2d_physics/layer_7="Towers"
 2d_physics/layer_8="Out of bounds"
 2d_physics/layer_9="Collectibles"
+
+[rendering]
+
+anti_aliasing/screen_space_roughness_limiter/enabled=false

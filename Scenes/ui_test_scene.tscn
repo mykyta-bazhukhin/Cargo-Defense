@@ -1,26 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://dawaxp7iu7yia"]
+[gd_scene load_steps=11 format=3 uid="uid://dawaxp7iu7yia"]
 
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/space_background.tscn" id="1_hld60"]
 [ext_resource type="PackedScene" uid="uid://c0012itq3obpx" path="res://Scenes/space_plane.tscn" id="2_48e10"]
 [ext_resource type="PackedScene" uid="uid://ckid8lcbw8o7o" path="res://Scenes/border.tscn" id="3_q2ots"]
 [ext_resource type="PackedScene" uid="uid://cvaj8nq8r3h0r" path="res://Scenes/border_h.tscn" id="4_86s4d"]
 [ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/scrap.tscn" id="5_rxn7m"]
+[ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/tf2 scrap.png" id="6_nytet"]
 [ext_resource type="Script" path="res://label.gd" id="6_rofef"]
 
+[sub_resource type="Theme" id="Theme_qtuc6"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6e4k"]
-bg_color = Color(0.6, 0.909804, 0.6, 1)
+bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
 
 [sub_resource type="Theme" id="Theme_uamki"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_e6e4k")
 
-[sub_resource type="Theme" id="Theme_qtuc6"]
-
 [node name="UITestScene" type="Node2D"]
+metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2, 0)
 anchor_mode = 0
-zoom = Vector2(0.85, 0.85)
+metadata/_edit_lock_ = true
 
 [node name="Space_background" parent="." instance=ExtResource("1_hld60")]
 
@@ -42,66 +43,79 @@ metadata/_edit_lock_ = true
 position = Vector2(680, 632)
 
 [node name="Borders" type="Node2D" parent="."]
-position = Vector2(797, -39)
+metadata/_edit_lock_ = true
 
 [node name="BorderV" parent="Borders" instance=ExtResource("3_q2ots")]
-position = Vector2(-734, 438)
+position = Vector2(64, 408)
 
 [node name="BorderV2" parent="Borders" instance=ExtResource("3_q2ots")]
-position = Vector2(499, 423)
+position = Vector2(1296, 392)
 
 [node name="BorderH" parent="Borders" instance=ExtResource("4_86s4d")]
-position = Vector2(-67, 838)
+position = Vector2(648, 824)
 collision_mask = 49
 
 [node name="BorderH2" parent="Borders" instance=ExtResource("4_86s4d")]
+position = Vector2(664, -40)
 collision_mask = 49
 
 [node name="Scrap" parent="." instance=ExtResource("5_rxn7m")]
-position = Vector2(400, 416)
+position = Vector2(216, 472)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
 visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -64.0
-offset_right = 64.0
-offset_bottom = 64.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -159.0
+offset_right = 128.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+visible = false
+modulate = Color(1, 0, 1, 1)
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 384.0
+theme = SubResource("Theme_qtuc6")
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(110, 100)
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -162.0
+offset_right = 128.0
+grow_vertical = 0
 theme = SubResource("Theme_uamki")
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer"]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("6_nytet")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_rofef")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -68.0
-offset_right = 64.0
-offset_bottom = 60.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer"]
-modulate = Color(1, 0, 1, 1)
-layout_mode = 2
-theme = SubResource("Theme_qtuc6")
 
 [connection signal="shoot_primary" from="SpacePlane" to="." method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="." method="_on_space_plane_shoot_secondary"]
