@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://d0esmevhfjkpi"]
 
 [ext_resource type="Texture2D" uid="uid://bhiklpxr6x6vy" path="res://Sprites/Towers/turret sample.png" id="1_6yg8c"]
-[ext_resource type="Script" path="res://Scenes/tower_sample.gd" id="1_hl4fg"]
+[ext_resource type="Script" uid="uid://cgjgbayim410l" path="res://Scenes/tower_sample.gd" id="1_hl4fg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ew55c"]
 size = Vector2(50, 60)

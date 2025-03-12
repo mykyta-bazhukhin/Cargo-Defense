@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="PackedScene" uid="uid://c0012itq3obpx" path="res://Scenes/space_plane.tscn" id="1_7xmnw"]
-[ext_resource type="Script" path="res://Scenes/main_scene.gd" id="1_kqybl"]
+[ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scenes/main_scene.gd" id="1_kqybl"]
 [ext_resource type="PackedScene" uid="uid://dqgb78b8utrq1" path="res://Scenes/enemy_placeholder.tscn" id="3_awf75"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/space_background.tscn" id="4_5wkpi"]
 [ext_resource type="PackedScene" uid="uid://8wvnca1fk8vn" path="res://Scenes/enemy_carrier.tscn" id="4_q3g4c"]
@@ -16,7 +16,6 @@ script = ExtResource("1_kqybl")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2, 0)
 anchor_mode = 0
-zoom = Vector2(0.85, 0.85)
 
 [node name="Space_background" parent="." instance=ExtResource("4_5wkpi")]
 

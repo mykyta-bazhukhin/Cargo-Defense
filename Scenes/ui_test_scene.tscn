@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cvaj8nq8r3h0r" path="res://Scenes/border_h.tscn" id="4_86s4d"]
 [ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/scrap.tscn" id="5_rxn7m"]
 [ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/tf2 scrap.png" id="6_nytet"]
-[ext_resource type="Script" path="res://label.gd" id="6_rofef"]
+[ext_resource type="Script" uid="uid://hsyu0fj53anx" path="res://label.gd" id="6_rofef"]
 
 [sub_resource type="Theme" id="Theme_qtuc6"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4eb8ftogdhv2"]
 
-[ext_resource type="Script" path="res://Scenes/tower_sample_projectile.gd" id="1_2she0"]
+[ext_resource type="Script" uid="uid://b3j8iqeccos3j" path="res://Scenes/tower_sample_projectile.gd" id="1_2she0"]
 [ext_resource type="Texture2D" uid="uid://haxkgxwvnd1q" path="res://Sprites/Towers/ball.png" id="1_cansg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pd1wk"]

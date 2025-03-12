@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://8wvnca1fk8vn"]
 
-[ext_resource type="Script" path="res://Scenes/enemy_carrier.gd" id="1_whdus"]
+[ext_resource type="Script" uid="uid://cibn7jaj4kq6s" path="res://Scenes/enemy_carrier.gd" id="1_whdus"]
 [ext_resource type="Texture2D" uid="uid://bghnejhdf25fb" path="res://Sprites/Enemies/carrier enemy.png" id="2_afd4p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_27a55"]

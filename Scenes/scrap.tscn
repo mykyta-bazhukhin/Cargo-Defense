@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx4rijcoi4yip"]
 
-[ext_resource type="Script" path="res://Scenes/scrap.gd" id="1_jr64e"]
+[ext_resource type="Script" uid="uid://brcnc3kwsg44s" path="res://Scenes/scrap.gd" id="1_jr64e"]
 [ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/tf2 scrap.png" id="2_0lp0l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ml5xg"]
