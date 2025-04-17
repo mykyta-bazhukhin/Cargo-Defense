@@ -4,8 +4,8 @@ var mouse_pos = Vector2(0,0)
 var mouse_pos_x = 0
 var mouse_pos_y = 0
 var speed = 0
-signal shoot_primary(pos)
-signal shoot_secondary(pos)
+signal shoot_primary(pos: Vector2)
+signal shoot_secondary(pos: Vector2)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,9 +23,14 @@ func _process(delta):
 	
 	var direction = (mouse_pos - position).normalized()
 	speed = position.distance_to(mouse_pos)*100
+	
+	if (position.distance_to(mouse_pos) < 0.1):
+		speed = 0
+		
 	#speed = sqrt(pow(position.x-mouse_pos_x, 2) + pow(position.y-mouse_pos_y, 2))*100
 	velocity = direction*speed
 	
+	#$CanvasLayer/Label.text = "speed: " + str(speed)
 	
 
 

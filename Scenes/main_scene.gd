@@ -2,16 +2,10 @@ extends Node2D
 
 var tower1_cost
 
-var LaserScene = preload("res://Scenes/laser.tscn")
-var RocketScene = preload("res://Scenes/rocket.tscn")
 var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
-var ScrapScene = preload("res://Scenes/scrap.tscn")
-var EnemySampleScene = preload("res://Scenes/enemy_placeholder.tscn")
-var EnemyCarrierScene = preload("res://Scenes/enemy_carrier.tscn")
 var TowerSampleProjectileScene = preload("res://Scenes/tower_sample_projectile.tscn")
 
 var tower_selection_array: Array = [null,null,null]
-var enemy_list: Array = [EnemySampleScene, EnemyCarrierScene]
 var tower_points_array: Array
 
 func _ready():
@@ -31,6 +25,7 @@ func _on_shoot_turret(pos):
 	#return sqrt(pow(var1.position.x-var2.position.x, 2) + pow(var1.position.y-var2.position.y, 2))
 
 func _process(_delta):
+	var plane_speed = $SpacePlane.speed
 	#NOTE: tower selection code
 	if (Input.is_action_just_pressed("Place tower 1") and tower_selection_array[0] != null and tower1_cost <= Global.scrap):
 		#print("sapwn")
@@ -71,7 +66,7 @@ func FIND_POINT_spawn_tower_approach_point(num: int):
 		min_dist_point.remove_from_group("Not Occupied")
 		find_point_SPAWN_TOWER_approach_point(num, final_min_point_position)
 	else:
-		print("postiion occupied")
+		print("position occupied")
 func find_point_SPAWN_TOWER_approach_point(num: int, min_pos):
 	var tower = tower_selection_array[num].instantiate()
 	tower.position = $SpacePlane.position
@@ -84,30 +79,9 @@ func find_point_spawn_tower_APPROACH_POINT(min_pos, tower):
 	var tween = get_tree().create_tween()
 	tween.tween_property(tower, "position", min_pos, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
-func spawn_enemy_random():
-	var random_number = randi_range(0, len(enemy_list)-1)
-	var enemy = enemy_list[random_number].instantiate()
-	$Enemies.add_child(enemy)
-	enemy.connect("enemy_dead", _on_enemy_dead)
-	enemy.position = Vector2(randf_range(192, 1168), -200)
-	enemy.speed = 100
+
 	
-func _on_enemy_dead(pos, val):
-	var scrap = ScrapScene.instantiate()
-	scrap.value = val
-	scrap.position = pos
-	$Scraps.add_child(scrap)
 
-func _on_space_plane_shoot_primary(pos):
-	var laser = LaserScene.instantiate()
-	laser.position = pos
-	$Projectiles.add_child(laser)
-
-
-func _on_space_plane_shoot_secondary(pos):
-	var rocket = RocketScene.instantiate()
-	rocket.position = pos
-	$Projectiles.add_child(rocket)
 
 #
 #func _on_carrier_enemy_enemy_dead(pos, val):
@@ -118,5 +92,9 @@ func _on_space_plane_shoot_secondary(pos):
 #	$Scraps.add_child(scrap)
 #	
 
-func _on_spawn_enemy_timer_timeout() -> void:
-	spawn_enemy_random()
+
+
+
+
+func _on_enemies_create_scrap(pos: Vector2, val: int) -> void:
+	pass # Replace with function body.

@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dku3lihfaohyl"]
+[gd_scene load_steps=13 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="PackedScene" uid="uid://c0012itq3obpx" path="res://Scenes/space_plane.tscn" id="1_7xmnw"]
 [ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scenes/main_scene.gd" id="1_kqybl"]
+[ext_resource type="Script" uid="uid://bvakrd4wikdsr" path="res://Scenes/enemies.gd" id="3_76v2p"]
 [ext_resource type="PackedScene" uid="uid://dqgb78b8utrq1" path="res://Scenes/enemy_placeholder.tscn" id="3_awf75"]
+[ext_resource type="Script" uid="uid://6dsci6d7ww4u" path="res://Scenes/scraps.gd" id="3_drdnd"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/space_background.tscn" id="4_5wkpi"]
 [ext_resource type="PackedScene" uid="uid://8wvnca1fk8vn" path="res://Scenes/enemy_carrier.tscn" id="4_q3g4c"]
+[ext_resource type="Script" uid="uid://bilf2itagip0q" path="res://Scenes/projectiles.gd" id="5_mai8y"]
 [ext_resource type="PackedScene" uid="uid://ckid8lcbw8o7o" path="res://Scenes/border.tscn" id="6_kli11"]
 [ext_resource type="PackedScene" uid="uid://cvaj8nq8r3h0r" path="res://Scenes/border_h.tscn" id="7_xd2ry"]
 [ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/scrap.tscn" id="8_07lw2"]
@@ -20,11 +23,13 @@ anchor_mode = 0
 [node name="Space_background" parent="." instance=ExtResource("4_5wkpi")]
 
 [node name="Scraps" type="Node2D" parent="."]
+script = ExtResource("3_drdnd")
 
 [node name="Towers" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("3_76v2p")
 
 [node name="Carrier_enemy" parent="Enemies" instance=ExtResource("4_q3g4c")]
 position = Vector2(864, 88)
@@ -32,8 +37,13 @@ position = Vector2(864, 88)
 [node name="placeholder_enemy" parent="Enemies" instance=ExtResource("3_awf75")]
 position = Vector2(1049, 65)
 
+[node name="SpawnEnemyTimer" type="Timer" parent="Enemies"]
+wait_time = 2.0
+autostart = true
+
 [node name="Projectiles" type="Node2D" parent="."]
 unique_name_in_owner = true
+script = ExtResource("5_mai8y")
 metadata/_edit_lock_ = true
 
 [node name="SpacePlane" parent="." instance=ExtResource("1_7xmnw")]
@@ -205,13 +215,13 @@ position = Vector2(1000, 160)
 [node name="Scrap" parent="." instance=ExtResource("8_07lw2")]
 position = Vector2(400, 416)
 
-[node name="SpawnEnemyTimer" type="Timer" parent="."]
-wait_time = 2.0
-autostart = true
-
 [node name="tower_sample_projectile" parent="." instance=ExtResource("9_vo715")]
 position = Vector2(-72, 48)
 
+[connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
+[connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
+[connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="Enemies" method="_on_spawn_enemy_timer_timeout"]
 [connection signal="shoot_primary" from="SpacePlane" to="." method="_on_space_plane_shoot_primary"]
+[connection signal="shoot_primary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="." method="_on_space_plane_shoot_secondary"]
-[connection signal="timeout" from="SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
+[connection signal="shoot_secondary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_secondary"]

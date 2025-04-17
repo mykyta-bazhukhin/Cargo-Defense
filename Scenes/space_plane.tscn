@@ -26,5 +26,14 @@ shape = SubResource("RectangleShape2D_g0b1i")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_0vyyj")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = -25.0
+offset_top = -75.0
+offset_right = 15.0
+offset_bottom = -52.0
+text = "123"
+
 [connection signal="timeout" from="primary_timer" to="." method="_on_primary_timer_timeout"]
 [connection signal="timeout" from="secondary_timer" to="." method="_on_secondary_timer_timeout"]
