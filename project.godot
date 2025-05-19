@@ -21,9 +21,8 @@ Global="*res://global.gd"
 
 [display]
 
-window/size/viewport_width=1360
-window/size/viewport_height=784
-window/size/initial_position=Vector2i(465, 1465)
+window/size/viewport_width=1282
+window/size/viewport_height=768
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
@@ -64,4 +63,5 @@ give_scrap={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 anti_aliasing/screen_space_roughness_limiter/enabled=false

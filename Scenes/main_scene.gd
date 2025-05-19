@@ -78,8 +78,8 @@ func find_point_SPAWN_TOWER_approach_point(num: int, min_pos):
 func find_point_spawn_tower_APPROACH_POINT(min_pos, tower):
 	var tween = get_tree().create_tween()
 	tween.tween_property(tower, "position", min_pos, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-
-
+	await tween.finished
+	tower.get_node("PlatformSprite").visible = true
 	
 
 

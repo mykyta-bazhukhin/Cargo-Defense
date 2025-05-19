@@ -158,7 +158,7 @@ debug_color = Color(0.92549, 0.0862745, 0.192157, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_eitxv")
+&"": SubResource("AnimationLibrary_eitxv")
 }
 
 [node name="TimerTimeout" type="Timer" parent="."]

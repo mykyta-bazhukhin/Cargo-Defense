@@ -17,7 +17,6 @@
 script = ExtResource("1_kqybl")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(2, 0)
 anchor_mode = 0
 
 [node name="Space_background" parent="." instance=ExtResource("4_5wkpi")]
@@ -53,13 +52,13 @@ position = Vector2(680, 632)
 position = Vector2(797, -39)
 
 [node name="BorderV" parent="Borders" instance=ExtResource("6_kli11")]
-position = Vector2(-734, 438)
+position = Vector2(-733, 423)
 
 [node name="BorderV2" parent="Borders" instance=ExtResource("6_kli11")]
-position = Vector2(499, 423)
+position = Vector2(419, 423)
 
 [node name="BorderH" parent="Borders" instance=ExtResource("7_xd2ry")]
-position = Vector2(-67, 838)
+position = Vector2(-69, 847)
 collision_mask = 49
 
 [node name="BorderH2" parent="Borders" instance=ExtResource("7_xd2ry")]
@@ -69,151 +68,133 @@ collision_mask = 49
 metadata/_edit_lock_ = true
 
 [node name="Marker2D5" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(232, 640)
+position = Vector2(256, 704)
 
 [node name="Marker2D2" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(488, 640)
+position = Vector2(512, 704)
 
 [node name="Marker2D6" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(360, 640)
+position = Vector2(384, 704)
 
 [node name="Marker2D7" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(872, 640)
+position = Vector2(896, 704)
 
 [node name="Marker2D9" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(744, 640)
+position = Vector2(768, 704)
 
 [node name="Marker2D11" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(616, 640)
-
-[node name="Marker2D12" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1128, 640)
+position = Vector2(640, 704)
 
 [node name="Marker2D14" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1000, 640)
+position = Vector2(1024, 704)
 
 [node name="Marker2D3" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(488, 544)
+position = Vector2(512, 576)
 
 [node name="Marker2D8" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(232, 544)
+position = Vector2(256, 576)
 
 [node name="Marker2D10" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(360, 544)
+position = Vector2(384, 576)
 
 [node name="Marker2D13" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(872, 544)
+position = Vector2(896, 576)
 
 [node name="Marker2D15" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(744, 544)
+position = Vector2(768, 576)
 
 [node name="Marker2D16" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(616, 544)
-
-[node name="Marker2D17" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1128, 544)
+position = Vector2(640, 576)
 
 [node name="Marker2D18" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1000, 544)
+position = Vector2(1024, 576)
 
 [node name="Marker2D4" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(488, 448)
+position = Vector2(512, 448)
 
 [node name="Marker2D19" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(232, 448)
+position = Vector2(256, 448)
 
 [node name="Marker2D20" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(360, 448)
+position = Vector2(384, 448)
 
 [node name="Marker2D21" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(872, 448)
+position = Vector2(896, 448)
 
 [node name="Marker2D22" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(744, 448)
+position = Vector2(768, 448)
 
 [node name="Marker2D23" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(616, 448)
-
-[node name="Marker2D24" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1128, 448)
+position = Vector2(640, 448)
 
 [node name="Marker2D25" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1000, 448)
+position = Vector2(1024, 448)
 
 [node name="Marker2D26" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(488, 352)
+position = Vector2(512, 320)
 
 [node name="Marker2D27" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(232, 352)
+position = Vector2(256, 320)
 
 [node name="Marker2D28" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(360, 352)
+position = Vector2(384, 320)
 
 [node name="Marker2D29" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(872, 352)
+position = Vector2(896, 320)
 
 [node name="Marker2D30" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(744, 352)
+position = Vector2(768, 320)
 
 [node name="Marker2D31" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(616, 352)
-
-[node name="Marker2D32" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1128, 352)
+position = Vector2(640, 320)
 
 [node name="Marker2D33" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1000, 352)
+position = Vector2(1024, 320)
 
 [node name="Marker2D34" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(488, 256)
+position = Vector2(512, 192)
 
 [node name="Marker2D35" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(232, 256)
+position = Vector2(256, 192)
 
 [node name="Marker2D36" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(360, 256)
+position = Vector2(384, 192)
 
 [node name="Marker2D37" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(872, 256)
+position = Vector2(896, 192)
 
 [node name="Marker2D38" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(744, 256)
+position = Vector2(768, 192)
 
 [node name="Marker2D39" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(616, 256)
-
-[node name="Marker2D40" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1128, 256)
+position = Vector2(640, 192)
 
 [node name="Marker2D41" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1000, 256)
+position = Vector2(1024, 192)
 
 [node name="Marker2D42" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(488, 160)
+position = Vector2(512, 64)
 
 [node name="Marker2D43" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(232, 160)
+position = Vector2(256, 64)
 
 [node name="Marker2D44" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(360, 160)
+position = Vector2(384, 64)
 
 [node name="Marker2D45" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(872, 160)
+position = Vector2(896, 64)
 
 [node name="Marker2D46" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(744, 160)
+position = Vector2(768, 64)
 
 [node name="Marker2D47" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(616, 160)
-
-[node name="Marker2D48" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1128, 160)
+position = Vector2(640, 64)
 
 [node name="Marker2D49" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
-position = Vector2(1000, 160)
+position = Vector2(1024, 64)
 
 [node name="Scrap" parent="." instance=ExtResource("8_07lw2")]
-position = Vector2(400, 416)
+position = Vector2(160, 336)
 
 [node name="tower_sample_projectile" parent="." instance=ExtResource("9_vo715")]
 position = Vector2(-72, 48)
