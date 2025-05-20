@@ -16,6 +16,7 @@ func _ready():
 	var tower1 = tower_selection_array[0].instantiate() #tower needs to instantiate to be able to acess cost for if states
 	# could be solved by giving each tower its unique cost in global code
 	tower1_cost = tower1.cost
+	tower1.free()
 func _on_shoot_turret(pos):
 	var ball = TowerSampleProjectileScene.instantiate()
 	ball.position = pos

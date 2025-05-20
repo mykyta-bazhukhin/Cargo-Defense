@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://d0esmevhfjkpi"]
 
-[ext_resource type="Texture2D" uid="uid://bhiklpxr6x6vy" path="res://Sprites/Towers/turret sample.png" id="1_6yg8c"]
 [ext_resource type="Script" uid="uid://cgjgbayim410l" path="res://Scenes/tower_sample.gd" id="1_hl4fg"]
 [ext_resource type="Texture2D" uid="uid://00qbocwhjqfp" path="res://Sprites/Towers/tower platform green.png" id="2_agb8p"]
+[ext_resource type="Texture2D" uid="uid://bokrewssju7af" path="res://Sprites/Towers/basic turret.png" id="3_agb8p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ew55c"]
 size = Vector2(50, 60)
@@ -21,9 +21,7 @@ script = ExtResource("1_hl4fg")
 texture = ExtResource("2_agb8p")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 7)
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_6yg8c")
+texture = ExtResource("3_agb8p")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ew55c")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dku3lihfaohyl"]
+[gd_scene load_steps=18 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="PackedScene" uid="uid://c0012itq3obpx" path="res://Scenes/space_plane.tscn" id="1_7xmnw"]
 [ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scenes/main_scene.gd" id="1_kqybl"]
@@ -6,12 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://dqgb78b8utrq1" path="res://Scenes/enemy_placeholder.tscn" id="3_awf75"]
 [ext_resource type="Script" uid="uid://6dsci6d7ww4u" path="res://Scenes/scraps.gd" id="3_drdnd"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/space_background.tscn" id="4_5wkpi"]
+[ext_resource type="Script" uid="uid://sghoys8vtbgt" path="res://Scenes/towers.gd" id="4_lhp3t"]
 [ext_resource type="PackedScene" uid="uid://8wvnca1fk8vn" path="res://Scenes/enemy_carrier.tscn" id="4_q3g4c"]
 [ext_resource type="Script" uid="uid://bilf2itagip0q" path="res://Scenes/projectiles.gd" id="5_mai8y"]
 [ext_resource type="PackedScene" uid="uid://ckid8lcbw8o7o" path="res://Scenes/border.tscn" id="6_kli11"]
 [ext_resource type="PackedScene" uid="uid://cvaj8nq8r3h0r" path="res://Scenes/border_h.tscn" id="7_xd2ry"]
 [ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/scrap.tscn" id="8_07lw2"]
 [ext_resource type="PackedScene" uid="uid://c4eb8ftogdhv2" path="res://Scenes/tower_sample_projectile.tscn" id="9_vo715"]
+[ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/tf2 scrap.png" id="14_gnsmo"]
+[ext_resource type="Script" uid="uid://hsyu0fj53anx" path="res://label.gd" id="15_psl12"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6e4k"]
+bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
+
+[sub_resource type="Theme" id="Theme_2ebs2"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_e6e4k")
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_kqybl")
@@ -26,6 +35,7 @@ script = ExtResource("3_drdnd")
 
 [node name="Towers" type="Node2D" parent="."]
 unique_name_in_owner = true
+script = ExtResource("4_lhp3t")
 
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("3_76v2p")
@@ -198,6 +208,40 @@ position = Vector2(160, 336)
 
 [node name="tower_sample_projectile" parent="." instance=ExtResource("9_vo715")]
 position = Vector2(-72, 48)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 160)
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -162.0
+offset_right = 128.0
+grow_vertical = 0
+theme = SubResource("Theme_2ebs2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("14_gnsmo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_psl12")
 
 [connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
