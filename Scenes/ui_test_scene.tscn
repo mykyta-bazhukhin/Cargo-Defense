@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dawaxp7iu7yia"]
+[gd_scene load_steps=19 format=3 uid="uid://dawaxp7iu7yia"]
 
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/space_background.tscn" id="1_hld60"]
 [ext_resource type="Script" uid="uid://la4ah3gulxa1" path="res://Scenes/ui_test_scene.gd" id="1_s3j6s"]
@@ -8,9 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/scrap.tscn" id="5_rxn7m"]
 [ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/tf2 scrap.png" id="6_nytet"]
 [ext_resource type="Script" uid="uid://hsyu0fj53anx" path="res://label.gd" id="6_rofef"]
+[ext_resource type="Script" uid="uid://dk0lwg8lihqss" path="res://Scenes/tower_slots.gd" id="9_70ou3"]
 [ext_resource type="Texture2D" uid="uid://haxkgxwvnd1q" path="res://Sprites/Towers/ball.png" id="9_wluib"]
-[ext_resource type="Script" uid="uid://4avmyahbax0y" path="res://Scenes/texture_rect.gd" id="10_70ou3"]
-[ext_resource type="Script" uid="uid://dnkiu1svaavj1" path="res://Scenes/label.gd" id="10_wluib"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b478v"]
 bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
@@ -73,7 +72,7 @@ metadata/_edit_lock_ = true
 position = Vector2(64, 408)
 
 [node name="BorderV2" parent="Borders" instance=ExtResource("3_q2ots")]
-position = Vector2(1280, 392)
+position = Vector2(1216, 384)
 
 [node name="BorderH" parent="Borders" instance=ExtResource("4_86s4d")]
 position = Vector2(656, 808)
@@ -88,7 +87,7 @@ position = Vector2(216, 472)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+[node name="ScrapPanelContainer" type="PanelContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(110, 100)
 layout_direction = 1
 anchors_preset = 2
@@ -99,11 +98,11 @@ offset_right = 128.0
 grow_vertical = 0
 theme = SubResource("Theme_uamki")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrapPanelContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrapPanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 8
@@ -111,7 +110,7 @@ texture = ExtResource("6_nytet")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/ScrapPanelContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 40
@@ -120,34 +119,43 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("6_rofef")
 
-[node name="TowerOnePanelTest" type="PanelContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(128, 200)
+[node name="TowerSlots" type="MarginContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 608)
 offset_right = 128.0
-offset_bottom = 200.0
+offset_bottom = 608.0
+
+[node name="TowerSlotsVBox" type="VBoxContainer" parent="CanvasLayer/TowerSlots"]
+layout_mode = 2
+script = ExtResource("9_70ou3")
+
+[node name="TowerPanel1" type="PanelContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
 theme = SubResource("Theme_ha4vy")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerOnePanelTest"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel1"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerOnePanelTest/VBoxContainer"]
+[node name="TowerImage1" type="TextureRect" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel1/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("9_wluib")
 expand_mode = 1
 stretch_mode = 5
-script = ExtResource("10_70ou3")
 
-[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerOnePanelTest/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel1/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme = SubResource("Theme_wluib")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerOnePanelTest/VBoxContainer/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme = SubResource("Theme_8jfvs")
 
-[node name="Label" type="Label" parent="CanvasLayer/TowerOnePanelTest/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="TowerCost1" type="Label" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 1
@@ -155,9 +163,92 @@ theme_override_font_sizes/font_size = 30
 text = "??"
 horizontal_alignment = 1
 vertical_alignment = 2
-script = ExtResource("10_wluib")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerOnePanelTest/VBoxContainer/PanelContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_nytet")
+expand_mode = 2
+
+[node name="TowerPanel2" type="PanelContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_ha4vy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage2" type="TextureRect" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_wluib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_wluib")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_8jfvs")
+
+[node name="TowerCost2" type="Label" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_nytet")
+expand_mode = 2
+
+[node name="TowerPanel3" type="PanelContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_ha4vy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel3"]
+layout_mode = 2
+
+[node name="TowerImage3" type="TextureRect" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_wluib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_wluib")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_8jfvs")
+
+[node name="TowerCost3" type="Label" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlots/TowerSlotsVBox/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
 texture = ExtResource("6_nytet")
@@ -165,5 +256,3 @@ expand_mode = 2
 
 [connection signal="shoot_primary" from="SpacePlane" to="." method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="." method="_on_space_plane_shoot_secondary"]
-[connection signal="get_tower_picture" from="CanvasLayer/TowerOnePanelTest/VBoxContainer/TextureRect" to="." method="_on_texture_rect_get_tower_picture"]
-[connection signal="get_tower1_cost" from="CanvasLayer/TowerOnePanelTest/VBoxContainer/PanelContainer/HBoxContainer/Label" to="." method="_on_label_get_tower_1_cost"]

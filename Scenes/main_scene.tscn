@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/scrap.tscn" id="8_07lw2"]
 [ext_resource type="PackedScene" uid="uid://c4eb8ftogdhv2" path="res://Scenes/tower_sample_projectile.tscn" id="9_vo715"]
 [ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/tf2 scrap.png" id="14_gnsmo"]
-[ext_resource type="Script" uid="uid://hsyu0fj53anx" path="res://label.gd" id="15_psl12"]
+[ext_resource type="Script" uid="uid://dnkiu1svaavj1" path="res://Scenes/label.gd" id="15_lhp3t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6e4k"]
 bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
@@ -56,22 +56,23 @@ script = ExtResource("5_mai8y")
 metadata/_edit_lock_ = true
 
 [node name="SpacePlane" parent="." instance=ExtResource("1_7xmnw")]
-position = Vector2(680, 632)
+position = Vector2(624, 608)
 
 [node name="Borders" type="Node2D" parent="."]
 position = Vector2(797, -39)
 
 [node name="BorderV" parent="Borders" instance=ExtResource("6_kli11")]
-position = Vector2(-733, 423)
+position = Vector2(-733, 447)
 
 [node name="BorderV2" parent="Borders" instance=ExtResource("6_kli11")]
-position = Vector2(419, 423)
+position = Vector2(419, 439)
 
 [node name="BorderH" parent="Borders" instance=ExtResource("7_xd2ry")]
 position = Vector2(-69, 847)
 collision_mask = 49
 
 [node name="BorderH2" parent="Borders" instance=ExtResource("7_xd2ry")]
+position = Vector2(-5, -1)
 collision_mask = 49
 
 [node name="TowerPoints" type="Node2D" parent="."]
@@ -204,10 +205,10 @@ position = Vector2(640, 64)
 position = Vector2(1024, 64)
 
 [node name="Scrap" parent="." instance=ExtResource("8_07lw2")]
-position = Vector2(160, 336)
+position = Vector2(448, 360)
 
 [node name="tower_sample_projectile" parent="." instance=ExtResource("9_vo715")]
-position = Vector2(-72, 48)
+position = Vector2(-816, 192)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -241,7 +242,7 @@ theme_override_font_sizes/font_size = 40
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("15_psl12")
+script = ExtResource("15_lhp3t")
 
 [connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
