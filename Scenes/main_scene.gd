@@ -11,7 +11,9 @@ extends Node2D
 #	
 
 
-
+func _ready():
+	pass
+	#$%Towers.tower_points_array = $TowerPoints.get_children()
 
 
 func _on_enemies_create_scrap(pos: Vector2, val: int) -> void:

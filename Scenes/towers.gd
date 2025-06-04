@@ -2,15 +2,14 @@ extends Node2D
 
 var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
 
-
-var total_scrap
 var tower_selection_array: Array = [TowerSampleScene,null,null]
 var tower_costs: Array = [0,0,0]
-var tower_points_array: Array #handled by main
+var tower_points_array: Array #can also be handled by main
 
+signal scrap_used(value)
 
 func _ready() -> void:
-	var tower_points: Array = get_node("../TowerPoints").get_children()
+	tower_points_array = get_node("../TowerPoints").get_children()
 	var i = 0
 	for tower_scene in tower_selection_array:
 		if (tower_scene != null):
@@ -30,7 +29,7 @@ func _process(delta: float) -> void:
 		FIND_POINT_spawn_tower_approach_point(2)
 
 #NOTE: tower placing code
-func FIND_POINT_spawn_tower_approach_point(num: int):
+func FIND_POINT_spawn_tower_approach_point(tower_num: int):
 	'''this is a super function, a big function that has been split up into three parts
 	with capital letter denoting what happens in the function'''
 	var final_min_point_position: Vector2
@@ -49,16 +48,16 @@ func FIND_POINT_spawn_tower_approach_point(num: int):
 	if (min_dist_point.is_in_group("Not Occupied")):
 		final_min_point_position = Vector2(min_dist_point.position.x, min_dist_point.position.y)
 		min_dist_point.remove_from_group("Not Occupied")
-		find_point_SPAWN_TOWER_approach_point(num, final_min_point_position)
+		find_point_SPAWN_TOWER_approach_point(tower_num, final_min_point_position)
 	else:
 		print("position occupied")
-func find_point_SPAWN_TOWER_approach_point(num: int, min_pos):
-	var tower = tower_selection_array[num].instantiate()
+func find_point_SPAWN_TOWER_approach_point(tower_num: int, min_pos):
+	var tower = tower_selection_array[tower_num].instantiate()
 	tower.position = get_node("../SpacePlane").position
 	print(tower.position)
-	tower.connect("shoot_turret", Callable($Projectiles, "_on_shoot_turret"))
+	tower.connect("shoot_turret", Callable(get_node("../Projectiles"), "_on_shoot_turret"))
 	add_child(tower)
-	Global.scrap -= tower.cost
+	scrap_used.emit(tower_costs[tower_num])
 	find_point_spawn_tower_APPROACH_POINT(min_pos, tower)
 func find_point_spawn_tower_APPROACH_POINT(min_pos, tower):
 	var tween = get_tree().create_tween()

@@ -245,6 +245,7 @@ vertical_alignment = 1
 script = ExtResource("15_lhp3t")
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/PanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
+[connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]
 [connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="Enemies" method="_on_spawn_enemy_timer_timeout"]

@@ -122,6 +122,7 @@ script = ExtResource("6_rofef")
 [node name="TowerSlotsVBox" type="VBoxContainer" parent="CanvasLayer"]
 offset_right = 128.0
 offset_bottom = 608.0
+theme_override_constants/separation = 0
 script = ExtResource("9_70ou3")
 
 [node name="TowerPanel1" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox"]

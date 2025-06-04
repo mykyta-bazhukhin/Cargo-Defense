@@ -1,12 +1,11 @@
 extends Label
 
 signal get_tower1_cost(body)
-var total_scrap = 0
+var total_scrap_ui = 0
 
 func _ready():
-	text = str(total_scrap)
+	text = str(total_scrap_ui)
 
-
-func _on_scraps_scrap_changed(changed_value: Variant) -> void:
-	total_scrap = total_scrap + changed_value
+func _on_scraps_scrap_changed(total_scrap: int) -> void:
 	text = str(total_scrap)
+	total_scrap_ui = total_scrap
