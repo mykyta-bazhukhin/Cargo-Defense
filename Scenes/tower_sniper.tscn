@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bonfrwy81jet6"]
+
+[ext_resource type="Script" uid="uid://ddqb3ixlt41n5" path="res://Scenes/tower_sniper.gd" id="1_gdnm3"]
+[ext_resource type="Texture2D" uid="uid://00qbocwhjqfp" path="res://Sprites/Towers/tower platform green.png" id="2_uweoe"]
+[ext_resource type="Texture2D" uid="uid://n858hxpt3j4i" path="res://Sprites/Towers/basic sniper turret test.png" id="3_uweoe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdnm3"]
+size = Vector2(51, 51)
+
+[node name="TowerSniper" type="CharacterBody2D"]
+script = ExtResource("1_gdnm3")
+
+[node name="PlatformSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_uweoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_uweoe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gdnm3")

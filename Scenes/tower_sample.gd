@@ -7,6 +7,7 @@ var enemies = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$PlatformSprite.visible = false
+	connect("shoot_turret", Callable(get_node("../../Projectiles"), "_on_shoot_turret"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

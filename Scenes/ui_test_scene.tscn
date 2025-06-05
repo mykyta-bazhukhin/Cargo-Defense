@@ -17,20 +17,20 @@ bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
 [sub_resource type="Theme" id="Theme_uamki"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_b478v")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8veq"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3j6s"]
 bg_color = Color(0.662942, 0.528794, 0.456545, 1)
 
 [sub_resource type="Theme" id="Theme_ha4vy"]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_i8veq")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_s3j6s")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3j6s"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wluib"]
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
 [sub_resource type="Theme" id="Theme_wluib"]
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_s3j6s")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_wluib")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70ou3"]
 bg_color = Color(0.819253, 0.528732, 0, 1)

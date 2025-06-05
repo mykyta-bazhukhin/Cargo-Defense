@@ -1,8 +1,9 @@
 extends Node2D
 
 var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
+var TowerSniper = preload("res://Scenes/tower_sniper.tscn")
 
-var tower_selection_array: Array = [TowerSampleScene,null,null]
+var tower_selection_array: Array = [TowerSampleScene,TowerSniper,null]
 var tower_costs: Array = [0,0,0]
 var tower_points_array: Array #can also be handled by main
 
@@ -55,7 +56,7 @@ func find_point_SPAWN_TOWER_approach_point(tower_num: int, min_pos):
 	var tower = tower_selection_array[tower_num].instantiate()
 	tower.position = get_node("../SpacePlane").position
 	print(tower.position)
-	tower.connect("shoot_turret", Callable(get_node("../Projectiles"), "_on_shoot_turret"))
+	#tower.connect("shoot_turret", Callable(get_node("../Projectiles"), "_on_shoot_turret"))
 	add_child(tower)
 	scrap_used.emit(tower_costs[tower_num])
 	find_point_spawn_tower_APPROACH_POINT(min_pos, tower)

@@ -1,6 +1,8 @@
 extends Control
 var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
-var tower_selection: Array = [TowerSampleScene,null,null]
+var TowerSniper = preload("res://Scenes/tower_sniper.tscn")
+
+var tower_selection: Array = [TowerSampleScene,TowerSniper,null]
 
 func _ready():
 	for i in range(tower_selection.size()):

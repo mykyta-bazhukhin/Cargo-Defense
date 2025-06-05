@@ -5,9 +5,6 @@ var og_pos
 func _ready() -> void:
 	og_pos = position
 
-func _on_pressed() -> void:
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
-
 
 func _on_mouse_entered() -> void:
 	og_pos = position
