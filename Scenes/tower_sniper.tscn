@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddqb3ixlt41n5" path="res://Scenes/tower_sniper.gd" id="1_gdnm3"]
 [ext_resource type="Texture2D" uid="uid://00qbocwhjqfp" path="res://Sprites/Towers/tower platform green.png" id="2_uweoe"]
-[ext_resource type="Texture2D" uid="uid://n858hxpt3j4i" path="res://Sprites/Towers/basic sniper turret test.png" id="3_uweoe"]
+[ext_resource type="Texture2D" uid="uid://bnhb4mlbigc3i" path="res://Sprites/Towers/basic sniper turret.png" id="3_uweoe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gdnm3"]
 size = Vector2(51, 51)

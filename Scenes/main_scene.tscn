@@ -73,7 +73,7 @@ position = Vector2(864, 88)
 position = Vector2(1049, 65)
 
 [node name="SpawnEnemyTimer" type="Timer" parent="Enemies"]
-wait_time = 2.0
+wait_time = 0.5
 autostart = true
 
 [node name="Projectiles" type="Node2D" parent="."]

@@ -2,8 +2,9 @@ extends Node2D
 
 var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
 var TowerSniper = preload("res://Scenes/tower_sniper.tscn")
+var FreezeTower = preload("res://Scenes/freeze_tower.tscn")
 
-var tower_selection_array: Array = [TowerSampleScene,TowerSniper,null]
+var tower_selection_array: Array = [TowerSampleScene,TowerSniper,FreezeTower]
 var tower_costs: Array = [0,0,0]
 var tower_points_array: Array #can also be handled by main
 

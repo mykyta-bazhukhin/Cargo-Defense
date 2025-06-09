@@ -1,7 +1,7 @@
 extends CharacterBody2D
 signal shoot_turret(pos)
 var enemies = 0
-@export var cost = 1
+@export var cost:int
 #IMPORTANT: scale is 0.25 and y is 7 px for original
 
 # Called when the node enters the scene tree for the first time.
