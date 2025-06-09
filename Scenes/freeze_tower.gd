@@ -1,6 +1,5 @@
 extends "res://Inheritence Scenes/base_tower.gd"
 
-var FreezeBulletScene = preload("res://Scenes/freeze_bullet.tscn")
 signal shoot_freeze_bullet(pos)
 
 func _ready() -> void:
@@ -9,4 +8,4 @@ func _ready() -> void:
 
 
 func _on_tower_shoot_timer_timeout() -> void:
-	shoot_freeze_bullet.emit(position, FreezeBulletScene)
+	shoot_freeze_bullet.emit(position, "Freeze bullet")

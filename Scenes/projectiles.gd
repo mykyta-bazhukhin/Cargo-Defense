@@ -3,6 +3,9 @@ extends Node2D
 var LaserScene = preload("res://Scenes/laser.tscn")
 var RocketScene = preload("res://Scenes/rocket.tscn")
 var TowerSampleProjectileScene = preload("res://Scenes/tower_sample_projectile.tscn")
+var FreezeBulletScene = preload("res://Scenes/freeze_bullet.tscn")
+
+var projectile_dict = {"Freeze bullet" : FreezeBulletScene}
 
 
 func _on_space_plane_shoot_primary(pos: Vector2):
@@ -21,7 +24,8 @@ func _on_shoot_turret(pos):
 	ball.position = pos
 	add_child(ball)
 	
-func _on_shoot_projectile(pos, scene):
+func _on_shoot_projectile(pos, scene_name):
+	var scene = projectile_dict.get(scene_name)
 	var projectile = scene.instantiate()
 	projectile.position = pos
 	add_child(projectile)
