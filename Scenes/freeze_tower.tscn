@@ -12,5 +12,3 @@ cost = 1
 texture = ExtResource("3_4hpm8")
 
 [connection signal="timeout" from="TowerShootTimer" to="." method="_on_tower_shoot_timer_timeout"]
-[connection signal="body_entered" from="TowerDetectionRange" to="." method="_on_tower_detection_range_body_entered"]
-[connection signal="body_exited" from="TowerDetectionRange" to="." method="_on_tower_detection_range_body_exited"]

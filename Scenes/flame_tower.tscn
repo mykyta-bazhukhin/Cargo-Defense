@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1omasojako54"]
+
+[ext_resource type="PackedScene" uid="uid://dokmb7cs65272" path="res://Inheritence Scenes/base_tower.tscn" id="1_4qds6"]
+[ext_resource type="Script" uid="uid://covq1c3orv165" path="res://flame_tower.gd" id="2_xpqw6"]
+[ext_resource type="Texture2D" uid="uid://bwn2xahxrrotq" path="res://Sprites/Towers/fire turret.png" id="3_70xw7"]
+[ext_resource type="Texture2D" uid="uid://u78wdo3xncpo" path="res://Sprites/Towers/fireball bullet.png" id="4_xpqw6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cn0j"]
+size = Vector2(96, 330)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_70xw7"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 10.485
+initial_velocity_min = 60.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+
+[node name="FlameTower" instance=ExtResource("1_4qds6")]
+script = ExtResource("2_xpqw6")
+
+[node name="TowerShootTimer" parent="." index="0"]
+wait_time = 0.5
+
+[node name="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_70xw7")
+
+[node name="CollisionShape2D" parent="TowerDetectionRange" index="0"]
+position = Vector2(0, -155)
+shape = SubResource("RectangleShape2D_4cn0j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
+position = Vector2(0, -64)
+amount = 30
+texture = ExtResource("4_xpqw6")
+process_material = SubResource("ParticleProcessMaterial_70xw7")
+
+[connection signal="timeout" from="TowerShootTimer" to="." method="_on_tower_shoot_timer_timeout"]

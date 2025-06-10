@@ -1,6 +1,13 @@
 extends Node2D
 
+var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
+var TowerSniperScene = preload("res://Scenes/tower_sniper.tscn")
+var FreezeTowerScene = preload("res://Scenes/freeze_tower.tscn")
+var BasicTowerScene = preload("res://Scenes/basic_tower.tscn")
+var RepeaterTowerScene = preload("res://Scenes/repeater_tower.tscn")
+var FlameTowerScene = preload("res://Scenes/flame_tower.tscn")
 
+var tower_selection_array: Array = [FlameTowerScene,RepeaterTowerScene,FreezeTowerScene]
 #
 #func _on_carrier_enemy_enemy_dead(pos, val):
 #	#print("recieving")
@@ -12,7 +19,8 @@ extends Node2D
 
 
 func _ready():
-	pass
+	$%Towers.tower_selection_array = tower_selection_array
+	$%TowerSlotsVBox.tower_selection_array = tower_selection_array
 	#$%Towers.tower_points_array = $TowerPoints.get_children()
 
 

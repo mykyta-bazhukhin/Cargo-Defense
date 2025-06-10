@@ -1,17 +1,13 @@
 extends Node2D
 
-var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
-var TowerSniperScene = preload("res://Scenes/tower_sniper.tscn")
-var FreezeTowerScene = preload("res://Scenes/freeze_tower.tscn")
-var BasicTowerScene = preload("res://Scenes/basic_tower.tscn")
-
-var tower_selection_array: Array = [BasicTowerScene,TowerSniperScene,FreezeTowerScene]
+var tower_selection_array: Array
 var tower_costs: Array = [0,0,0]
 var tower_points_array: Array #can also be handled by main
 
 signal scrap_used(value)
 
 func _ready() -> void:
+	await get_node("../").ready
 	tower_points_array = get_node("../TowerPoints").get_children()
 	var i = 0
 	for tower_scene in tower_selection_array:

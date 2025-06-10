@@ -32,5 +32,5 @@ position = Vector2(0.5, -341.5)
 shape = SubResource("RectangleShape2D_7bo0m")
 debug_color = Color(0.756863, 0, 0.109804, 0.419608)
 
-[connection signal="body_entered" from="TowerDetectionRange" to="." method="_on_detection_range_body_entered"]
-[connection signal="body_exited" from="TowerDetectionRange" to="." method="_on_detection_range_body_exited"]
+[connection signal="body_entered" from="TowerDetectionRange" to="." method="_on_tower_detection_range_body_entered"]
+[connection signal="body_exited" from="TowerDetectionRange" to="." method="_on_tower_detection_range_body_exited"]
