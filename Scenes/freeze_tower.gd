@@ -1,6 +1,6 @@
 extends "res://Inheritence Scenes/base_tower.gd"
 
-signal shoot_freeze_bullet(pos)
+signal shoot_freeze_bullet(pos, bullet_type)
 
 func _ready() -> void:
 	super()

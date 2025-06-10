@@ -5,7 +5,7 @@ var RocketScene = preload("res://Scenes/rocket.tscn")
 var TowerSampleProjectileScene = preload("res://Scenes/tower_sample_projectile.tscn")
 var FreezeBulletScene = preload("res://Scenes/freeze_bullet.tscn")
 
-var projectile_dict = {"Freeze bullet" : FreezeBulletScene}
+var projectile_dict = {"Freeze bullet" : FreezeBulletScene, "Bullet" : TowerSampleProjectileScene}
 
 
 func _on_space_plane_shoot_primary(pos: Vector2):
