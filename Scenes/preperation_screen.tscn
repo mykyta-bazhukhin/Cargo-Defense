@@ -1,0 +1,1172 @@
+[gd_scene load_steps=10 format=3 uid="uid://c0fugy0toim0"]
+
+[ext_resource type="Script" uid="uid://b16cu4mo1xxj1" path="res://preperation_screen.gd" id="1_xu4jb"]
+[ext_resource type="Texture2D" uid="uid://haxkgxwvnd1q" path="res://Sprites/Towers/ball.png" id="2_vfbt3"]
+[ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/tf2 scrap.png" id="3_3b7sx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8veq"]
+bg_color = Color(0.662942, 0.528794, 0.456545, 1)
+
+[sub_resource type="Theme" id="Theme_d5mvf"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_i8veq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3j6s"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_hg86g"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_s3j6s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70ou3"]
+bg_color = Color(0.819253, 0.528732, 0, 1)
+
+[sub_resource type="Theme" id="Theme_hqae3"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_70ou3")
+
+[node name="PreperationScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xu4jb")
+
+[node name="TowerSelectionPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -652.0
+offset_top = -384.0
+offset_bottom = 384.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="SelectedTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+
+[node name="AvailableTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+
+[node name="AvailableTowersVBox" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel1" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="Button" type="Button" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1"]
+layout_mode = 2
+flat = true
+
+[node name="TowerPanel2" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel3" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel3"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel4" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel4"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel4/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel5" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel5"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel5/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel1" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel1"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel2" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel3" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel3"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel4" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel4"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel4/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel5" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel5"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel5/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel1" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel1"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel2" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel3" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel3"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel4" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel4"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel4/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel5" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel5"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel5/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel1" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel1"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel2" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel3" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel3"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel4" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel4"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel4/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel5" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel5"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel5/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel1" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel1"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel2" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel3" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel3"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel4" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel4"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel4/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel4/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel4/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel5" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_d5mvf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel5"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_vfbt3")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel5/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hg86g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel5/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_hqae3")
+
+[node name="TowerCost1" type="Label" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5/TowerPanel5/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("3_3b7sx")
+expand_mode = 2
+stretch_mode = 4
+
+[connection signal="pressed" from="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer/TowerPanel1/Button" to="." method="_on_button_pressed"]

@@ -12,8 +12,8 @@ size = Vector2(96, 330)
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
 spread = 10.485
-initial_velocity_min = 60.0
-initial_velocity_max = 300.0
+initial_velocity_min = 506.51
+initial_velocity_max = 746.51
 gravity = Vector3(0, 0, 0)
 
 [node name="FlameTower" instance=ExtResource("1_4qds6")]
@@ -31,8 +31,9 @@ shape = SubResource("RectangleShape2D_4cn0j")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
 position = Vector2(0, -64)
-amount = 30
+amount = 20
 texture = ExtResource("4_xpqw6")
+lifetime = 0.35
 process_material = SubResource("ParticleProcessMaterial_70xw7")
 
 [connection signal="timeout" from="TowerShootTimer" to="." method="_on_tower_shoot_timer_timeout"]
