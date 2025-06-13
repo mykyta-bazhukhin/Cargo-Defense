@@ -1,6 +1,5 @@
 extends Label
 
-signal get_tower1_cost(body)
 var total_scrap_ui = 0
 
 func _ready():

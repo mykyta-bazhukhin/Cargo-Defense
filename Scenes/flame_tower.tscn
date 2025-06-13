@@ -30,6 +30,7 @@ position = Vector2(0, -155)
 shape = SubResource("RectangleShape2D_4cn0j")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." index="5"]
+z_index = 1
 position = Vector2(0, -64)
 amount = 20
 texture = ExtResource("4_xpqw6")

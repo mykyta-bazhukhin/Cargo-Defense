@@ -7,7 +7,7 @@ var BasicTowerScene = preload("res://Scenes/basic_tower.tscn")
 var RepeaterTowerScene = preload("res://Scenes/repeater_tower.tscn")
 var FlameTowerScene = preload("res://Scenes/flame_tower.tscn")
 
-var tower_selection_array: Array = [FlameTowerScene,RepeaterTowerScene,FreezeTowerScene]
+var tower_selection_array: Array = Global.selected_towers
 #
 #func _on_carrier_enemy_enemy_dead(pos, val):
 #	#print("recieving")

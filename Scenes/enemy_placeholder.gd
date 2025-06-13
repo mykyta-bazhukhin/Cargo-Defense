@@ -15,5 +15,4 @@ func _process(delta):
 	
 	if health <= 0:
 		enemy_dead.emit(position, scrap_value)
-		print("emiting")
 		queue_free()

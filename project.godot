@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cargo Defense"
-run/main_scene="res://Scenes/main_scene.tscn"
+run/main_scene="uid://yuifynpo45e6"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

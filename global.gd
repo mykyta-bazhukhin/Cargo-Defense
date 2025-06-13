@@ -1,2 +1,2 @@
 extends Node
-var scrap: int = 0
+var selected_towers: Array
