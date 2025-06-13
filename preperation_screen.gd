@@ -39,8 +39,9 @@ func _ready() -> void:
 func tween_from_another_panel(selected_panel, another_panel):
 	var og_selected_position = Vector2(selected_panel.get_index()*131, 0)
 	var tween = get_tree().create_tween()
-	tween.tween_property(selected_panel, "position", another_panel.global_position, 0.01)
-	tween.tween_property(selected_panel, "position", og_selected_position, 1)
+	tween.tween_property(selected_panel, "global_position", another_panel.global_position, 0.01)
+	tween.tween_property(selected_panel, "position", og_selected_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	await tween.finished
 func _sort_nulls(array: Array):
 	for i in range(array.size()-1):
 		if (array[i] == null and array[i+1] != null):
@@ -62,7 +63,7 @@ func _on_avilable_tower_button_pressed(slot_num: int, tower_panel) -> void:
 		selected_towers[cur_available_slot] = all_towers[slot_num]
 		all_towers[slot_num] = null
 		var selected_tower_panel = _create_a_selected_panel(slot_num, tower_panel)
-		#tween_from_another_panel(selected_tower_panel, tower_panel)
+		tween_from_another_panel(selected_tower_panel, tower_panel)
 		tower_panel.modulate = Color(0.5,0.5,0.5)
 		cur_available_slot = cur_available_slot + 1
 	if (cur_available_slot == selected_towers.size()):

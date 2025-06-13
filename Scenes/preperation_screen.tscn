@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0fugy0toim0"]
+[gd_scene load_steps=5 format=3 uid="uid://c0fugy0toim0"]
 
 [ext_resource type="Script" uid="uid://b16cu4mo1xxj1" path="res://preperation_screen.gd" id="1_xu4jb"]
 [ext_resource type="PackedScene" uid="uid://7qavpq154xop" path="res://Scenes/tower_panel.tscn" id="2_3b7sx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu4jb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vgvf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="PreperationScreen" type="Control"]
 layout_mode = 3
@@ -26,6 +32,29 @@ grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="DummyPanelContainer" type="PanelContainer" parent="TowerSelectionPanel"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xu4jb")
+
+[node name="DummyPanelList" type="HBoxContainer" parent="TowerSelectionPanel/DummyPanelContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Panel0" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Panel1" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
 [node name="SelectedTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
 layout_mode = 2
 size_flags_vertical = 0
@@ -33,6 +62,7 @@ mouse_filter = 1
 
 [node name="SelectedTowersList" type="HBoxContainer" parent="TowerSelectionPanel/SelectedTowersPanel"]
 unique_name_in_owner = true
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 3
@@ -40,14 +70,17 @@ theme_override_constants/separation = 3
 [node name="Panel0" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
 
 [node name="Panel1" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
 
 [node name="Panel2" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
 
 [node name="AvailableTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
 layout_mode = 2
