@@ -1,11 +1,6 @@
 extends Node2D
 
-var TowerSampleScene = preload("res://Scenes/tower_sample.tscn")
-var TowerSniperScene = preload("res://Scenes/tower_sniper.tscn")
-var FreezeTowerScene = preload("res://Scenes/freeze_tower.tscn")
-var BasicTowerScene = preload("res://Scenes/basic_tower.tscn")
-var RepeaterTowerScene = preload("res://Scenes/repeater_tower.tscn")
-var FlameTowerScene = preload("res://Scenes/flame_tower.tscn")
+
 
 var tower_selection_array: Array = Global.selected_towers
 #
