@@ -2,9 +2,12 @@ extends Node2D
 
 var tower_selection_array: Array
 var tower_costs: Array = [0,0,0]
+var tower_cooldowns: Array = [0,0,0]
+var tower_available: Array = [true, true, true]
 var tower_points_array: Array #can also be handled by main
 
 signal scrap_used(value)
+signal tower_placed(tower_num, cooldown_time)
 
 func _ready() -> void:
 	await get_node("../").ready
@@ -14,17 +17,19 @@ func _ready() -> void:
 		if (tower_scene != null):
 			var tower = tower_scene.instantiate() #tower needs to instantiate to be able to acess cost for if states
 			tower_costs[i] = tower.cost
+			tower_cooldowns[i] = tower.cooldown
+			get_child(i).wait_time = tower_cooldowns[i]
 			tower.free()
 		i = i + 1 
 
 func _process(delta: float) -> void:
 	#NOTE: tower selection code
-	if (Input.is_action_just_pressed("Place tower 1") and tower_selection_array[0] != null and tower_costs[0] <= get_node("../Scraps").total_scrap):
+	if (Input.is_action_just_pressed("Place tower 1") and tower_selection_array[0] != null and tower_costs[0] <= get_node("../Scraps").total_scrap and tower_available[0] == true):
 		#print("sapwn")
 		FIND_POINT_spawn_tower_approach_point(0)
-	if (Input.is_action_just_pressed("Place tower 2") and tower_selection_array[1] != null and tower_costs[1] <= get_node("../Scraps").total_scrap):
+	if (Input.is_action_just_pressed("Place tower 2") and tower_selection_array[1] != null and tower_costs[1] <= get_node("../Scraps").total_scrap and tower_available[1] == true):
 		FIND_POINT_spawn_tower_approach_point(1)
-	if (Input.is_action_just_pressed("Place tower 3") and tower_selection_array[2] != null and tower_costs[2] <= get_node("../Scraps").total_scrap):
+	if (Input.is_action_just_pressed("Place tower 3") and tower_selection_array[2] != null and tower_costs[2] <= get_node("../Scraps").total_scrap and tower_available[2] == true):
 		FIND_POINT_spawn_tower_approach_point(2)
 
 #NOTE: tower placing code
@@ -56,6 +61,9 @@ func find_point_SPAWN_TOWER_approach_point(tower_num: int, min_pos):
 	print(tower.position)
 	#tower.connect("shoot_turret", Callable(get_node("../Projectiles"), "_on_shoot_turret"))
 	add_child(tower)
+	tower_available[tower_num] = false
+	get_child(tower_num).start()
+	tower_placed.emit(tower_num, get_child(tower_num).wait_time)
 	scrap_used.emit(tower_costs[tower_num])
 	find_point_spawn_tower_APPROACH_POINT(min_pos, tower)
 func find_point_spawn_tower_APPROACH_POINT(min_pos, tower):
@@ -63,3 +71,17 @@ func find_point_spawn_tower_APPROACH_POINT(min_pos, tower):
 	tween.tween_property(tower, "position", min_pos, 0.5).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	await tween.finished
 	tower.get_node("PlatformSprite").visible = true
+
+
+
+
+func _on_tower_cooldown_0_timeout() -> void:
+	tower_available[0] = true
+
+
+func _on_tower_cooldown_1_timeout() -> void:
+	tower_available[1] = true
+
+
+func _on_tower_cooldown_2_timeout() -> void:
+	tower_available[2] = true

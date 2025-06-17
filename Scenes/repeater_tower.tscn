@@ -7,6 +7,7 @@
 [node name="RepeaterTower" instance=ExtResource("1_uea2t")]
 script = ExtResource("2_fw3vf")
 cost = 2
+cooldown = 2
 
 [node name="SecondShootTimer" type="Timer" parent="." index="1"]
 wait_time = 0.1

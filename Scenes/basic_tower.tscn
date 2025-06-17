@@ -7,6 +7,7 @@
 [node name="Basic Tower" instance=ExtResource("1_1nlc2")]
 script = ExtResource("2_dufid")
 cost = 1
+cooldown = 1
 
 [node name="Sprite2D" parent="." index="2"]
 texture = ExtResource("3_dufid")

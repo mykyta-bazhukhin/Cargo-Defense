@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
-var mouse_pos = Vector2(0,0)
+var mouse_pos:Vector2 = Vector2(0,0)
 var mouse_pos_x = 0
 var mouse_pos_y = 0
 var speed = 0
+var move = 0
 signal shoot_primary(pos: Vector2)
 signal shoot_secondary(pos: Vector2)
 
@@ -15,23 +16,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move_and_slide()
+	
 	mouse_pos = get_global_mouse_position()
 	mouse_pos_x = get_global_mouse_position().x
 	mouse_pos_y = get_global_mouse_position().y
-	
-	
 	var direction = (mouse_pos - position).normalized()
 	speed = position.distance_to(mouse_pos)*100
-	
 	if (position.distance_to(mouse_pos) < 0.1):
 		speed = 0
-		
-	#speed = sqrt(pow(position.x-mouse_pos_x, 2) + pow(position.y-mouse_pos_y, 2))*100
 	velocity = direction*speed
+	move_and_slide()
 	
 	#$CanvasLayer/Label.text = "speed: " + str(speed)
-	
 
 
 

@@ -10,7 +10,9 @@ var tower_selection_array: Array = Global.selected_towers
 #	scrap.value = val
 #	scrap.position = pos
 #	$Scraps.add_child(scrap)
-#	
+
+func _process(delta: float) -> void:
+	pass
 
 
 func _ready():

@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 var enemies = 0
 @export var cost:int
+@export var cooldown:int
 
 func _ready() -> void:
 	$PlatformSprite.visible = false
