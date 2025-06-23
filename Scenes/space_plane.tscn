@@ -10,11 +10,11 @@ size = Vector2(93, 84)
 collision_mask = 396
 script = ExtResource("1_cnvm1")
 
-[node name="primary_timer" type="Timer" parent="."]
+[node name="PrimaryTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[node name="secondary_timer" type="Timer" parent="."]
+[node name="SecondaryTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
 
@@ -41,5 +41,5 @@ offset_right = 63.0
 offset_bottom = -41.0
 text = "space plane text"
 
-[connection signal="timeout" from="primary_timer" to="." method="_on_primary_timer_timeout"]
-[connection signal="timeout" from="secondary_timer" to="." method="_on_secondary_timer_timeout"]
+[connection signal="timeout" from="PrimaryTimer" to="." method="_on_primary_timer_timeout"]
+[connection signal="timeout" from="SecondaryTimer" to="." method="_on_secondary_timer_timeout"]

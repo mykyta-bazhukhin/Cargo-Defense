@@ -8,13 +8,13 @@ var FreezeBulletScene = preload("res://Scenes/freeze_bullet.tscn")
 var projectile_dict = {"Freeze bullet" : FreezeBulletScene, "Bullet" : TowerSampleProjectileScene}
 
 
-func _on_space_plane_shoot_primary(pos: Vector2):
+func _on_space_plane_shoot_primary(pos: Vector2, _cooldown_time: float):
 	var laser = LaserScene.instantiate()
 	laser.position = pos
 	add_child(laser)
 
 
-func _on_space_plane_shoot_secondary(pos: Vector2):
+func _on_space_plane_shoot_secondary(pos: Vector2, _cooldown_time: float):
 	var rocket = RocketScene.instantiate()
 	rocket.position = pos
 	add_child(rocket)

@@ -6,8 +6,8 @@ var speed = 0
 var distance = 0
 const max_speed = 5000
 
-signal shoot_primary(pos: Vector2)
-signal shoot_secondary(pos: Vector2)
+signal shoot_primary(pos: Vector2, cooldown_time: float)
+signal shoot_secondary(pos: Vector2, cooldown_time: float)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -34,8 +34,8 @@ func _process(delta):
 
 
 func _on_primary_timer_timeout():
-	shoot_primary.emit(global_position)
+	shoot_primary.emit(global_position, $PrimaryTimer.wait_time)
 
 
 func _on_secondary_timer_timeout():
-	shoot_secondary.emit(global_position)
+	shoot_secondary.emit(global_position, $SecondaryTimer.wait_time)
