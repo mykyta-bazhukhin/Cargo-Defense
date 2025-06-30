@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dokmb7cs65272"]
 
 [ext_resource type="Script" uid="uid://njrahm0x6okj" path="res://Inheritence Scenes/base_tower.gd" id="1_61sdb"]
-[ext_resource type="Texture2D" uid="uid://00qbocwhjqfp" path="res://Sprites/Towers/tower platform green.png" id="1_e26h8"]
+[ext_resource type="Texture2D" uid="uid://00qbocwhjqfp" path="res://Sprites/Towers/Platforms/tower platform green.png" id="1_e26h8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61sdb"]
 size = Vector2(96, 96)

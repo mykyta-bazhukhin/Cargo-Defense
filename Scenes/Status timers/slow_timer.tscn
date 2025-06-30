@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt8tnxknba87x"]
+
+[ext_resource type="Script" uid="uid://dhv43ea8y01xn" path="res://Scripts/Status timers/slow_timer.gd" id="1_2hmki"]
+
+[node name="SlowTimer" type="Timer"]
+script = ExtResource("1_2hmki")
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

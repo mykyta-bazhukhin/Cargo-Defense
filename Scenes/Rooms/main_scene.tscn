@@ -1,0 +1,513 @@
+[gd_scene load_steps=33 format=3 uid="uid://dku3lihfaohyl"]
+
+[ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scripts/Rooms/main_scene.gd" id="1_qvt8r"]
+[ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/Main scene objects/space_background.tscn" id="2_b35hd"]
+[ext_resource type="Script" uid="uid://6dsci6d7ww4u" path="res://Scripts/Main scene nodes/scraps.gd" id="3_kumgg"]
+[ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/Items/scrap.tscn" id="4_6n8t3"]
+[ext_resource type="Script" uid="uid://sghoys8vtbgt" path="res://Scripts/Main scene nodes/towers.gd" id="5_0vbk4"]
+[ext_resource type="Script" uid="uid://bvakrd4wikdsr" path="res://Scripts/Main scene nodes/enemies.gd" id="6_4qabl"]
+[ext_resource type="PackedScene" uid="uid://8wvnca1fk8vn" path="res://Scenes/Enemies/enemy_carrier.tscn" id="7_vch3j"]
+[ext_resource type="PackedScene" uid="uid://dqgb78b8utrq1" path="res://Scenes/Enemies/enemy_placeholder.tscn" id="8_5iec4"]
+[ext_resource type="Script" uid="uid://bilf2itagip0q" path="res://Scripts/Main scene nodes/projectiles.gd" id="9_5ntxd"]
+[ext_resource type="PackedScene" uid="uid://c0012itq3obpx" path="res://Scenes/Plane/space_plane.tscn" id="10_sklmo"]
+[ext_resource type="PackedScene" uid="uid://ckid8lcbw8o7o" path="res://Scenes/Main scene objects/border.tscn" id="11_kxjle"]
+[ext_resource type="PackedScene" uid="uid://cvaj8nq8r3h0r" path="res://Scenes/Main scene objects/border_h.tscn" id="12_ctcvx"]
+[ext_resource type="PackedScene" uid="uid://c4eb8ftogdhv2" path="res://Scenes/Towers/Projectiles/tower_sample_projectile.tscn" id="13_8fnhs"]
+[ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/Items/tf2 scrap.png" id="14_vy3gy"]
+[ext_resource type="Script" uid="uid://dnkiu1svaavj1" path="res://Scripts/UI/scrap_amount_label.gd" id="15_qmrfk"]
+[ext_resource type="Script" uid="uid://dk0lwg8lihqss" path="res://Scripts/UI/tower_slots.gd" id="16_e1mud"]
+[ext_resource type="Texture2D" uid="uid://haxkgxwvnd1q" path="res://Sprites/Towers/Projectiles/ball.png" id="17_sgiim"]
+[ext_resource type="Script" uid="uid://cvfw7aatf82xa" path="res://Scripts/UI/weapon_cooldown_hbox.gd" id="18_tv08y"]
+[ext_resource type="Texture2D" uid="uid://wijuxmjnyv4h" path="res://Sprites/UI stuff/laser icon.png" id="19_0w2fj"]
+[ext_resource type="Texture2D" uid="uid://b867v87ed7uya" path="res://Sprites/UI stuff/circular cooldown texture.png" id="20_34y2j"]
+[ext_resource type="Texture2D" uid="uid://cttpp11tv7s7p" path="res://Sprites/UI stuff/guide rocket icon.png" id="21_0f2te"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6e4k"]
+bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
+
+[sub_resource type="Theme" id="Theme_2ebs2"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_e6e4k")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psl12"]
+bg_color = Color(0.662942, 0.528794, 0.456545, 1)
+
+[sub_resource type="Theme" id="Theme_oyb3p"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_psl12")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ebs2"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_jvnna"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_2ebs2")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oyb3p"]
+bg_color = Color(0.819253, 0.528732, 0, 1)
+
+[sub_resource type="Theme" id="Theme_b48ew"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_oyb3p")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvnna"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b48ew"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.188235)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8edxt"]
+load_path = "res://.godot/imported/circular cooldown texture.png-1725ea6e64a554fc8dd4e7c0b4675c62.ctex"
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_qvt8r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Space_background" parent="." instance=ExtResource("2_b35hd")]
+
+[node name="Scraps" type="Node2D" parent="."]
+script = ExtResource("3_kumgg")
+
+[node name="Scrap" parent="Scraps" instance=ExtResource("4_6n8t3")]
+position = Vector2(448, 368)
+
+[node name="Towers" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_0vbk4")
+
+[node name="TowerCooldown0" type="Timer" parent="Towers"]
+one_shot = true
+
+[node name="TowerCooldown1" type="Timer" parent="Towers"]
+one_shot = true
+
+[node name="TowerCooldown2" type="Timer" parent="Towers"]
+one_shot = true
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("6_4qabl")
+
+[node name="Carrier_enemy" parent="Enemies" instance=ExtResource("7_vch3j")]
+position = Vector2(864, 88)
+
+[node name="placeholder_enemy" parent="Enemies" instance=ExtResource("8_5iec4")]
+position = Vector2(1049, 65)
+
+[node name="SpawnEnemyTimer" type="Timer" parent="Enemies"]
+wait_time = 0.5
+autostart = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("9_5ntxd")
+metadata/_edit_lock_ = true
+
+[node name="SpacePlane" parent="." instance=ExtResource("10_sklmo")]
+position = Vector2(624, 608)
+
+[node name="Borders" type="Node2D" parent="."]
+position = Vector2(797, -39)
+
+[node name="BorderV" parent="Borders" instance=ExtResource("11_kxjle")]
+position = Vector2(-733, 447)
+
+[node name="BorderV2" parent="Borders" instance=ExtResource("11_kxjle")]
+position = Vector2(419, 431)
+
+[node name="BorderH" parent="Borders" instance=ExtResource("12_ctcvx")]
+position = Vector2(-69, 847)
+collision_mask = 49
+
+[node name="BorderH2" parent="Borders" instance=ExtResource("12_ctcvx")]
+position = Vector2(-5, -1)
+collision_mask = 49
+
+[node name="TowerPoints" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Marker2D5" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(256, 704)
+
+[node name="Marker2D2" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(512, 704)
+
+[node name="Marker2D6" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(384, 704)
+
+[node name="Marker2D7" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(896, 704)
+
+[node name="Marker2D9" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(768, 704)
+
+[node name="Marker2D11" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(640, 704)
+
+[node name="Marker2D14" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(1024, 704)
+
+[node name="Marker2D3" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(512, 576)
+
+[node name="Marker2D8" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(256, 576)
+
+[node name="Marker2D10" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(384, 576)
+
+[node name="Marker2D13" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(896, 576)
+
+[node name="Marker2D15" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(768, 576)
+
+[node name="Marker2D16" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(640, 576)
+
+[node name="Marker2D18" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(1024, 576)
+
+[node name="Marker2D4" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(512, 448)
+
+[node name="Marker2D19" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(256, 448)
+
+[node name="Marker2D20" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(384, 448)
+
+[node name="Marker2D21" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(896, 448)
+
+[node name="Marker2D22" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(768, 448)
+
+[node name="Marker2D23" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(640, 448)
+
+[node name="Marker2D25" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(1024, 448)
+
+[node name="Marker2D26" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(512, 320)
+
+[node name="Marker2D27" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(256, 320)
+
+[node name="Marker2D28" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(384, 320)
+
+[node name="Marker2D29" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(896, 320)
+
+[node name="Marker2D30" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(768, 320)
+
+[node name="Marker2D31" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(640, 320)
+
+[node name="Marker2D33" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(1024, 320)
+
+[node name="Marker2D34" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(512, 192)
+
+[node name="Marker2D35" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(256, 192)
+
+[node name="Marker2D36" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(384, 192)
+
+[node name="Marker2D37" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(896, 192)
+
+[node name="Marker2D38" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(768, 192)
+
+[node name="Marker2D39" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(640, 192)
+
+[node name="Marker2D41" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(1024, 192)
+
+[node name="Marker2D42" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(512, 64)
+
+[node name="Marker2D43" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(256, 64)
+
+[node name="Marker2D44" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(384, 64)
+
+[node name="Marker2D45" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(896, 64)
+
+[node name="Marker2D46" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(768, 64)
+
+[node name="Marker2D47" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(640, 64)
+
+[node name="Marker2D49" type="Marker2D" parent="TowerPoints" groups=["Not Occupied"]]
+position = Vector2(1024, 64)
+
+[node name="tower_sample_projectile" parent="." instance=ExtResource("13_8fnhs")]
+position = Vector2(-816, 192)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScrapPanelContainer" type="PanelContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(128, 160)
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -162.0
+offset_right = 128.0
+grow_vertical = 0
+theme = SubResource("Theme_2ebs2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrapPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrapPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("14_vy3gy")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ScrapAmountLabel" type="Label" parent="CanvasLayer/ScrapPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("15_qmrfk")
+
+[node name="TowerSlotsVBox" type="VBoxContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_right = 128.0
+offset_bottom = 608.0
+theme_override_constants/separation = 0
+script = ExtResource("16_e1mud")
+
+[node name="TowerPanel0" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_oyb3p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0"]
+layout_mode = 2
+
+[node name="TowerImage0" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("17_sgiim")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_jvnna")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_b48ew")
+
+[node name="TowerCost0" type="Label" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("14_vy3gy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b48ew")
+value = 0.62
+fill_mode = 2
+show_percentage = false
+
+[node name="TowerCooldown" type="Timer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel0"]
+one_shot = true
+
+[node name="TowerPanel1" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_oyb3p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("17_sgiim")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_jvnna")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_b48ew")
+
+[node name="TowerCost1" type="Label" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("14_vy3gy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b48ew")
+value = 0.62
+fill_mode = 2
+show_percentage = false
+
+[node name="TowerCooldown" type="Timer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1"]
+one_shot = true
+
+[node name="TowerPanel2" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_oyb3p")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage2" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("17_sgiim")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_jvnna")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_b48ew")
+
+[node name="TowerCost2" type="Label" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("14_vy3gy")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_jvnna")
+theme_override_styles/fill = SubResource("StyleBoxFlat_b48ew")
+value = 0.62
+fill_mode = 2
+show_percentage = false
+
+[node name="TowerCooldown" type="Timer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2"]
+one_shot = true
+
+[node name="WeaponCooldownHBox" type="HBoxContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("18_tv08y")
+
+[node name="PrimaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.01
+fill_mode = 5
+texture_under = ExtResource("19_0w2fj")
+texture_progress = ExtResource("20_34y2j")
+
+[node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+
+[node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+step = 0.01
+fill_mode = 5
+texture_under = ExtResource("21_0f2te")
+texture_progress = SubResource("CompressedTexture2D_8edxt")
+
+[node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+
+[connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
+[connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]
+[connection signal="tower_placed" from="Towers" to="CanvasLayer/TowerSlotsVBox" method="_on_towers_tower_placed"]
+[connection signal="timeout" from="Towers/TowerCooldown0" to="Towers" method="_on_tower_cooldown_0_timeout"]
+[connection signal="timeout" from="Towers/TowerCooldown1" to="Towers" method="_on_tower_cooldown_1_timeout"]
+[connection signal="timeout" from="Towers/TowerCooldown2" to="Towers" method="_on_tower_cooldown_2_timeout"]
+[connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
+[connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="Enemies" method="_on_spawn_enemy_timer_timeout"]
+[connection signal="shoot_primary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_primary"]
+[connection signal="shoot_primary" from="SpacePlane" to="CanvasLayer/WeaponCooldownHBox" method="_on_space_plane_shoot_primary"]
+[connection signal="shoot_secondary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_secondary"]
+[connection signal="shoot_secondary" from="SpacePlane" to="CanvasLayer/WeaponCooldownHBox" method="_on_space_plane_shoot_secondary"]

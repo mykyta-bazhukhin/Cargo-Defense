@@ -1,0 +1,258 @@
+[gd_scene load_steps=19 format=3 uid="uid://dawaxp7iu7yia"]
+
+[ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/Main scene objects/space_background.tscn" id="1_hld60"]
+[ext_resource type="Script" uid="uid://la4ah3gulxa1" path="res://Scripts/Rooms/ui_test_scene.gd" id="1_s3j6s"]
+[ext_resource type="PackedScene" uid="uid://c0012itq3obpx" path="res://Scenes/Plane/space_plane.tscn" id="2_48e10"]
+[ext_resource type="PackedScene" uid="uid://ckid8lcbw8o7o" path="res://Scenes/Main scene objects/border.tscn" id="3_q2ots"]
+[ext_resource type="PackedScene" uid="uid://cvaj8nq8r3h0r" path="res://Scenes/Main scene objects/border_h.tscn" id="4_86s4d"]
+[ext_resource type="PackedScene" uid="uid://cx4rijcoi4yip" path="res://Scenes/Items/scrap.tscn" id="5_rxn7m"]
+[ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/Items/tf2 scrap.png" id="6_nytet"]
+[ext_resource type="Script" uid="uid://dnkiu1svaavj1" path="res://Scripts/UI/scrap_amount_label.gd" id="6_rofef"]
+[ext_resource type="Script" uid="uid://dk0lwg8lihqss" path="res://Scripts/UI/tower_slots.gd" id="9_70ou3"]
+[ext_resource type="Texture2D" uid="uid://haxkgxwvnd1q" path="res://Sprites/Towers/Projectiles/ball.png" id="9_wluib"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b478v"]
+bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
+
+[sub_resource type="Theme" id="Theme_uamki"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_b478v")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3j6s"]
+bg_color = Color(0.662942, 0.528794, 0.456545, 1)
+
+[sub_resource type="Theme" id="Theme_ha4vy"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_s3j6s")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wluib"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[sub_resource type="Theme" id="Theme_wluib"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_wluib")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_70ou3"]
+bg_color = Color(0.819253, 0.528732, 0, 1)
+
+[sub_resource type="Theme" id="Theme_8jfvs"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_70ou3")
+
+[node name="UITestScene" type="Node2D"]
+script = ExtResource("1_s3j6s")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Space_background" parent="." instance=ExtResource("1_hld60")]
+
+[node name="Scraps" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Towers" type="Node2D" parent="."]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="Enemies" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="SpacePlane" parent="." instance=ExtResource("2_48e10")]
+position = Vector2(680, 632)
+
+[node name="Borders" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="BorderV" parent="Borders" instance=ExtResource("3_q2ots")]
+position = Vector2(64, 408)
+
+[node name="BorderV2" parent="Borders" instance=ExtResource("3_q2ots")]
+position = Vector2(1216, 384)
+
+[node name="BorderH" parent="Borders" instance=ExtResource("4_86s4d")]
+position = Vector2(656, 808)
+collision_mask = 49
+
+[node name="BorderH2" parent="Borders" instance=ExtResource("4_86s4d")]
+position = Vector2(664, -40)
+collision_mask = 49
+
+[node name="Scrap" parent="." instance=ExtResource("5_rxn7m")]
+position = Vector2(216, 472)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScrapPanelContainer" type="PanelContainer" parent="CanvasLayer"]
+custom_minimum_size = Vector2(110, 100)
+layout_direction = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -162.0
+offset_right = 128.0
+grow_vertical = 0
+theme = SubResource("Theme_uamki")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrapPanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ScrapPanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("6_nytet")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/ScrapPanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_rofef")
+
+[node name="TowerSlotsVBox" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 128.0
+offset_bottom = 608.0
+theme_override_constants/separation = 0
+script = ExtResource("9_70ou3")
+
+[node name="TowerPanel1" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_ha4vy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1"]
+layout_mode = 2
+
+[node name="TowerImage1" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_wluib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_wluib")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_8jfvs")
+
+[node name="TowerCost1" type="Label" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel1/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_nytet")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel2" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_ha4vy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2"]
+layout_mode = 2
+
+[node name="TowerImage2" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_wluib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_wluib")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_8jfvs")
+
+[node name="TowerCost2" type="Label" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_nytet")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="TowerPanel3" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox"]
+custom_minimum_size = Vector2(128, 200)
+layout_mode = 2
+theme = SubResource("Theme_ha4vy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel3"]
+layout_mode = 2
+
+[node name="TowerImage3" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel3/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("9_wluib")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel3/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_wluib")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel3/VBoxContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme = SubResource("Theme_8jfvs")
+
+[node name="TowerCost3" type="Label" parent="CanvasLayer/TowerSlotsVBox/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 30
+text = "??"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TowerSlotsVBox/TowerPanel3/VBoxContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 2
+texture = ExtResource("6_nytet")
+expand_mode = 2
+stretch_mode = 4
+
+[connection signal="shoot_primary" from="SpacePlane" to="." method="_on_space_plane_shoot_primary"]
+[connection signal="shoot_secondary" from="SpacePlane" to="." method="_on_space_plane_shoot_secondary"]

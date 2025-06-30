@@ -1,0 +1,210 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0fugy0toim0"]
+
+[ext_resource type="Script" uid="uid://b16cu4mo1xxj1" path="res://Scripts/Rooms/preperation_screen.gd" id="1_vndmm"]
+[ext_resource type="PackedScene" uid="uid://7qavpq154xop" path="res://Scenes/UI/tower_panel.tscn" id="2_il8t6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu4jb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vgvf"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="PreperationScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vndmm")
+
+[node name="TowerSelectionPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -652.0
+offset_top = -384.0
+offset_bottom = 384.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="DummyPanelContainer" type="PanelContainer" parent="TowerSelectionPanel"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xu4jb")
+
+[node name="DummyPanelList" type="HBoxContainer" parent="TowerSelectionPanel/DummyPanelContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Panel0" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Panel1" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="Panel2" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="SelectedTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 1
+
+[node name="SelectedTowersList" type="HBoxContainer" parent="TowerSelectionPanel/SelectedTowersPanel"]
+unique_name_in_owner = true
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="Panel0" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
+
+[node name="Panel1" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
+
+[node name="Panel2" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
+
+[node name="AvailableTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 1
+
+[node name="AvailableTowersVBox" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 8.0
+offset_right = -16.0
+offset_bottom = 104.0
+grow_horizontal = 0
+theme_override_colors/font_disabled_color = Color(0.244776, 0.244776, 0.244776, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
