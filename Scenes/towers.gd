@@ -22,7 +22,7 @@ func _ready() -> void:
 			tower.free()
 		i = i + 1 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#NOTE: tower selection code
 	if (Input.is_action_just_pressed("Place tower 1") and tower_selection_array[0] != null and tower_costs[0] <= get_node("../Scraps").total_scrap and tower_available[0] == true):
 		#print("sapwn")

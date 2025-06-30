@@ -461,7 +461,8 @@ show_percentage = false
 [node name="TowerCooldown" type="Timer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2"]
 one_shot = true
 
-[node name="WeaponCooldownContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="WeaponCooldownHBox" type="HBoxContainer" parent="CanvasLayer"]
+unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
@@ -474,7 +475,7 @@ grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("18_jvnna")
 
-[node name="PrimaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownContainer"]
+[node name="PrimaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -484,9 +485,9 @@ fill_mode = 5
 texture_under = ExtResource("18_oyb3p")
 texture_progress = ExtResource("19_jvnna")
 
-[node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownContainer"]
+[node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
 
-[node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownContainer"]
+[node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -496,7 +497,7 @@ fill_mode = 5
 texture_under = ExtResource("21_b48ew")
 texture_progress = SubResource("CompressedTexture2D_8edxt")
 
-[node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownContainer"]
+[node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]
@@ -505,11 +506,8 @@ texture_progress = SubResource("CompressedTexture2D_8edxt")
 [connection signal="timeout" from="Towers/TowerCooldown1" to="Towers" method="_on_tower_cooldown_1_timeout"]
 [connection signal="timeout" from="Towers/TowerCooldown2" to="Towers" method="_on_tower_cooldown_2_timeout"]
 [connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
-[connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="." method="_on_spawn_enemy_timer_timeout"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="Enemies" method="_on_spawn_enemy_timer_timeout"]
-[connection signal="shoot_primary" from="SpacePlane" to="." method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_primary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_primary"]
-[connection signal="shoot_primary" from="SpacePlane" to="CanvasLayer/WeaponCooldownContainer" method="_on_space_plane_shoot_primary"]
-[connection signal="shoot_secondary" from="SpacePlane" to="." method="_on_space_plane_shoot_secondary"]
+[connection signal="shoot_primary" from="SpacePlane" to="CanvasLayer/WeaponCooldownHBox" method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_secondary"]
-[connection signal="shoot_secondary" from="SpacePlane" to="CanvasLayer/WeaponCooldownContainer" method="_on_space_plane_shoot_secondary"]
+[connection signal="shoot_secondary" from="SpacePlane" to="CanvasLayer/WeaponCooldownHBox" method="_on_space_plane_shoot_secondary"]

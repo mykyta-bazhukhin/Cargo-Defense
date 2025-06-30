@@ -14,7 +14,7 @@ func _ready():
 		tower_temp.free()
 		
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$TowerPanel0/ProgressBar.value = $TowerPanel0/TowerCooldown.time_left
 	$TowerPanel1/ProgressBar.value = $TowerPanel1/TowerCooldown.time_left
 	$TowerPanel2/ProgressBar.value = $TowerPanel2/TowerCooldown.time_left

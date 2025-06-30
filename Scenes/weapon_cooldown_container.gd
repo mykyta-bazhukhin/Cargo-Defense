@@ -1,20 +1,27 @@
 extends HBoxContainer
 
-func _ready() -> void:
-	pass
+var plane_primary_timer
+var plane_secondary_timer
 
-func _process(delta: float) -> void:
+func _ready() -> void:
+	await get_node("../..").ready
+	$%WeaponCooldownHBox/PrimaryCooldownBar.max_value = plane_primary_timer.wait_time
+	$%WeaponCooldownHBox/PrimaryCooldownTimer.wait_time = plane_primary_timer.wait_time
+	$%WeaponCooldownHBox/PrimaryCooldownTimer.start()
+	$%WeaponCooldownHBox/SecondaryCooldownBar.max_value = plane_secondary_timer.wait_time
+	$%WeaponCooldownHBox/SecondaryCooldownTimer.wait_time = plane_secondary_timer.wait_time
+	$%WeaponCooldownHBox/SecondaryCooldownTimer.start()
+
+func _process(_delta: float) -> void:
 	$PrimaryCooldownBar.value = $PrimaryCooldownTimer.time_left
 	$SecondaryCooldownBar.value = $SecondaryCooldownTimer.time_left
 
 
 func _on_space_plane_shoot_primary(_pos: Vector2, cooldown_time: float) -> void:
-	$PrimaryCooldownBar.max_value = cooldown_time
 	$PrimaryCooldownTimer.wait_time = cooldown_time
 	$PrimaryCooldownTimer.start()
 
 
-func _on_space_plane_shoot_secondary(pos: Vector2, cooldown_time: float) -> void:
-	$SecondaryCooldownBar.max_value = cooldown_time
+func _on_space_plane_shoot_secondary(_pos: Vector2, cooldown_time: float) -> void:
 	$SecondaryCooldownTimer.wait_time = cooldown_time
 	$SecondaryCooldownTimer.start()
