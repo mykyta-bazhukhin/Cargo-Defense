@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdrl1fgw6k4ia"]
+
+[ext_resource type="Script" uid="uid://mspbhwjbh76b" path="res://Scripts/Plane/Weapons/laser_taser.gd" id="1_6btrb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8c8g"]
+size = Vector2(9, 42)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t6jbp"]
+load_path = "res://.godot/imported/laser sprite.png-c9cf2a1f145fe44870e3469f14243cfa.ctex"
+
+[node name="LaserTaser" type="Area2D"]
+collision_layer = 16
+collision_mask = 134
+script = ExtResource("1_6btrb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_o8c8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.3125, 0)
+scale = Vector2(0.222917, 0.3)
+texture = SubResource("CompressedTexture2D_t6jbp")
+
+[node name="TimerTimeout" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerTimeout" to="." method="_on_timer_timeout_timeout"]

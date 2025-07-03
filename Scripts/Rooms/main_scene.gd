@@ -26,3 +26,10 @@ func _ready():
 
 func _on_towers_get_total_scrap() -> void:
 	$%Towers.total_scrap = $Scraps.total_scrap
+
+func _get_total_enemies() -> Array:
+	var enemy_array: Array
+	for child in $Enemies.get_children():
+		if child.get_class() == "CharacterBody2D":
+			enemy_array.append(child)
+	return enemy_array

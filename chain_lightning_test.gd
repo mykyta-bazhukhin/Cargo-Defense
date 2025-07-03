@@ -3,7 +3,6 @@ extends Sprite2D
 var starting_point = position
 var end_point
 var distance
-var direction = Vector2.UP
 var size = 64
 var shader_material = material
 var tiling_amount
