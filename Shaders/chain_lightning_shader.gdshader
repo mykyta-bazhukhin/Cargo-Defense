@@ -1,5 +1,5 @@
 shader_type canvas_item;
-uniform float tiling_amount : hint_range(1.0, 5.0) = 1.0;
+uniform float tiling_amount = 1.0;
 
 void fragment() {
 	vec4 new_tex = texture(TEXTURE, UV);
