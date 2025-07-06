@@ -31,5 +31,6 @@ script = ExtResource("4_7tt4p")
 wait_time = 0.2
 autostart = true
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="ready_for_shader" from="." to="ChainLightningSprite" method="_on_chain_lightning_ready_for_shader"]
 [connection signal="timeout" from="DestroyDelayTimer" to="." method="_on_destroy_delay_timer_timeout"]

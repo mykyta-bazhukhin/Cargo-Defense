@@ -1,13 +1,208 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0fugy0toim0"]
+[gd_scene load_steps=53 format=3 uid="uid://c0fugy0toim0"]
 
 [ext_resource type="Script" uid="uid://b16cu4mo1xxj1" path="res://Scripts/Rooms/preperation_screen.gd" id="1_vndmm"]
 [ext_resource type="PackedScene" uid="uid://7qavpq154xop" path="res://Scenes/UI/tower_panel.tscn" id="2_il8t6"]
+[ext_resource type="Texture2D" uid="uid://ckfjfe3ynpjb" path="res://funny radar sprites/frame_000_delay-0.03s.png" id="3_vr08f"]
+[ext_resource type="Texture2D" uid="uid://cnqaorcgcaxf8" path="res://funny radar sprites/frame_002_delay-0.03s.png" id="5_xk54w"]
+[ext_resource type="Texture2D" uid="uid://b1m4maihobcag" path="res://funny radar sprites/frame_004_delay-0.04s.png" id="7_2e845"]
+[ext_resource type="Texture2D" uid="uid://dbmtbnhf0o6bn" path="res://funny radar sprites/frame_006_delay-0.03s.png" id="9_0i3yx"]
+[ext_resource type="Texture2D" uid="uid://de5jntv8bbec6" path="res://funny radar sprites/frame_008_delay-0.03s.png" id="11_aqov8"]
+[ext_resource type="Texture2D" uid="uid://bdlieacou1m5h" path="res://funny radar sprites/frame_010_delay-0.04s.png" id="13_4e07o"]
+[ext_resource type="Texture2D" uid="uid://c3pt1gl7scxgq" path="res://funny radar sprites/frame_012_delay-0.03s.png" id="15_x3hwk"]
+[ext_resource type="Texture2D" uid="uid://rbdetpjlku87" path="res://funny radar sprites/frame_014_delay-0.03s.png" id="17_ccq8s"]
+[ext_resource type="Texture2D" uid="uid://dptxgswbtkn4o" path="res://funny radar sprites/frame_016_delay-0.04s.png" id="19_u2qre"]
+[ext_resource type="Texture2D" uid="uid://b66nxdejttqor" path="res://funny radar sprites/frame_018_delay-0.03s.png" id="21_4qt7r"]
+[ext_resource type="Texture2D" uid="uid://cnhrwr8hdn4sy" path="res://funny radar sprites/frame_020_delay-0.03s.png" id="23_oojks"]
+[ext_resource type="Texture2D" uid="uid://653gwqgqlv18" path="res://funny radar sprites/frame_022_delay-0.04s.png" id="25_r0qpu"]
+[ext_resource type="Texture2D" uid="uid://d3dwhwojwc630" path="res://funny radar sprites/frame_024_delay-0.03s.png" id="27_5n0on"]
+[ext_resource type="Texture2D" uid="uid://qyrkpnikvn6y" path="res://funny radar sprites/frame_026_delay-0.03s.png" id="29_3fh5b"]
+[ext_resource type="Texture2D" uid="uid://75oyxn75gn0t" path="res://funny radar sprites/frame_028_delay-0.04s.png" id="31_8nj8p"]
+[ext_resource type="Texture2D" uid="uid://bbiqskw4yrkge" path="res://funny radar sprites/frame_030_delay-0.03s.png" id="33_logrf"]
+[ext_resource type="Texture2D" uid="uid://dchyalyadg37l" path="res://funny radar sprites/frame_032_delay-0.03s.png" id="35_ifpof"]
+[ext_resource type="Texture2D" uid="uid://kh5xvqsv8f1l" path="res://funny radar sprites/frame_034_delay-0.04s.png" id="37_pj8ee"]
+[ext_resource type="Texture2D" uid="uid://ctwco1xij3ddn" path="res://funny radar sprites/frame_036_delay-0.03s.png" id="39_c2giw"]
+[ext_resource type="Texture2D" uid="uid://c8xsuy6ksxoko" path="res://funny radar sprites/frame_038_delay-0.03s.png" id="41_suvuo"]
+[ext_resource type="Texture2D" uid="uid://bmupexbaidllu" path="res://funny radar sprites/frame_040_delay-0.04s.png" id="43_io0py"]
+[ext_resource type="Texture2D" uid="uid://5mh3bntn7sey" path="res://funny radar sprites/frame_042_delay-0.03s.png" id="45_er8l5"]
+[ext_resource type="Texture2D" uid="uid://dinl5rj2uujmy" path="res://funny radar sprites/frame_044_delay-0.03s.png" id="47_dyle1"]
+[ext_resource type="Texture2D" uid="uid://dq1h1li1pqbw5" path="res://funny radar sprites/frame_046_delay-0.04s.png" id="49_etnmt"]
+[ext_resource type="Texture2D" uid="uid://bx6mu26xmdwxf" path="res://funny radar sprites/frame_048_delay-0.03s.png" id="51_di42r"]
+[ext_resource type="Texture2D" uid="uid://llxxa45im1kw" path="res://funny radar sprites/frame_050_delay-0.03s.png" id="53_fherc"]
+[ext_resource type="Texture2D" uid="uid://cmoxm5ov7njgw" path="res://funny radar sprites/frame_052_delay-0.04s.png" id="55_lx5i6"]
+[ext_resource type="Texture2D" uid="uid://cydq5geeqhbgn" path="res://funny radar sprites/frame_054_delay-0.03s.png" id="57_2oolg"]
+[ext_resource type="Texture2D" uid="uid://bpeh3drjqef32" path="res://funny radar sprites/frame_056_delay-0.03s.png" id="59_u0bcu"]
+[ext_resource type="Texture2D" uid="uid://hnljjsgv3gkn" path="res://funny radar sprites/frame_058_delay-0.04s.png" id="61_7sabh"]
+[ext_resource type="Texture2D" uid="uid://d1v3k44ybb72m" path="res://funny radar sprites/frame_060_delay-0.03s.png" id="63_x61wp"]
+[ext_resource type="Texture2D" uid="uid://dosbleuw100aa" path="res://funny radar sprites/frame_062_delay-0.03s.png" id="65_h7fxq"]
+[ext_resource type="Texture2D" uid="uid://bpeh0p7rhhjg1" path="res://funny radar sprites/frame_064_delay-0.04s.png" id="67_qv6kb"]
+[ext_resource type="Texture2D" uid="uid://v5or37txhddj" path="res://funny radar sprites/frame_066_delay-0.03s.png" id="69_7lxby"]
+[ext_resource type="Texture2D" uid="uid://2y3skcotnp0c" path="res://funny radar sprites/frame_068_delay-0.03s.png" id="71_3lu1p"]
+[ext_resource type="Texture2D" uid="uid://d3rhbur5l6g3p" path="res://funny radar sprites/frame_070_delay-0.04s.png" id="73_ibgl6"]
+[ext_resource type="Texture2D" uid="uid://c7jvd31ujh7pl" path="res://funny radar sprites/frame_072_delay-0.03s.png" id="75_thied"]
+[ext_resource type="Texture2D" uid="uid://bwqy7fhd27en8" path="res://funny radar sprites/frame_074_delay-0.03s.png" id="77_saya8"]
+[ext_resource type="Texture2D" uid="uid://bve8yv3g0tnlw" path="res://funny radar sprites/frame_076_delay-0.04s.png" id="79_xrixe"]
+[ext_resource type="Texture2D" uid="uid://bype4lr6c6mnv" path="res://funny radar sprites/frame_078_delay-0.03s.png" id="81_esed0"]
+[ext_resource type="Texture2D" uid="uid://ceg6pjyetmk45" path="res://funny radar sprites/frame_080_delay-0.03s.png" id="83_gj4m7"]
+[ext_resource type="Texture2D" uid="uid://bud2qhoxjmbkq" path="res://funny radar sprites/frame_082_delay-0.04s.png" id="85_qqtcn"]
+[ext_resource type="Texture2D" uid="uid://4lgh4fe5cran" path="res://funny radar sprites/frame_084_delay-0.03s.png" id="87_bdn1e"]
+[ext_resource type="Texture2D" uid="uid://cymqrumf7e6we" path="res://funny radar sprites/frame_086_delay-0.03s.png" id="89_nhy1i"]
+[ext_resource type="Texture2D" uid="uid://b828fmklgln1u" path="res://funny radar sprites/frame_088_delay-0.04s.png" id="91_2ri5e"]
+[ext_resource type="Texture2D" uid="uid://fi57us8s3dwq" path="res://funny radar sprites/frame_090_delay-0.03s.png" id="93_itof8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xu4jb"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vgvf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asysl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kn7um"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("3_vr08f")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_xk54w")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_2e845")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_0i3yx")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_aqov8")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_4e07o")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_x3hwk")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_ccq8s")
+}, {
+"duration": 0.5,
+"texture": ExtResource("19_u2qre")
+}, {
+"duration": 0.5,
+"texture": ExtResource("21_4qt7r")
+}, {
+"duration": 0.5,
+"texture": ExtResource("23_oojks")
+}, {
+"duration": 0.5,
+"texture": ExtResource("25_r0qpu")
+}, {
+"duration": 0.5,
+"texture": ExtResource("27_5n0on")
+}, {
+"duration": 0.5,
+"texture": ExtResource("29_3fh5b")
+}, {
+"duration": 0.5,
+"texture": ExtResource("31_8nj8p")
+}, {
+"duration": 0.5,
+"texture": ExtResource("33_logrf")
+}, {
+"duration": 0.5,
+"texture": ExtResource("35_ifpof")
+}, {
+"duration": 0.5,
+"texture": ExtResource("37_pj8ee")
+}, {
+"duration": 0.5,
+"texture": ExtResource("39_c2giw")
+}, {
+"duration": 0.5,
+"texture": ExtResource("41_suvuo")
+}, {
+"duration": 0.5,
+"texture": ExtResource("43_io0py")
+}, {
+"duration": 0.5,
+"texture": ExtResource("45_er8l5")
+}, {
+"duration": 0.5,
+"texture": ExtResource("47_dyle1")
+}, {
+"duration": 0.5,
+"texture": ExtResource("49_etnmt")
+}, {
+"duration": 0.5,
+"texture": ExtResource("51_di42r")
+}, {
+"duration": 0.5,
+"texture": ExtResource("53_fherc")
+}, {
+"duration": 0.5,
+"texture": ExtResource("55_lx5i6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("57_2oolg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("59_u0bcu")
+}, {
+"duration": 0.5,
+"texture": ExtResource("61_7sabh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("63_x61wp")
+}, {
+"duration": 0.5,
+"texture": ExtResource("65_h7fxq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("67_qv6kb")
+}, {
+"duration": 0.5,
+"texture": ExtResource("69_7lxby")
+}, {
+"duration": 0.5,
+"texture": ExtResource("71_3lu1p")
+}, {
+"duration": 0.5,
+"texture": ExtResource("73_ibgl6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("75_thied")
+}, {
+"duration": 0.5,
+"texture": ExtResource("77_saya8")
+}, {
+"duration": 0.5,
+"texture": ExtResource("79_xrixe")
+}, {
+"duration": 0.5,
+"texture": ExtResource("81_esed0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("83_gj4m7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("85_qqtcn")
+}, {
+"duration": 0.5,
+"texture": ExtResource("87_bdn1e")
+}, {
+"duration": 0.5,
+"texture": ExtResource("89_nhy1i")
+}, {
+"duration": 0.5,
+"texture": ExtResource("91_2ri5e")
+}, {
+"duration": 0.5,
+"texture": ExtResource("93_itof8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="PreperationScreen" type="Control"]
 layout_mode = 3
@@ -206,5 +401,26 @@ theme_override_colors/font_disabled_color = Color(0.244776, 0.244776, 0.244776, 
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "Start"
+
+[node name="Container" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -384.0
+offset_right = 632.0
+offset_bottom = 384.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_asysl")
+
+[node name="Control" type="Control" parent="Container"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container/Control"]
+sprite_frames = SubResource("SpriteFrames_kn7um")
+autoplay = "default"
+frame_progress = 0.737122
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
