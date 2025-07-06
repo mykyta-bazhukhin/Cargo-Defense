@@ -11,7 +11,7 @@ var projectile_dict = {"Freeze bullet" : FreezeBulletScene, "Bullet" : TowerSamp
 
 
 func _on_space_plane_shoot_primary(pos: Vector2, _cooldown_time: float):
-	var laser = TaserBulletScene.instantiate()
+	var laser = LaserScene.instantiate()
 	laser.position = pos
 	add_child(laser)
 

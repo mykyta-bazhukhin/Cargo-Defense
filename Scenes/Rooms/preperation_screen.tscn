@@ -1,8 +1,11 @@
-[gd_scene load_steps=53 format=3 uid="uid://c0fugy0toim0"]
+[gd_scene load_steps=56 format=3 uid="uid://c0fugy0toim0"]
 
 [ext_resource type="Script" uid="uid://b16cu4mo1xxj1" path="res://Scripts/Rooms/preperation_screen.gd" id="1_vndmm"]
 [ext_resource type="PackedScene" uid="uid://7qavpq154xop" path="res://Scenes/UI/tower_panel.tscn" id="2_il8t6"]
+[ext_resource type="Texture2D" uid="uid://bvya3rxx16axo" path="res://Sprites/UI stuff/arrow button.png" id="3_e7cij"]
 [ext_resource type="Texture2D" uid="uid://ckfjfe3ynpjb" path="res://funny radar sprites/frame_000_delay-0.03s.png" id="3_vr08f"]
+[ext_resource type="Texture2D" uid="uid://cyssgaqr0c00d" path="res://Sprites/UI stuff/arrow button pressed.png" id="4_326a7"]
+[ext_resource type="Texture2D" uid="uid://cr86m1sj7pqva" path="res://Sprites/UI stuff/arrow button hover.png" id="5_jwf4b"]
 [ext_resource type="Texture2D" uid="uid://cnqaorcgcaxf8" path="res://funny radar sprites/frame_002_delay-0.03s.png" id="5_xk54w"]
 [ext_resource type="Texture2D" uid="uid://b1m4maihobcag" path="res://funny radar sprites/frame_004_delay-0.04s.png" id="7_2e845"]
 [ext_resource type="Texture2D" uid="uid://dbmtbnhf0o6bn" path="res://funny radar sprites/frame_006_delay-0.03s.png" id="9_0i3yx"]
@@ -228,6 +231,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="DummyPanelContainer" type="PanelContainer" parent="TowerSelectionPanel"]
+custom_minimum_size = Vector2(0, 120)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xu4jb")
@@ -239,16 +243,19 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 3
 
 [node name="Panel0" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="Panel1" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="Panel2" type="Panel" parent="TowerSelectionPanel/DummyPanelContainer/DummyPanelList"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="SelectedTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
 layout_mode = 2
@@ -263,129 +270,175 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 3
 
 [node name="Panel0" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
 
 [node name="Panel1" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
 
 [node name="Panel2" type="Panel" parent="TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList"]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_1vgvf")
 
-[node name="AvailableTowersPanel" type="PanelContainer" parent="TowerSelectionPanel"]
+[node name="LoadoutSelectionVBox" type="VBoxContainer" parent="TowerSelectionPanel"]
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_constants/separation = 13
+
+[node name="AvailableTowersPanel" type="PanelContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox"]
+layout_mode = 2
+size_flags_vertical = 4
 mouse_filter = 1
 
-[node name="AvailableTowersVBox" type="VBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel"]
+[node name="AvailableTowersVBox" type="VBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 3
+
+[node name="TowerPanel" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel2" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel3" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel4" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="TowerPanel5" parent="TowerSelectionPanel/LoadoutSelectionVBox/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
+layout_mode = 2
+
+[node name="WeaponSelectionContainer" type="PanelContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox"]
+custom_minimum_size = Vector2(0, 128)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PrimaryWeaponContainer" type="MarginContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 190
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureButton" type="TextureButton" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 3
+texture_normal = ExtResource("3_e7cij")
+texture_pressed = ExtResource("4_326a7")
+texture_hover = ExtResource("5_jwf4b")
+stretch_mode = 0
 
-[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
+[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
+[node name="TextureButton2" type="TextureButton" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_constants/separation = 3
-
-[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer2" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 3
-
-[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer3" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 3
-
-[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer4" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox"]
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 3
-
-[node name="TowerPanel" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel2" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel3" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel4" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
-layout_mode = 2
-
-[node name="TowerPanel5" parent="TowerSelectionPanel/AvailableTowersPanel/AvailableTowersVBox/HBoxContainer5" instance=ExtResource("2_il8t6")]
-layout_mode = 2
+texture_normal = ExtResource("3_e7cij")
+texture_pressed = ExtResource("4_326a7")
+texture_hover = ExtResource("5_jwf4b")
+stretch_mode = 0
+flip_v = true
 
 [node name="StartButton" type="Button" parent="."]
 layout_mode = 1

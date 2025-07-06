@@ -13,12 +13,14 @@ FlameTowerScene]
 var selected_towers: Array = [null,null,null]
 var cur_available_slot: int
 var empty_panel: Panel
+var distance_to_slot
 
 func _ready() -> void:
 	empty_panel = $%SelectedTowersList.get_child(0)
 	cur_available_slot = 0
 	$StartButton.disabled = true
-	
+	distance_to_slot = %SelectedTowersList.get_theme_constant("separation", "HBoxContainer") + $TowerSelectionPanel/SelectedTowersPanel/SelectedTowersList/Panel0.custom_minimum_size.x
+
 	var tower_rows = $%AvailableTowersVBox.get_children()
 	var tower_num = 0
 	for row in tower_rows:
@@ -37,7 +39,7 @@ func _ready() -> void:
 
 
 func tween_from_another_panel(selected_panel, another_panel):
-	var og_selected_position = Vector2(selected_panel.get_index()*131, 0)
+	var og_selected_position = Vector2(selected_panel.get_index()*distance_to_slot, 0)
 	var tween = get_tree().create_tween()
 	tween.tween_property(selected_panel, "global_position", another_panel.global_position, 0.01)
 	tween.tween_property(selected_panel, "position", og_selected_position, 0.2).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)

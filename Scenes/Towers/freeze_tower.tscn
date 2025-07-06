@@ -10,6 +10,8 @@ cost = 1
 cooldown = 1
 
 [node name="Sprite2D" parent="." index="2"]
+position = Vector2(0.639379, 1.27876)
+scale = Vector2(0.99001, 1)
 texture = ExtResource("3_61i44")
 
 [connection signal="timeout" from="TowerShootTimer" to="." method="_on_tower_shoot_timer_timeout"]

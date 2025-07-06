@@ -50,6 +50,7 @@ func _on_body_entered(body):
 	is_dead = true
 	speed = 0
 	$AnimationPlayer.play("Rocket_explosion")
+	disconnect("body_entered", _on_body_entered)
 	
 
 
