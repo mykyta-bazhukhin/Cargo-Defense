@@ -1,8 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://yuifynpo45e6"]
+[gd_scene load_steps=17 format=3 uid="uid://yuifynpo45e6"]
 
 [ext_resource type="Script" uid="uid://bt6hicyr5fe0x" path="res://Scripts/UI/start_button.gd" id="1_4yjuk"]
+[ext_resource type="Script" uid="uid://bc32voj6geq7y" path="res://Scripts/UI/main_menu.gd" id="1_bum5j"]
 [ext_resource type="Script" uid="uid://sk6yc3q3ln7j" path="res://Scripts/UI/button_2.gd" id="2_dkmyi"]
 [ext_resource type="Script" uid="uid://cfrhrtwwcpmf7" path="res://Scripts/UI/exit_button.gd" id="3_65ujr"]
+[ext_resource type="Texture2D" uid="uid://cfqey7iv0gi3d" path="res://Sprites/UI stuff/close button.png" id="4_65ujr"]
+[ext_resource type="Texture2D" uid="uid://bmbw8yg88hql4" path="res://Sprites/UI stuff/close button hover.png" id="5_bum5j"]
+[ext_resource type="Script" uid="uid://bgshh7fhrbega" path="res://Scripts/UI/close_button.gd" id="7_xrhi3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xrhi3"]
+bg_color = Color(0.474835, 0.469333, 0.417057, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8alsk"]
+bg_color = Color(0.35385, 0.642503, 0.768353, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ic1ir"]
+bg_color = Color(0.474835, 0.469333, 0.417057, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xt86c"]
+bg_color = Color(0.35385, 0.642503, 0.768353, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jxe21"]
+load_path = "res://.godot/imported/close button.png-5e46b814905173236469204038077e1e.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7fx41"]
+load_path = "res://.godot/imported/close button hover.png-a0046d0d91c1cced8db90c2ae9a89b70.ctex"
+
+[sub_resource type="GDScript" id="GDScript_n0mav"]
+script/source = "extends TextureButton
+
+
+func _on_pressed() -> void:
+	get_parent().get_parent().visible = false
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxe21"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_7fx41"]
+file = "res://Video/aintjadaddy.ogg"
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bum5j")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -52,6 +89,152 @@ layout_mode = 2
 text = "Exit"
 script = ExtResource("3_65ujr")
 
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 384.0
+offset_top = 256.0
+offset_right = 896.0
+offset_bottom = 512.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xrhi3")
+
+[node name="Panel" type="Panel" parent="PanelContainer2"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8alsk")
+
+[node name="Button" type="TextureButton" parent="PanelContainer2/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+texture_normal = ExtResource("4_65ujr")
+texture_pressed = ExtResource("5_bum5j")
+texture_hover = ExtResource("5_bum5j")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("7_xrhi3")
+
+[node name="Label" type="Label" parent="PanelContainer2/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -18.5
+offset_right = 85.0
+offset_bottom = 18.5
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 27
+text = "Notice"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="PanelContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Ok"
+
+[node name="VideoJamesButton" type="Button" parent="PanelContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Video james"
+
+[node name="Button3" type="Button" parent="PanelContainer2/HBoxContainer"]
+layout_mode = 2
+text = "Nuh uh"
+
+[node name="Label" type="Label" parent="PanelContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 51
+text = "He he he haw "
+
+[node name="VideoJamesContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 80.0
+offset_right = 960.0
+offset_bottom = 672.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ic1ir")
+
+[node name="Panel" type="Panel" parent="VideoJamesContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_xt86c")
+
+[node name="Button" type="TextureButton" parent="VideoJamesContainer/Panel"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_bottom = 32.0
+grow_horizontal = 0
+size_flags_horizontal = 0
+texture_normal = SubResource("CompressedTexture2D_jxe21")
+texture_pressed = SubResource("CompressedTexture2D_7fx41")
+texture_hover = SubResource("CompressedTexture2D_7fx41")
+ignore_texture_size = true
+stretch_mode = 0
+script = SubResource("GDScript_n0mav")
+
+[node name="Label" type="Label" parent="VideoJamesContainer/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -18.5
+offset_right = 85.0
+offset_bottom = 18.5
+grow_vertical = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 27
+text = "Notice"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VideoJamesContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="Button" type="Button" parent="VideoJamesContainer/HBoxContainer"]
+layout_mode = 2
+text = "Ok"
+
+[node name="Panel2" type="Panel" parent="VideoJamesContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxe21")
+
+[node name="antjaVideo" type="VideoStreamPlayer" parent="VideoJamesContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -240.0
+offset_right = 240.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stream = SubResource("VideoStreamTheora_7fx41")
+volume_db = -5.0
+
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="PanelContainer/MarginContainer/VBoxContainer/StartButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="PanelContainer/MarginContainer/VBoxContainer/StartButton" method="_on_mouse_exited"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="PanelContainer/MarginContainer/VBoxContainer/StartButton" method="_on_pressed"]
@@ -59,4 +242,9 @@ script = ExtResource("3_65ujr")
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/Button2" to="PanelContainer/MarginContainer/VBoxContainer/Button2" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="PanelContainer/MarginContainer/VBoxContainer/ExitButton" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="PanelContainer/MarginContainer/VBoxContainer/ExitButton" method="_on_mouse_exited"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="PanelContainer/MarginContainer/VBoxContainer/ExitButton" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer2/Panel/Button" to="PanelContainer2/Panel/Button" method="_on_pressed"]
+[connection signal="pressed" from="PanelContainer2/HBoxContainer/VideoJamesButton" to="." method="_on_video_james_button_pressed"]
+[connection signal="pressed" from="VideoJamesContainer/Panel/Button" to="VideoJamesContainer/Panel/Button" method="_on_pressed"]
+[connection signal="finished" from="VideoJamesContainer/Panel2/antjaVideo" to="." method="_on_antja_video_finished"]

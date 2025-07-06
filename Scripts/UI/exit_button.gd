@@ -6,7 +6,8 @@ func _ready() -> void:
 	og_pos = position
 
 func _on_pressed() -> void:
-	get_tree().quit()
+	pass
+	#get_tree().quit()
 
 
 func _on_mouse_entered() -> void:
