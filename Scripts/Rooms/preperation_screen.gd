@@ -86,3 +86,9 @@ func _on_start_button_pressed() -> void:
 	
 	
 	
+
+
+func _on_primary_down_button_pressed() -> void:
+	var sprite = $TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/TextureRect/Sprite2D
+	var tween = get_tree().create_tween()
+	tween.tween_property(sprite, "region_rect", Rect2(0, 64, 64, 128), 1)
