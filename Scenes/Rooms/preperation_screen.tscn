@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://c0fugy0toim0"]
+[gd_scene load_steps=59 format=3 uid="uid://c0fugy0toim0"]
 
 [ext_resource type="Script" uid="uid://b16cu4mo1xxj1" path="res://Scripts/Rooms/preperation_screen.gd" id="1_vndmm"]
 [ext_resource type="PackedScene" uid="uid://7qavpq154xop" path="res://Scenes/UI/tower_panel.tscn" id="2_il8t6"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cyssgaqr0c00d" path="res://Sprites/UI stuff/arrow button pressed.png" id="4_326a7"]
 [ext_resource type="Texture2D" uid="uid://cr86m1sj7pqva" path="res://Sprites/UI stuff/arrow button hover.png" id="5_jwf4b"]
 [ext_resource type="Texture2D" uid="uid://cnqaorcgcaxf8" path="res://funny radar sprites/frame_002_delay-0.03s.png" id="5_xk54w"]
+[ext_resource type="Texture2D" uid="uid://wijuxmjnyv4h" path="res://Sprites/UI stuff/laser icon.png" id="6_jwf4b"]
 [ext_resource type="Texture2D" uid="uid://b1m4maihobcag" path="res://funny radar sprites/frame_004_delay-0.04s.png" id="7_2e845"]
+[ext_resource type="Texture2D" uid="uid://cttpp11tv7s7p" path="res://Sprites/UI stuff/guide rocket icon.png" id="7_7ulvp"]
 [ext_resource type="Texture2D" uid="uid://dbmtbnhf0o6bn" path="res://funny radar sprites/frame_006_delay-0.03s.png" id="9_0i3yx"]
 [ext_resource type="Texture2D" uid="uid://de5jntv8bbec6" path="res://funny radar sprites/frame_008_delay-0.03s.png" id="11_aqov8"]
 [ext_resource type="Texture2D" uid="uid://bdlieacou1m5h" path="res://funny radar sprites/frame_010_delay-0.04s.png" id="13_4e07o"]
@@ -57,6 +59,20 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vgvf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lfnyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jwf4b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7ulvp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asysl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -426,9 +442,15 @@ texture_pressed = ExtResource("4_326a7")
 texture_hover = ExtResource("5_jwf4b")
 stretch_mode = 0
 
-[node name="TextureRect" type="TextureRect" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer"]
+[node name="TextureRect" type="Control" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/TextureRect"]
+sprite_frames = SubResource("SpriteFrames_lfnyc")
+frame = 1
+frame_progress = 0.0682843
+offset = Vector2(32, 32)
 
 [node name="TextureButton2" type="TextureButton" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)

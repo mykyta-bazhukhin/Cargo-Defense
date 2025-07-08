@@ -1,0 +1,127 @@
+[gd_scene load_steps=23 format=3 uid="uid://cn4op04x85n3t"]
+
+[ext_resource type="Script" uid="uid://nkhurjfjlx5r" path="res://Scripts/Plane/Weapons/cannon_ball.gd" id="1_2rlmy"]
+[ext_resource type="Texture2D" uid="uid://cdbwflrtgo6d5" path="res://Sprites/Player/Weapons/cannon ball.png" id="2_4xo14"]
+[ext_resource type="Script" uid="uid://d037s5til3ltf" path="res://Scripts/Plane/Weapons/cannon_explosion.gd" id="4_w2nxy"]
+[ext_resource type="Texture2D" uid="uid://7vbm0av70wpv" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_08_delay-0.01s.png" id="6_cg1mv"]
+[ext_resource type="Texture2D" uid="uid://vtfu1xcbx85y" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_09_delay-0.01s.png" id="7_ad4j0"]
+[ext_resource type="Texture2D" uid="uid://nhucol1i5p0q" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_10_delay-0.01s.png" id="8_1bp0q"]
+[ext_resource type="Texture2D" uid="uid://b7hilmgthgna6" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_11_delay-0.01s.png" id="9_3lecu"]
+[ext_resource type="Texture2D" uid="uid://bhdwqg02otlth" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_12_delay-0.01s.png" id="10_ikg63"]
+[ext_resource type="Texture2D" uid="uid://baw4kyphyu8xp" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_13_delay-0.01s.png" id="11_alxxi"]
+[ext_resource type="Texture2D" uid="uid://csm16pjrapc25" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_14_delay-0.01s.png" id="12_vcx3c"]
+[ext_resource type="Texture2D" uid="uid://dv73rsqpwqfve" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_15_delay-0.01s.png" id="13_muvmc"]
+[ext_resource type="Texture2D" uid="uid://bufd7sdqklx0g" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_16_delay-0.01s.png" id="14_sjql1"]
+[ext_resource type="Texture2D" uid="uid://b8dbbjuqok3kp" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_00_delay-0.01s.png" id="15_utakc"]
+[ext_resource type="Texture2D" uid="uid://djbf8twvnsvcs" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_01_delay-0.01s.png" id="16_ah530"]
+[ext_resource type="Texture2D" uid="uid://t5p54nb4khog" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_02_delay-0.01s.png" id="17_d1np7"]
+[ext_resource type="Texture2D" uid="uid://dhpo7vmubipbp" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_03_delay-0.01s.png" id="18_n2pfr"]
+[ext_resource type="Texture2D" uid="uid://5od3b7aeqh3e" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_04_delay-0.01s.png" id="19_p3oyj"]
+[ext_resource type="Texture2D" uid="uid://cy1x1idusrr6b" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_05_delay-0.01s.png" id="20_tp2fg"]
+[ext_resource type="Texture2D" uid="uid://crs2r1xfh820v" path="res://Sprites/Player/Weapons/Cannon Explosion/frame_06_delay-0.01s.png" id="21_owyml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pnxlp"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2nxy"]
+size = Vector2(304, 304)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nyi5c"]
+animations = [{
+"frames": [{
+"duration": 0.1,
+"texture": ExtResource("6_cg1mv")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_ad4j0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_1bp0q")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_3lecu")
+}, {
+"duration": 0.5,
+"texture": ExtResource("10_ikg63")
+}, {
+"duration": 0.5,
+"texture": ExtResource("11_alxxi")
+}, {
+"duration": 0.5,
+"texture": ExtResource("12_vcx3c")
+}, {
+"duration": 0.5,
+"texture": ExtResource("13_muvmc")
+}, {
+"duration": 0.5,
+"texture": ExtResource("14_sjql1")
+}, {
+"duration": 0.5,
+"texture": ExtResource("15_utakc")
+}, {
+"duration": 0.5,
+"texture": ExtResource("16_ah530")
+}, {
+"duration": 0.5,
+"texture": ExtResource("17_d1np7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("18_n2pfr")
+}, {
+"duration": 0.5,
+"texture": ExtResource("19_p3oyj")
+}, {
+"duration": 0.5,
+"texture": ExtResource("20_tp2fg")
+}, {
+"duration": 0.5,
+"texture": ExtResource("21_owyml")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="CannonBall" type="Area2D"]
+collision_layer = 16
+collision_mask = 134
+script = ExtResource("1_2rlmy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_pnxlp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.3125, 0)
+texture = ExtResource("2_4xo14")
+
+[node name="TimerTimeout" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="CannonExplosion" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 134
+script = ExtResource("4_w2nxy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CannonExplosion"]
+shape = SubResource("RectangleShape2D_w2nxy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CannonExplosion"]
+sprite_frames = SubResource("SpriteFrames_nyi5c")
+frame = 16
+frame_progress = 1.0
+
+[node name="ExplosionTimeout" type="Timer" parent="CannonExplosion"]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="TimerTimeout" to="." method="_on_timer_timeout_timeout"]
+[connection signal="body_entered" from="CannonExplosion" to="CannonExplosion" method="_on_body_entered"]
+[connection signal="body_exited" from="CannonExplosion" to="CannonExplosion" method="_on_body_exited"]
+[connection signal="timeout" from="CannonExplosion/ExplosionTimeout" to="." method="_on_explosion_timeout_timeout"]

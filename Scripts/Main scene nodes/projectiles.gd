@@ -6,8 +6,9 @@ var TowerSampleProjectileScene = preload("res://Scenes/Towers/Projectiles/tower_
 var FreezeBulletScene = preload("res://Scenes/Towers/Projectiles/freeze_bullet.tscn")
 var TaserBulletScene = preload("res://Scenes/Plane/Weapons/laser_taser.tscn")
 var ChainLightningScene = preload("res://Scenes/Plane/Weapons/chain_lightning.tscn")
+var CannonBallScene = preload("res://Scenes/Plane/Weapons/cannon_ball.tscn")
 
-var projectile_dict = {"Freeze bullet" : FreezeBulletScene, "Bullet" : TowerSampleProjectileScene, "Taser bullet" : TaserBulletScene}
+var projectile_dict = {"Freeze bullet" : FreezeBulletScene, "Bullet" : TowerSampleProjectileScene, "Taser bullet" : TaserBulletScene, "Cannon ball" : CannonBallScene}
 
 
 func _on_space_plane_shoot_primary(pos: Vector2, _cooldown_time: float):
@@ -17,7 +18,7 @@ func _on_space_plane_shoot_primary(pos: Vector2, _cooldown_time: float):
 
 
 func _on_space_plane_shoot_secondary(pos: Vector2, _cooldown_time: float):
-	var rocket = RocketScene.instantiate()
+	var rocket = CannonBallScene.instantiate()
 	rocket.position = pos
 	add_child(rocket)
 	
