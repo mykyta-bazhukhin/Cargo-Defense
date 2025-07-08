@@ -81,14 +81,7 @@ func _on_selected_tower_button_pressed(og_slot_num, og_tower_panel, selected_tow
 	cur_available_slot = cur_available_slot - 1
 	$StartButton.disabled = true
 func _on_start_button_pressed() -> void:
+	Global.selected_weapons[0] = %PrimaryWeaponContainer.get_selected_primary_weapon()
+	Global.selected_weapons[1] = %SecondaryWeaponContainer.get_selected_secondary_weapon()
 	Global.selected_towers = selected_towers
 	get_tree().change_scene_to_file("res://Scenes/Rooms/main_scene.tscn")
-	
-	
-	
-
-
-func _on_primary_down_button_pressed() -> void:
-	var sprite = $TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/TextureRect/Sprite2D
-	var tween = get_tree().create_tween()
-	tween.tween_property(sprite, "region_rect", Rect2(0, 64, 64, 128), 1)

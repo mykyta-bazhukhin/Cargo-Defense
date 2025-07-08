@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" uid="uid://b16cu4mo1xxj1" path="res://Scripts/Rooms/preperation_screen.gd" id="1_vndmm"]
 [ext_resource type="PackedScene" uid="uid://7qavpq154xop" path="res://Scenes/UI/tower_panel.tscn" id="2_il8t6"]
+[ext_resource type="Script" uid="uid://cwqbx8yxsq545" path="res://Scripts/UI/primary_weapon_container.gd" id="3_7ulvp"]
 [ext_resource type="Texture2D" uid="uid://bvya3rxx16axo" path="res://Sprites/UI stuff/arrow button.png" id="3_e7cij"]
 [ext_resource type="Texture2D" uid="uid://ckfjfe3ynpjb" path="res://funny radar sprites/frame_000_delay-0.03s.png" id="3_vr08f"]
 [ext_resource type="Texture2D" uid="uid://cyssgaqr0c00d" path="res://Sprites/UI stuff/arrow button pressed.png" id="4_326a7"]
 [ext_resource type="Texture2D" uid="uid://cr86m1sj7pqva" path="res://Sprites/UI stuff/arrow button hover.png" id="5_jwf4b"]
 [ext_resource type="Texture2D" uid="uid://cnqaorcgcaxf8" path="res://funny radar sprites/frame_002_delay-0.03s.png" id="5_xk54w"]
-[ext_resource type="Texture2D" uid="uid://133qvoj36r81" path="res://Sprites/weapon ui test.png" id="6_7ulvp"]
+[ext_resource type="Texture2D" uid="uid://djhfwkywprg5h" path="res://Sprites/UI stuff/Secondary icon belt.png" id="6_326a7"]
 [ext_resource type="Texture2D" uid="uid://b1m4maihobcag" path="res://funny radar sprites/frame_004_delay-0.04s.png" id="7_2e845"]
-[ext_resource type="Texture2D" uid="uid://cttpp11tv7s7p" path="res://Sprites/UI stuff/guide rocket icon.png" id="7_lfnyc"]
+[ext_resource type="Script" uid="uid://met3viodqyrw" path="res://Scripts/UI/secondary_weapon_container.gd" id="7_lfnyc"]
 [ext_resource type="Texture2D" uid="uid://wijuxmjnyv4h" path="res://Sprites/UI stuff/laser icon.png" id="8_qcqwa"]
 [ext_resource type="Texture2D" uid="uid://dbmtbnhf0o6bn" path="res://funny radar sprites/frame_006_delay-0.03s.png" id="9_0i3yx"]
 [ext_resource type="Texture2D" uid="uid://de5jntv8bbec6" path="res://funny radar sprites/frame_008_delay-0.03s.png" id="11_aqov8"]
@@ -60,20 +61,6 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1vgvf"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6mu63"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_lfnyc")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_qcqwa")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_asysl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -426,9 +413,11 @@ layout_mode = 2
 size_flags_vertical = 8
 
 [node name="PrimaryWeaponContainer" type="MarginContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 190
+script = ExtResource("3_7ulvp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer"]
 layout_mode = 2
@@ -447,20 +436,58 @@ stretch_mode = 0
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/TextureRect"]
-texture = ExtResource("6_7ulvp")
+[node name="PrimaryBeltSprite" type="Sprite2D" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/TextureRect"]
+texture_repeat = 2
+texture = ExtResource("8_qcqwa")
 centered = false
 vframes = 2
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 128)
 region_filter_clip_enabled = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/TextureRect"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_6mu63")
-centered = false
-
 [node name="PrimaryDownButton" type="TextureButton" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("3_e7cij")
+texture_pressed = ExtResource("4_326a7")
+texture_hover = ExtResource("5_jwf4b")
+stretch_mode = 0
+flip_v = true
+
+[node name="SecondaryWeaponContainer" type="MarginContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_right = 190
+script = ExtResource("7_lfnyc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer"]
+layout_mode = 2
+
+[node name="SecondaryUpButton" type="TextureButton" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("3_e7cij")
+texture_pressed = ExtResource("4_326a7")
+texture_hover = ExtResource("5_jwf4b")
+stretch_mode = 0
+
+[node name="TextureRect" type="Control" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="SecondaryBeltSprite" type="Sprite2D" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer/VBoxContainer/TextureRect"]
+texture_repeat = 2
+texture = ExtResource("6_326a7")
+centered = false
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 128)
+region_filter_clip_enabled = true
+
+[node name="SecondaryDownButton" type="TextureButton" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer/VBoxContainer"]
 custom_minimum_size = Vector2(64, 32)
 layout_mode = 2
 size_flags_vertical = 0
@@ -506,5 +533,8 @@ sprite_frames = SubResource("SpriteFrames_kn7um")
 autoplay = "default"
 frame_progress = 0.737122
 
-[connection signal="pressed" from="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/PrimaryDownButton" to="." method="_on_primary_down_button_pressed"]
+[connection signal="pressed" from="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/PrimaryUpButton" to="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer" method="_on_primary_up_button_pressed"]
+[connection signal="pressed" from="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/PrimaryDownButton" to="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer" method="_on_primary_down_button_pressed"]
+[connection signal="pressed" from="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer/VBoxContainer/SecondaryUpButton" to="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer" method="_on_secondary_up_button_pressed"]
+[connection signal="pressed" from="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer/VBoxContainer/SecondaryDownButton" to="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/SecondaryWeaponContainer" method="_on_secondary_down_button_pressed"]
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

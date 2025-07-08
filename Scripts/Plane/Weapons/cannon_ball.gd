@@ -2,6 +2,8 @@ extends Area2D
 var direction = Vector2.UP
 var speed = 1500
 var damage = 20
+var icon = "res://Sprites/UI stuff/Cannon shot icon.png"
+var cooldown = 4
 
 func _ready() -> void:
 	$CannonExplosion.visible = false

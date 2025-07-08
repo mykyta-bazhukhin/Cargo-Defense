@@ -1,25 +1,25 @@
 [gd_scene load_steps=18 format=3 uid="uid://cp8xok4pyumm2"]
 
-[ext_resource type="Script" uid="uid://qqmb4t8ttnys" path="res://Scripts/Plane/rocket.gd" id="1_s2cl5"]
-[ext_resource type="Texture2D" uid="uid://b4aspd6nc7rxp" path="res://Sprites/Player/Weapons/rocket1.png" id="2_i4bje"]
-[ext_resource type="Texture2D" uid="uid://cuvgd27kadhmt" path="res://Sprites/Player/Weapons/rocket2.png" id="3_nw1t2"]
-[ext_resource type="Texture2D" uid="uid://swkb52fiflrv" path="res://Sprites/Player/Weapons/Rocket explosion/1.png" id="4_w8tok"]
-[ext_resource type="Texture2D" uid="uid://841a6s4243wi" path="res://Sprites/Player/Weapons/Rocket explosion/2.png" id="5_qknf1"]
-[ext_resource type="Texture2D" uid="uid://bmeyxvqjol4ff" path="res://Sprites/Player/Weapons/Rocket explosion/3.png" id="6_0ljmg"]
-[ext_resource type="Texture2D" uid="uid://ebq74evg4fdx" path="res://Sprites/Player/Weapons/Rocket explosion/4.png" id="7_80dlj"]
-[ext_resource type="Texture2D" uid="uid://g2bihc5d8dhf" path="res://Sprites/Player/Weapons/Rocket explosion/5.png" id="8_ydlw8"]
-[ext_resource type="Texture2D" uid="uid://xpncet6806e5" path="res://Sprites/Player/Weapons/Rocket explosion/6.png" id="9_w5kgv"]
-[ext_resource type="Texture2D" uid="uid://d2vky7ho8grqh" path="res://Sprites/Player/Weapons/Rocket explosion/7.png" id="10_nxv3y"]
-[ext_resource type="Texture2D" uid="uid://byiwkkscga6bu" path="res://Sprites/Player/Weapons/Rocket explosion/8.png" id="11_gweyf"]
+[ext_resource type="Script" uid="uid://qqmb4t8ttnys" path="res://Scripts/Plane/Weapons/rocket.gd" id="1_m666x"]
+[ext_resource type="Texture2D" uid="uid://b4aspd6nc7rxp" path="res://Sprites/Player/Weapons/rocket1.png" id="2_nb851"]
+[ext_resource type="Texture2D" uid="uid://cuvgd27kadhmt" path="res://Sprites/Player/Weapons/rocket2.png" id="3_sc6ll"]
+[ext_resource type="Texture2D" uid="uid://swkb52fiflrv" path="res://Sprites/Player/Weapons/Rocket explosion/1.png" id="4_4rtic"]
+[ext_resource type="Texture2D" uid="uid://841a6s4243wi" path="res://Sprites/Player/Weapons/Rocket explosion/2.png" id="5_y7hfg"]
+[ext_resource type="Texture2D" uid="uid://bmeyxvqjol4ff" path="res://Sprites/Player/Weapons/Rocket explosion/3.png" id="6_42ro2"]
+[ext_resource type="Texture2D" uid="uid://ebq74evg4fdx" path="res://Sprites/Player/Weapons/Rocket explosion/4.png" id="7_pyh8q"]
+[ext_resource type="Texture2D" uid="uid://g2bihc5d8dhf" path="res://Sprites/Player/Weapons/Rocket explosion/5.png" id="8_8vu3s"]
+[ext_resource type="Texture2D" uid="uid://xpncet6806e5" path="res://Sprites/Player/Weapons/Rocket explosion/6.png" id="9_y33f5"]
+[ext_resource type="Texture2D" uid="uid://d2vky7ho8grqh" path="res://Sprites/Player/Weapons/Rocket explosion/7.png" id="10_lwf04"]
+[ext_resource type="Texture2D" uid="uid://byiwkkscga6bu" path="res://Sprites/Player/Weapons/Rocket explosion/8.png" id="11_be4tw"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6wrfy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_i4bje")
+"texture": ExtResource("2_nb851")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_nw1t2")
+"texture": ExtResource("3_sc6ll")
 }],
 "loop": true,
 "name": &"default",
@@ -30,28 +30,28 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_w8tok")
+"texture": ExtResource("4_4rtic")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_qknf1")
+"texture": ExtResource("5_y7hfg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_0ljmg")
+"texture": ExtResource("6_42ro2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_80dlj")
+"texture": ExtResource("7_pyh8q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("8_ydlw8")
+"texture": ExtResource("8_8vu3s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("9_w5kgv")
+"texture": ExtResource("9_y33f5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("10_nxv3y")
+"texture": ExtResource("10_lwf04")
 }, {
 "duration": 1.0,
-"texture": ExtResource("11_gweyf")
+"texture": ExtResource("11_be4tw")
 }],
 "loop": false,
 "name": &"default",
@@ -126,7 +126,7 @@ _data = {
 [node name="Rocket" type="Area2D"]
 collision_layer = 16
 collision_mask = 6
-script = ExtResource("1_s2cl5")
+script = ExtResource("1_m666x")
 
 [node name="RocketSprite" type="AnimatedSprite2D" parent="."]
 visible = false

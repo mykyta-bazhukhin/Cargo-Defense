@@ -12,11 +12,9 @@ script = ExtResource("1_l4cxk")
 
 [node name="PrimaryTimer" type="Timer" parent="."]
 wait_time = 0.5
-autostart = true
 
 [node name="SecondaryTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)

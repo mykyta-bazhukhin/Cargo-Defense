@@ -24,7 +24,21 @@ func _ready():
 	
 	$%WeaponCooldownHBox.plane_primary_timer = $SpacePlane/PrimaryTimer
 	$%WeaponCooldownHBox.plane_secondary_timer = $SpacePlane/SecondaryTimer
+	
+	#NOTE: Setting up other things from global WARNING: I need to put other global set up stuff in here
+	var primary_weapon = Global.selected_weapons[0].instantiate()
+	var secondary_weapon = Global.selected_weapons[1].instantiate()
 
+	$CanvasLayer/WeaponCooldownHBox/PrimaryCooldownBar.texture_under = load(primary_weapon.icon)
+	$CanvasLayer/WeaponCooldownHBox/SecondaryCooldownBar.texture_under = load(secondary_weapon.icon)
+	
+	$SpacePlane/PrimaryTimer.wait_time = primary_weapon.cooldown
+	$SpacePlane/PrimaryTimer.start()
+	$SpacePlane/SecondaryTimer.wait_time = secondary_weapon.cooldown
+	$SpacePlane/SecondaryTimer.start()
+	
+	primary_weapon.free()
+	secondary_weapon.free()
 
 func _on_towers_get_total_scrap() -> void:
 	$%Towers.total_scrap = $Scraps.total_scrap

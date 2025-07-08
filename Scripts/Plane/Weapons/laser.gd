@@ -2,6 +2,8 @@ extends Area2D
 var direction = Vector2.UP
 const speed = 1000
 var damage = 5
+var icon = "res://Sprites/UI stuff/laser icon.png"
+var cooldown =  0.5
 
 
 

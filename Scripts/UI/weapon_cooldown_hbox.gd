@@ -5,12 +5,13 @@ var plane_secondary_timer
 
 func _ready() -> void:
 	await get_node("../..").ready
-	$%WeaponCooldownHBox/PrimaryCooldownBar.max_value = plane_primary_timer.wait_time
-	$%WeaponCooldownHBox/PrimaryCooldownTimer.wait_time = plane_primary_timer.wait_time
-	$%WeaponCooldownHBox/PrimaryCooldownTimer.start()
-	$%WeaponCooldownHBox/SecondaryCooldownBar.max_value = plane_secondary_timer.wait_time
-	$%WeaponCooldownHBox/SecondaryCooldownTimer.wait_time = plane_secondary_timer.wait_time
-	$%WeaponCooldownHBox/SecondaryCooldownTimer.start()
+	$PrimaryCooldownBar.max_value = plane_primary_timer.wait_time
+	$PrimaryCooldownTimer.wait_time = plane_primary_timer.wait_time
+	$PrimaryCooldownTimer.start()
+
+	$SecondaryCooldownBar.max_value = plane_secondary_timer.wait_time
+	$SecondaryCooldownTimer.wait_time = plane_secondary_timer.wait_time
+	$SecondaryCooldownTimer.start()
 
 func _process(_delta: float) -> void:
 	$PrimaryCooldownBar.value = $PrimaryCooldownTimer.time_left

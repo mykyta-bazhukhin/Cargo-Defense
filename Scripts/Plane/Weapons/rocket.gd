@@ -5,6 +5,8 @@ extends Area2D
 var speed: int = 500
 var damage: int = 15
 var is_dead: bool = false
+var icon = "res://Sprites/UI stuff/guide rocket icon.png"
+var cooldown = 2
 
 
 var target_array = []
