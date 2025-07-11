@@ -492,6 +492,7 @@ texture_under = ExtResource("19_0w2fj")
 texture_progress = ExtResource("20_34y2j")
 
 [node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+one_shot = true
 
 [node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox"]
 custom_minimum_size = Vector2(64, 64)
@@ -504,6 +505,7 @@ texture_under = ExtResource("21_0f2te")
 texture_progress = SubResource("CompressedTexture2D_8edxt")
 
 [node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+one_shot = true
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]
