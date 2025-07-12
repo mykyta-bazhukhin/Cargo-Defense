@@ -469,19 +469,33 @@ one_shot = true
 
 [node name="WeaponCooldownHBox" type="HBoxContainer" parent="CanvasLayer"]
 unique_name_in_owner = true
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-offset_right = 4.0
-grow_horizontal = 0
-grow_vertical = 0
+offset_left = 1152.0
+offset_top = 608.0
+offset_right = 1312.0
+offset_bottom = 768.0
+theme_override_constants/separation = 0
 script = ExtResource("18_tv08y")
 
-[node name="PrimaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox"]
+[node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+one_shot = true
+
+[node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+one_shot = true
+
+[node name="PrimaryVBox" type="VBoxContainer" parent="CanvasLayer/WeaponCooldownHBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="DummyImage" type="TextureRect" parent="CanvasLayer/WeaponCooldownHBox/PrimaryVBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PrimaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox/PrimaryVBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -491,10 +505,20 @@ fill_mode = 5
 texture_under = ExtResource("19_0w2fj")
 texture_progress = ExtResource("20_34y2j")
 
-[node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
-one_shot = true
+[node name="SecondaryVBox" type="VBoxContainer" parent="CanvasLayer/WeaponCooldownHBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
 
-[node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox"]
+[node name="DummyImage" type="TextureRect" parent="CanvasLayer/WeaponCooldownHBox/SecondaryVBox"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox/SecondaryVBox"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -503,9 +527,6 @@ step = 0.01
 fill_mode = 5
 texture_under = ExtResource("21_0f2te")
 texture_progress = SubResource("CompressedTexture2D_8edxt")
-
-[node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
-one_shot = true
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]

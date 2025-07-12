@@ -29,8 +29,8 @@ func _ready():
 	var primary_weapon = Global.selected_weapons[0].instantiate()
 	var secondary_weapon = Global.selected_weapons[1].instantiate()
 
-	$CanvasLayer/WeaponCooldownHBox/PrimaryCooldownBar.texture_under = load(primary_weapon.icon)
-	$CanvasLayer/WeaponCooldownHBox/SecondaryCooldownBar.texture_under = load(secondary_weapon.icon)
+	%PrimaryCooldownBar.texture_under = load(primary_weapon.icon)
+	%SecondaryCooldownBar.texture_under = load(secondary_weapon.icon)
 	
 	$SpacePlane/PrimaryTimer.wait_time = primary_weapon.cooldown
 	$SpacePlane/PrimaryTimer.start()

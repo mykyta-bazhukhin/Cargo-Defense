@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://133qvoj36r81"
-path="res://.godot/imported/weapon ui test.png-f456f558a28f920225d157a47a377846.ctex"
+uid="uid://3s35esxaresy"
+path="res://.godot/imported/crossed circle.png-51bbe5e9c7e90f0f327e8df90309ded3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/weapon ui test.png"
-dest_files=["res://.godot/imported/weapon ui test.png-f456f558a28f920225d157a47a377846.ctex"]
+source_file="res://Sprites/UI stuff/crossed circle.png"
+dest_files=["res://.godot/imported/crossed circle.png-51bbe5e9c7e90f0f327e8df90309ded3.ctex"]
 
 [params]
 

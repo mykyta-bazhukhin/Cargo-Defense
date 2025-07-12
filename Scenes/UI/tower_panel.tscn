@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://7qavpq154xop"]
 
-[ext_resource type="Texture2D" uid="uid://b88g1js206p4q" path="res://Sprites/Towers/slow turret.png" id="1_egpnx"]
+[ext_resource type="Texture2D" uid="uid://bhiklpxr6x6vy" path="res://Sprites/Towers/turret sample.png" id="1_egpnx"]
 [ext_resource type="Texture2D" uid="uid://w0gtcnbme1cb" path="res://Sprites/Items/tf2 scrap.png" id="2_klvrr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i8veq"]
