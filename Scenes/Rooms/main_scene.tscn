@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dku3lihfaohyl"]
+[gd_scene load_steps=37 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scripts/Rooms/main_scene.gd" id="1_qvt8r"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/Main scene objects/space_background.tscn" id="2_b35hd"]
@@ -17,8 +17,10 @@
 [ext_resource type="Script" uid="uid://dnkiu1svaavj1" path="res://Scripts/UI/scrap_amount_label.gd" id="15_qmrfk"]
 [ext_resource type="Script" uid="uid://dk0lwg8lihqss" path="res://Scripts/UI/tower_slots.gd" id="16_e1mud"]
 [ext_resource type="Texture2D" uid="uid://haxkgxwvnd1q" path="res://Sprites/Towers/Projectiles/ball.png" id="17_sgiim"]
+[ext_resource type="Script" uid="uid://b4bok4q3f6os1" path="res://Scripts/UI/crossed_circle_icons.gd" id="18_kumgg"]
 [ext_resource type="Script" uid="uid://cvfw7aatf82xa" path="res://Scripts/UI/weapon_cooldown_hbox.gd" id="18_tv08y"]
 [ext_resource type="Texture2D" uid="uid://wijuxmjnyv4h" path="res://Sprites/UI stuff/laser icon.png" id="19_0w2fj"]
+[ext_resource type="Texture2D" uid="uid://3s35esxaresy" path="res://Sprites/UI stuff/crossed circle.png" id="19_6n8t3"]
 [ext_resource type="Texture2D" uid="uid://b867v87ed7uya" path="res://Sprites/UI stuff/circular cooldown texture.png" id="20_34y2j"]
 [ext_resource type="Texture2D" uid="uid://cttpp11tv7s7p" path="res://Sprites/UI stuff/guide rocket icon.png" id="21_0f2te"]
 
@@ -55,8 +57,14 @@ bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b48ew"]
 bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.188235)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vbk4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8edxt"]
 load_path = "res://.godot/imported/circular cooldown texture.png-1725ea6e64a554fc8dd4e7c0b4675c62.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qabl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qvt8r")
@@ -467,34 +475,31 @@ show_percentage = false
 [node name="TowerCooldown" type="Timer" parent="CanvasLayer/TowerSlotsVBox/TowerPanel2"]
 one_shot = true
 
-[node name="WeaponCooldownHBox" type="HBoxContainer" parent="CanvasLayer"]
+[node name="WeaponIconsContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0vbk4")
+
+[node name="WeaponCooldownHBox" type="HBoxContainer" parent="CanvasLayer/WeaponIconsContainer"]
 unique_name_in_owner = true
-offset_left = 1152.0
-offset_top = 608.0
-offset_right = 1312.0
-offset_bottom = 768.0
+layout_mode = 2
 theme_override_constants/separation = 0
 script = ExtResource("18_tv08y")
 
-[node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+[node name="PrimaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox"]
 one_shot = true
 
-[node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponCooldownHBox"]
+[node name="SecondaryCooldownTimer" type="Timer" parent="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox"]
 one_shot = true
 
-[node name="PrimaryVBox" type="VBoxContainer" parent="CanvasLayer/WeaponCooldownHBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 0
-
-[node name="DummyImage" type="TextureRect" parent="CanvasLayer/WeaponCooldownHBox/PrimaryVBox"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="PrimaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox/PrimaryVBox"]
+[node name="PrimaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -505,19 +510,7 @@ fill_mode = 5
 texture_under = ExtResource("19_0w2fj")
 texture_progress = ExtResource("20_34y2j")
 
-[node name="SecondaryVBox" type="VBoxContainer" parent="CanvasLayer/WeaponCooldownHBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 0
-
-[node name="DummyImage" type="TextureRect" parent="CanvasLayer/WeaponCooldownHBox/SecondaryVBox"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponCooldownHBox/SecondaryVBox"]
+[node name="SecondaryCooldownBar" type="TextureProgressBar" parent="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
@@ -528,6 +521,28 @@ fill_mode = 5
 texture_under = ExtResource("21_0f2te")
 texture_progress = SubResource("CompressedTexture2D_8edxt")
 
+[node name="CrossedCircleIcons" type="PanelContainer" parent="CanvasLayer/WeaponIconsContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4qabl")
+script = ExtResource("18_kumgg")
+
+[node name="PrimaryCrossedCircle" type="TextureRect" parent="CanvasLayer/WeaponIconsContainer/CrossedCircleIcons"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("19_6n8t3")
+stretch_mode = 3
+
+[node name="SecondaryCrossedCircle" type="TextureRect" parent="CanvasLayer/WeaponIconsContainer/CrossedCircleIcons"]
+custom_minimum_size = Vector2(64, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("19_6n8t3")
+stretch_mode = 3
+
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]
 [connection signal="tower_placed" from="Towers" to="CanvasLayer/TowerSlotsVBox" method="_on_towers_tower_placed"]
@@ -537,6 +552,6 @@ texture_progress = SubResource("CompressedTexture2D_8edxt")
 [connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="Enemies" method="_on_spawn_enemy_timer_timeout"]
 [connection signal="shoot_primary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_primary"]
-[connection signal="shoot_primary" from="SpacePlane" to="CanvasLayer/WeaponCooldownHBox" method="_on_space_plane_shoot_primary"]
+[connection signal="shoot_primary" from="SpacePlane" to="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox" method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_secondary"]
-[connection signal="shoot_secondary" from="SpacePlane" to="CanvasLayer/WeaponCooldownHBox" method="_on_space_plane_shoot_secondary"]
+[connection signal="shoot_secondary" from="SpacePlane" to="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox" method="_on_space_plane_shoot_secondary"]
