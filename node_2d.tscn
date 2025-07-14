@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://6uf8dd34jvh3"]
 
-[ext_resource type="Texture2D" uid="uid://tr777bh1ww3p" path="res://chain lightning2.png" id="1_0e48y"]
+[ext_resource type="Texture2D" uid="uid://1n84yfai3lh1" path="res://Sprites/Player/Weapons/lightning line.png" id="2_epypp"]
 [ext_resource type="Shader" uid="uid://cdpoe1ncwxm63" path="res://Shaders/chain_lightning_shader.gdshader" id="2_q6r6c"]
 [ext_resource type="Script" uid="uid://oljt14kg801j" path="res://chain_lightning_test.gd" id="4_d21ai"]
 
@@ -11,10 +11,10 @@ shader_parameter/tiling_amount = 1.0
 [node name="Node2D" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_repeat = 3
+texture_repeat = 1
 material = SubResource("ShaderMaterial_epypp")
 position = Vector2(632, 384)
-texture = ExtResource("1_0e48y")
+texture = ExtResource("2_epypp")
 offset = Vector2(32, 0)
 script = ExtResource("4_d21ai")
 

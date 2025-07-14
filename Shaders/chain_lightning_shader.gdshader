@@ -5,7 +5,8 @@ void fragment() {
 	vec4 new_tex = texture(TEXTURE, UV);
 	vec2 new_uv = UV;
 	new_uv.x = new_uv.x*tiling_amount;
-	//new_uv.y += sin(TIME * 20.0 + new_uv.x * 10.0) * 0.02;
+	//new_uv.y += (sin(new_uv.x*2.0*PI))*(0.2);
+	new_uv.y += 0.2*acos(abs(sin(new_uv.x*PI)))-PI/20.0;
 	new_tex = texture(TEXTURE, new_uv);
 	COLOR = new_tex;
 }
