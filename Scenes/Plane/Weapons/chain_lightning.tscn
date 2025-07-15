@@ -11,6 +11,7 @@ radius = 57.6888
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jves3"]
 shader = ExtResource("2_5ur22")
 shader_parameter/tiling_amount = 1.0
+shader_parameter/seed = 0.0
 
 [node name="ChainLightning" type="Area2D"]
 collision_layer = 16

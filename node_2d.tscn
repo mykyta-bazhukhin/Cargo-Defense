@@ -7,6 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_epypp"]
 shader = ExtResource("2_q6r6c")
 shader_parameter/tiling_amount = 1.0
+shader_parameter/seed = 0.0
 
 [node name="Node2D" type="Node2D"]
 

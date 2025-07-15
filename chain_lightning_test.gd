@@ -7,6 +7,9 @@ var size = 64
 var shader_material = material
 var tiling_amount
 
+func _ready() -> void:
+	shader_material.set_shader_parameter("seed", randi() % 10000)
+
 func _process(delta: float) -> void:
 	end_point = get_global_mouse_position()
 	distance = starting_point.distance_to(end_point)
