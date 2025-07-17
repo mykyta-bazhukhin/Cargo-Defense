@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bh0lw4lhgh5wf" path="res://Scripts/Plane/chain_lightning.gd" id="1_nyjtw"]
 [ext_resource type="Shader" uid="uid://cdpoe1ncwxm63" path="res://Shaders/chain_lightning_shader.gdshader" id="2_5ur22"]
-[ext_resource type="Texture2D" uid="uid://tr777bh1ww3p" path="res://chain lightning2.png" id="3_ks6dh"]
+[ext_resource type="Texture2D" uid="uid://1n84yfai3lh1" path="res://Sprites/Player/Weapons/lightning line.png" id="3_5ur22"]
 [ext_resource type="Script" uid="uid://j8of5ap7xjkk" path="res://Scripts/Sprites/chain_lightning_sprite.gd" id="4_7tt4p"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ehrt"]
@@ -24,7 +24,7 @@ shape = SubResource("CircleShape2D_8ehrt")
 [node name="ChainLightningSprite" type="Sprite2D" parent="."]
 texture_repeat = 3
 material = SubResource("ShaderMaterial_jves3")
-texture = ExtResource("3_ks6dh")
+texture = ExtResource("3_5ur22")
 offset = Vector2(32, 0)
 script = ExtResource("4_7tt4p")
 
