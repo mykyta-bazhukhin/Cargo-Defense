@@ -1,5 +1,6 @@
 extends MarginContainer
 var LaserScene = preload("res://Scenes/Plane/Weapons/laser.tscn")
+var LaserTaserScene = preload("res://Scenes/Plane/Weapons/laser_taser.tscn")
 
 var selecteble_weapons: Array
 var selected_weapon_i = 0
@@ -7,7 +8,7 @@ var rect_sprite_y = 0
 var belt_sprite
 
 func _ready() -> void:
-	selecteble_weapons = [LaserScene]
+	selecteble_weapons = [LaserScene, LaserTaserScene]
 	belt_sprite = $VBoxContainer/TextureRect/PrimaryBeltSprite
 
 func get_selected_primary_weapon():

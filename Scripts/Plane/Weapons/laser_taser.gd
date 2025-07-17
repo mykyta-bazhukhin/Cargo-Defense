@@ -2,6 +2,8 @@ extends Area2D
 var direction = Vector2.UP
 var speed = 200
 var damage = 4
+var icon = "res://Sprites/UI stuff/laser icon.png"
+var cooldown = 1
 
 
 func _process(delta):
@@ -22,10 +24,11 @@ func find_enemies_in_range(hit_body):
 
 func _on_body_entered(body):
 	if "hit" in body:
-		body.hit(damage)
-		visible = false
-		$ChainLightning.chain(body)
+		#print(body.position)
+		$ChainLightning._chain_enemies(body, body.position)
+		#$Sprite2D.visible = false
 		speed = 0
+		body.hit(damage)
 		disconnect("body_entered", _on_body_entered)
 	else:
 		queue_free()

@@ -12,7 +12,7 @@ size = Vector2(9, 42)
 load_path = "res://.godot/imported/laser sprite.png-c9cf2a1f145fe44870e3469f14243cfa.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l7l00"]
-radius = 64.0
+radius = 192.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v7moa"]
 shader = ExtResource("3_0ejoq")
@@ -55,5 +55,3 @@ texture = ExtResource("4_0rp13")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerTimeout" to="." method="_on_timer_timeout_timeout"]
-[connection signal="body_entered" from="ChainLightning" to="ChainLightning" method="_on_body_entered"]
-[connection signal="body_exited" from="ChainLightning" to="ChainLightning" method="_on_body_exited"]

@@ -23,3 +23,8 @@ texture = SubResource("GradientTexture2D_4qmwg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fn7gc")
+
+[node name="DeathDelayTimer" type="Timer" parent="."]
+
+[connection signal="dead" from="." to="." method="_on_dead"]
+[connection signal="timeout" from="DeathDelayTimer" to="." method="_on_death_delay_timer_timeout"]
