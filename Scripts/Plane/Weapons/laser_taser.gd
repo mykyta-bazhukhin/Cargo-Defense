@@ -26,7 +26,7 @@ func _on_body_entered(body):
 	if "hit" in body:
 		#print(body.position)
 		$ChainLightning._chain_enemies(body, body.position)
-		#$Sprite2D.visible = false
+		$Sprite2D.visible = false
 		speed = 0
 		body.hit(damage)
 		disconnect("body_entered", _on_body_entered)
@@ -52,4 +52,8 @@ func _on_body_entered(body):
 	"""
 
 func _on_timer_timeout_timeout():
+	queue_free()
+
+
+func _on_timer_chain_timeout_timeout() -> void:
 	queue_free()

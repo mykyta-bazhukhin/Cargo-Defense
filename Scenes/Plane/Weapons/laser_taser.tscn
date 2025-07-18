@@ -38,20 +38,26 @@ wait_time = 4.0
 one_shot = true
 autostart = true
 
-[node name="ChainLightning" type="Area2D" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ChainLightning" type="Area2D" parent="Node2D"]
+position = Vector2(32, 0)
 collision_layer = 16
 collision_mask = 134
 script = ExtResource("2_l7l00")
 
-[node name="LightningRangeVisual" type="CollisionShape2D" parent="ChainLightning"]
+[node name="LightningRangeVisual" type="CollisionShape2D" parent="Node2D/ChainLightning"]
+visible = false
 shape = SubResource("CircleShape2D_l7l00")
 debug_color = Color(0.999701, 0, 0.10422, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="ChainLightning"]
+[node name="ChainLightning" type="Sprite2D" parent="Node2D/ChainLightning"]
 material = SubResource("ShaderMaterial_v7moa")
 texture = ExtResource("4_0rp13")
 
-[node name="Timer" type="Timer" parent="ChainLightning"]
+[node name="TimerChainTimeout" type="Timer" parent="Node2D/ChainLightning"]
+wait_time = 0.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerTimeout" to="." method="_on_timer_timeout_timeout"]
+[connection signal="timeout" from="Node2D/ChainLightning/TimerChainTimeout" to="." method="_on_timer_chain_timeout_timeout"]
