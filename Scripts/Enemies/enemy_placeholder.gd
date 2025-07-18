@@ -14,7 +14,8 @@ func _process(delta):
 	velocity = Vector2.DOWN * speed
 	
 	if health <= 0:
-		emit_signal("dead")
+		queue_free()
+		#emit_signal("dead")
 
 func _on_dead() -> void:
 	$CollisionShape2D.disabled = true

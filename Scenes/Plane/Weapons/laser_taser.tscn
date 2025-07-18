@@ -1,23 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdrl1fgw6k4ia"]
+[gd_scene load_steps=4 format=3 uid="uid://cdrl1fgw6k4ia"]
 
 [ext_resource type="Script" uid="uid://mspbhwjbh76b" path="res://Scripts/Plane/Weapons/laser_taser.gd" id="1_6btrb"]
-[ext_resource type="Script" uid="uid://bh0lw4lhgh5wf" path="res://Scripts/Plane/chain_lightning.gd" id="2_l7l00"]
-[ext_resource type="Shader" uid="uid://cdpoe1ncwxm63" path="res://Shaders/chain_lightning_shader.gdshader" id="3_0ejoq"]
-[ext_resource type="Texture2D" uid="uid://1n84yfai3lh1" path="res://Sprites/Player/Weapons/lightning line.png" id="4_0rp13"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o8c8g"]
 size = Vector2(9, 42)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t6jbp"]
 load_path = "res://.godot/imported/laser sprite.png-c9cf2a1f145fe44870e3469f14243cfa.ctex"
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_l7l00"]
-radius = 192.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_v7moa"]
-shader = ExtResource("3_0ejoq")
-shader_parameter/tiling_amount = 1.0
-shader_parameter/seed = 0.0
 
 [node name="LaserTaser" type="Area2D"]
 collision_layer = 16
@@ -38,26 +27,5 @@ wait_time = 4.0
 one_shot = true
 autostart = true
 
-[node name="Node2D" type="Node2D" parent="."]
-
-[node name="ChainLightning" type="Area2D" parent="Node2D"]
-position = Vector2(32, 0)
-collision_layer = 16
-collision_mask = 134
-script = ExtResource("2_l7l00")
-
-[node name="LightningRangeVisual" type="CollisionShape2D" parent="Node2D/ChainLightning"]
-visible = false
-shape = SubResource("CircleShape2D_l7l00")
-debug_color = Color(0.999701, 0, 0.10422, 0.42)
-
-[node name="ChainLightning" type="Sprite2D" parent="Node2D/ChainLightning"]
-material = SubResource("ShaderMaterial_v7moa")
-texture = ExtResource("4_0rp13")
-
-[node name="TimerChainTimeout" type="Timer" parent="Node2D/ChainLightning"]
-wait_time = 0.5
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="TimerTimeout" to="." method="_on_timer_timeout_timeout"]
-[connection signal="timeout" from="Node2D/ChainLightning/TimerChainTimeout" to="." method="_on_timer_chain_timeout_timeout"]

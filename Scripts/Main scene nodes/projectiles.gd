@@ -10,7 +10,8 @@ var TaserBulletScene = preload("res://Scenes/Plane/Weapons/laser_taser.tscn")
 var ChainLightningScene = preload("res://Scenes/Plane/Weapons/chain_lightning.tscn")
 #var CannonBallScene = preload("res://Scenes/Plane/Weapons/cannon_ball.tscn")
 
-var projectile_dict = {"Freeze bullet" : FreezeBulletScene, "Bullet" : TowerSampleProjectileScene, "Taser bullet" : TaserBulletScene}
+var projectile_dict = {"Freeze bullet" : FreezeBulletScene, "Bullet" : TowerSampleProjectileScene, "Taser bullet" : TaserBulletScene, 
+"Chain lightning" : ChainLightningScene}
 
 
 func _on_space_plane_shoot_primary(pos: Vector2, _cooldown_time: float):
@@ -35,9 +36,8 @@ func _on_shoot_projectile(pos, scene_name):
 	projectile.position = pos
 	add_child(projectile)
 
-func _create_chain_lightning(pos, end_pos):
+func _create_chain_lightning(body, body_pos):
 	var lightning = ChainLightningScene.instantiate()
-	lightning.position = pos
-	lightning.start_pos = pos
-	lightning.end_pos = end_pos
 	call_deferred("add_child", lightning)
+	await lightning.ready
+	lightning._chain_enemies(body, body_pos)

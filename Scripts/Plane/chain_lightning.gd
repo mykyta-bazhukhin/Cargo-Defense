@@ -1,9 +1,7 @@
 extends Area2D
 
-var end_pos
-var start_pos
 var bounces = 1
-var chain_damage = 300
+var chain_damage = 3
 var chain_range
 var tiling_amount = 20
 var size = 64
@@ -16,11 +14,11 @@ var already_hit_dict: Dictionary
 #signal ready_for_shader(end_pos, start_pos)
 
 func _ready() -> void:
-	tot_enemies = get_parent().get_parent().get_parent()._get_enemies()
+	tot_enemies = get_parent().get_parent()._get_enemies()
 	chain_range = 500 #$LightningRangeVisual.shape.radius
 	visible = false
 	#$ChainLightning.material.shader = load("res://Shaders/chain_lightning_shader.gdshader")
-	$ChainLightning.material.set_shader_parameter("seed", randi() % 10000)
+	$ChainLightningSprite.material.set_shader_parameter("seed", randi() % 10000)
 	
 	#ready_for_shader.emit(end_pos, start_pos)
 
@@ -59,16 +57,20 @@ func _chain_enemies(starting_body, starting_position) ->  int:
 	#var last_chained_body
 	if chained_body == null:
 		return 0
-	get_parent().get_parent().position = starting_position
+	position = starting_position
 	distance = starting_position.distance_to(chained_body.position)
 	look_at(chained_body.position)
 	tiling_amount = distance/size
-	$ChainLightning.material.set_shader_parameter("tiling_amount", tiling_amount)
+	$ChainLightningSprite.material.set_shader_parameter("tiling_amount", tiling_amount)
 	scale = Vector2(tiling_amount,1)
 	visible = true
 	chained_body.hit(chain_damage)
 	#last_chained_body = chained_body
 	bounces = bounces - 1
 	
-	$TimerChainTimeout.start()
+	$TimerTimeout.start()
 	return 1
+
+
+func _on_timer_timeout_timeout() -> void:
+	queue_free()
