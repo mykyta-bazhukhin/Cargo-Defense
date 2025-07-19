@@ -36,8 +36,12 @@ func _on_shoot_projectile(pos, scene_name):
 	projectile.position = pos
 	add_child(projectile)
 
-func _create_chain_lightning(body, body_pos):
+func _create_chain_lightning(body, body_pos, bounces, range, damage, already_hit):
 	var lightning = ChainLightningScene.instantiate()
+	lightning.bounces = bounces
+	lightning.chain_range = range
+	lightning.chain_damage = damage
+	lightning.already_hit_dict = already_hit
 	call_deferred("add_child", lightning)
 	await lightning.ready
 	lightning._chain_enemies(body, body_pos)

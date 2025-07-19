@@ -3,7 +3,7 @@ var direction = Vector2.UP
 var speed = 1500
 var damage = 20
 var icon = "res://Sprites/UI stuff/Cannon shot icon.png"
-var cooldown = 0.5
+var cooldown = 3
 
 func _ready() -> void:
 	$CannonExplosion.visible = false
