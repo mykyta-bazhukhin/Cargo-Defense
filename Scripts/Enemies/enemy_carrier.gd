@@ -8,7 +8,8 @@ signal dead()
 
 func hit(damage):
 	health -= damage
-	
+	$HitFlashAnimation.play("hit")
+
 func _process(delta):
 	move_and_slide()
 	velocity = Vector2.DOWN * speed

@@ -6,7 +6,7 @@ var chain_range = 300
 var direction = Vector2.UP
 var speed = 400
 var damage = 4
-var icon = "res://Sprites/UI stuff/laser icon.png"
+var icon = "res://Sprites/UI stuff/taser icon.png"
 var cooldown = 0.8
 
 

@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://djhfwkywprg5h" path="res://Sprites/UI stuff/Secondary icon belt.png" id="6_326a7"]
 [ext_resource type="Texture2D" uid="uid://b1m4maihobcag" path="res://funny radar sprites/frame_004_delay-0.04s.png" id="7_2e845"]
 [ext_resource type="Script" uid="uid://met3viodqyrw" path="res://Scripts/UI/secondary_weapon_container.gd" id="7_lfnyc"]
-[ext_resource type="Texture2D" uid="uid://wijuxmjnyv4h" path="res://Sprites/UI stuff/laser icon.png" id="8_qcqwa"]
+[ext_resource type="Texture2D" uid="uid://cyw6a8mrhpit3" path="res://Sprites/UI stuff/Primary icon belt.png" id="7_qcqwa"]
 [ext_resource type="Texture2D" uid="uid://dbmtbnhf0o6bn" path="res://funny radar sprites/frame_006_delay-0.03s.png" id="9_0i3yx"]
 [ext_resource type="Texture2D" uid="uid://de5jntv8bbec6" path="res://funny radar sprites/frame_008_delay-0.03s.png" id="11_aqov8"]
 [ext_resource type="Texture2D" uid="uid://bdlieacou1m5h" path="res://funny radar sprites/frame_010_delay-0.04s.png" id="13_4e07o"]
@@ -438,7 +438,7 @@ layout_mode = 2
 
 [node name="PrimaryBeltSprite" type="Sprite2D" parent="TowerSelectionPanel/LoadoutSelectionVBox/WeaponSelectionContainer/PrimaryWeaponContainer/VBoxContainer/TextureRect"]
 texture_repeat = 2
-texture = ExtResource("8_qcqwa")
+texture = ExtResource("7_qcqwa")
 centered = false
 vframes = 2
 region_enabled = true
