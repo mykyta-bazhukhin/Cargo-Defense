@@ -1,4 +1,4 @@
-extends "res://Inheritence Scenes/base_tower.gd"
+extends BaseTower
 
 var enemies_array:Array
 

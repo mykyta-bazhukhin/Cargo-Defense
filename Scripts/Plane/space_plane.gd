@@ -6,6 +6,7 @@ var primary_ready = true
 var secondary_ready = true
 var speed = 0
 var distance = 0
+var health = 100
 const max_speed = 5000
 
 signal shoot_primary(pos: Vector2, cooldown_time: float)
@@ -48,7 +49,11 @@ func _process(_delta):
 		speed = clamp(distance*10, 0, max_speed)
 		velocity = direction*speed
 	move_and_slide()
-	
+
+func _hit(damage):
+	health -= damage
+	if health <= 0:
+		pass
 
 func _on_primary_timer_timeout():
 	if ($PrimaryTimer.one_shot == false):

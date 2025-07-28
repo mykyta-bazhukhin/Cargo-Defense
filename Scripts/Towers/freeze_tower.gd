@@ -1,4 +1,4 @@
-extends "res://Inheritence Scenes/base_tower.gd"
+extends BaseTower
 
 signal shoot_freeze_bullet(pos, bullet_type)
 
