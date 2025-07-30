@@ -2,11 +2,12 @@ extends Node2D
 
 var EnemySampleScene = preload("res://Scenes/Enemies/enemy_placeholder.tscn")
 var EnemyCarrierScene = preload("res://Scenes/Enemies/enemy_carrier.tscn")
+var BasicMinerScene = preload("res://Scenes/Enemies/basic_miner.tscn")
 
 
 signal create_scrap(pos: Vector2, val: int)
 
-var enemy_list: Array = [EnemySampleScene, EnemyCarrierScene]
+var enemy_list: Array = [EnemySampleScene, EnemyCarrierScene, BasicMinerScene]
 
 func _on_enemy_dead(pos: Vector2, val: int):
 	create_scrap.emit(pos, val)

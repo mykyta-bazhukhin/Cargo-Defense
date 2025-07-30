@@ -1,22 +1,86 @@
-[gd_scene load_steps=5 format=3 uid="uid://dwbsi2exjl82l"]
+[gd_scene load_steps=13 format=3 uid="uid://dwbsi2exjl82l"]
 
 [ext_resource type="PackedScene" uid="uid://by8id0mvemn86" path="res://Inheritence Scenes/base_enemy.tscn" id="1_jppjt"]
-[ext_resource type="Shader" uid="uid://bskn66k320law" path="res://Shaders/enemy_hit.gdshader" id="2_sw5o2"]
+[ext_resource type="Shader" uid="uid://bskn66k320law" path="res://Shaders/hit_flash.gdshader" id="2_sw5o2"]
+[ext_resource type="Texture2D" uid="uid://cobsljgu8ifn1" path="res://Sprites/Enemies/Basic miner/Attacking/basic enemy attack1.png" id="3_j6xey"]
+[ext_resource type="Texture2D" uid="uid://dol5xv4ei2f4j" path="res://Sprites/Enemies/Basic miner/Moving/basic enemy moving1.png" id="3_xpwfa"]
+[ext_resource type="Texture2D" uid="uid://dl0ddwipcestf" path="res://Sprites/Enemies/Basic miner/Moving/basic enemy moving2.png" id="4_oti3x"]
+[ext_resource type="Texture2D" uid="uid://cwerfixedenno" path="res://Sprites/Enemies/Basic miner/Attacking/basic enemy attack2.png" id="4_wtt8w"]
+[ext_resource type="Texture2D" uid="uid://c0sun8hfyqinq" path="res://Sprites/Enemies/Basic miner/Attacking/basic enemy attack3.png" id="5_1qlvd"]
+[ext_resource type="Texture2D" uid="uid://dqx2t27nx3tok" path="res://Sprites/Enemies/Basic miner/Moving/basic enemy moving3.png" id="5_ih1o6"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ml7rl"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j6xey"]
 resource_local_to_scene = true
 shader = ExtResource("2_sw5o2")
 shader_parameter/flash_color = Vector4(1, 1, 1, 1)
 shader_parameter/flash_on = false
 shader_parameter/flash_mix = 0.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtt8w"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("3_j6xey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_wtt8w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1qlvd")
+}],
+"loop": true,
+"name": &"Attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xpwfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oti3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ih1o6")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpwfa"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6xey"]
+size = Vector2(80, 48)
 
 [node name="BasicMiner" instance=ExtResource("1_jppjt")]
-speed = 10
+speed = 100
+health = 300
+scrap_value = 2
 
-[node name="Sprite2D" parent="." index="0"]
-material = SubResource("ShaderMaterial_ml7rl")
+[node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_j6xey")
+position = Vector2(0, 0)
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_wtt8w")
+animation = &"Moving"
+autoplay = "Moving"
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_xpwfa")
+
+[node name="AttackRange" type="Area2D" parent="." index="3"]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" index="0"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_j6xey")
+debug_color = Color(0.914875, 0.248599, 0.388793, 0.42)
+
+[node name="AttackTimer" type="Timer" parent="." index="4"]
+wait_time = 0.7
+
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

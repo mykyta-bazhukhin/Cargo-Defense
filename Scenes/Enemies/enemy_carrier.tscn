@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cibn7jaj4kq6s" path="res://Scripts/Enemies/enemy_carrier.gd" id="1_whdus"]
 [ext_resource type="Texture2D" uid="uid://bghnejhdf25fb" path="res://Sprites/Enemies/carrier enemy.png" id="2_afd4p"]
-[ext_resource type="Shader" uid="uid://bskn66k320law" path="res://Shaders/enemy_hit.gdshader" id="2_bcc4h"]
+[ext_resource type="Shader" uid="uid://bskn66k320law" path="res://Shaders/hit_flash.gdshader" id="2_bcc4h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ukxgm"]
 resource_local_to_scene = true
@@ -24,6 +24,33 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_thnb3"]
 size = Vector2(90, 141)
+
+[sub_resource type="Animation" id="Animation_1gil8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/flash_mix")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_bcc4h"]
 resource_name = "hit"
@@ -54,33 +81,6 @@ tracks/1/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_1gil8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_on")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:material:shader_parameter/flash_mix")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mbko6"]
 _data = {
 &"RESET": SubResource("Animation_1gil8"),
@@ -99,7 +99,6 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_27a55")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_thnb3")
 
 [node name="DeathDelayTimer" type="Timer" parent="."]

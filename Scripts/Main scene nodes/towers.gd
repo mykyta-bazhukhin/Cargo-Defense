@@ -50,14 +50,16 @@ func FIND_POINT_spawn_tower_approach_point(tower_num: int):
 			min_dist_point = tower_points_array[i]
 			#print("position of new min: " + str(i))
 	if (min_dist_point.is_in_group("Not Occupied")):
-		final_min_point_position = Vector2(min_dist_point.position.x, min_dist_point.position.y)
+		#final_min_point_position = Vector2(min_dist_point.position.x, min_dist_point.position.y)
 		min_dist_point.remove_from_group("Not Occupied")
-		find_point_SPAWN_TOWER_approach_point(tower_num, final_min_point_position)
+		find_point_SPAWN_TOWER_approach_point(tower_num, min_dist_point)
 	else:
 		print("position occupied")
-func find_point_SPAWN_TOWER_approach_point(tower_num: int, min_pos):
+func find_point_SPAWN_TOWER_approach_point(tower_num: int, min_dist_point):
 	var tower = tower_selection_array[tower_num].instantiate()
+	var min_pos = min_dist_point.position
 	tower.position = get_node("../SpacePlane").position
+	tower.occupied_point = min_dist_point
 	print(tower.position)
 	#tower.connect("shoot_turret", Callable(get_node("../Projectiles"), "_on_shoot_turret"))
 	add_child(tower)

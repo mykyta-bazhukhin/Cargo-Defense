@@ -1,6 +1,7 @@
 extends BaseTower
 
 var enemies_array:Array
+var damage = 10
 
 func _ready() -> void:
 	super()
@@ -8,7 +9,8 @@ func _ready() -> void:
 
 func _on_tower_shoot_timer_timeout() -> void:
 	for enemy in enemies_array:
-		enemy.health = enemy.health-10
+		if "hit" in enemy:
+			enemy.hit(damage)
 
 
 func _on_tower_detection_range_body_entered(body: Node2D) -> void:

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name BaseTower
 
+var occupied_point
 var enemies = 0
 @export var cost:int
 @export var cooldown:int
@@ -9,9 +10,12 @@ var enemies = 0
 func _ready() -> void:
 	$PlatformSprite.visible = false
 
-func _hit(damage):
+func hit(damage):
 	health -= damage
+	$HitFlashAnimation.stop()
+	$HitFlashAnimation.play("hit")
 	if health <= 0:
+		occupied_point.add_to_group("Not Occupied")
 		queue_free()
 		
 

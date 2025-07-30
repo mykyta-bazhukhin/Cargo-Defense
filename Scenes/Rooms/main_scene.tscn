@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dku3lihfaohyl"]
+[gd_scene load_steps=38 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scripts/Rooms/main_scene.gd" id="1_qvt8r"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/Main scene objects/space_background.tscn" id="2_b35hd"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://3s35esxaresy" path="res://Sprites/UI stuff/crossed circle.png" id="19_6n8t3"]
 [ext_resource type="Texture2D" uid="uid://b867v87ed7uya" path="res://Sprites/UI stuff/circular cooldown texture.png" id="20_34y2j"]
 [ext_resource type="Texture2D" uid="uid://cttpp11tv7s7p" path="res://Sprites/UI stuff/guide rocket icon.png" id="21_0f2te"]
+[ext_resource type="PackedScene" uid="uid://dwbsi2exjl82l" path="res://Scenes/Enemies/basic_miner.tscn" id="24_6n8t3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6e4k"]
 bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
@@ -542,6 +543,9 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 texture = ExtResource("19_6n8t3")
 stretch_mode = 3
+
+[node name="BasicMiner" parent="." instance=ExtResource("24_6n8t3")]
+position = Vector2(1024, 64)
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]
