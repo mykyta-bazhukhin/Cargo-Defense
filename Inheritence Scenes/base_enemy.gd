@@ -14,8 +14,9 @@ func hit(damage):
 	$HitFlashAnimation.stop()
 	$HitFlashAnimation.play("hit")
 	if health <= 0:
+		call_deferred("emit_signal", "enemy_dead", position, scrap_value)
 		queue_free()
-		#emit_signal("dead")
+		
 
 func _process(delta):
 	move_and_slide()
@@ -29,14 +30,12 @@ func _on_attack_range_body_entered(body: Node2D) -> void:
 		speed = 0
 		$AttackTimer.start()
 
-
 func _on_attack_range_body_exited(body: Node2D) -> void:
 	in_range_targets.erase(body)
 	if in_range_targets.size() == 0:
 		$AnimatedSprite2D.animation = "Moving"
 		speed = 100
 		$AttackTimer.stop()
-
 
 func _on_attack_timer_timeout() -> void:
 	if in_range_targets[0] != null:

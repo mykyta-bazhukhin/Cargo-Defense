@@ -103,6 +103,9 @@ position = Vector2(864, 88)
 [node name="placeholder_enemy" parent="Enemies" instance=ExtResource("8_5iec4")]
 position = Vector2(1049, 65)
 
+[node name="BasicMiner" parent="Enemies" instance=ExtResource("24_6n8t3")]
+position = Vector2(1024, 64)
+
 [node name="SpawnEnemyTimer" type="Timer" parent="Enemies"]
 wait_time = 0.5
 autostart = true
@@ -543,9 +546,6 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 texture = ExtResource("19_6n8t3")
 stretch_mode = 3
-
-[node name="BasicMiner" parent="." instance=ExtResource("24_6n8t3")]
-position = Vector2(1024, 64)
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]

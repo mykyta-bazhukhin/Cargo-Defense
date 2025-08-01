@@ -1,8 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://dokmb7cs65272"]
+[gd_scene load_steps=13 format=3 uid="uid://dokmb7cs65272"]
 
 [ext_resource type="Script" uid="uid://njrahm0x6okj" path="res://Inheritence Scenes/base_tower.gd" id="1_61sdb"]
 [ext_resource type="Texture2D" uid="uid://00qbocwhjqfp" path="res://Sprites/Towers/Platforms/tower platform green.png" id="1_e26h8"]
 [ext_resource type="Shader" uid="uid://bskn66k320law" path="res://Shaders/hit_flash.gdshader" id="3_7bo0m"]
+[ext_resource type="Texture2D" uid="uid://dmjws6pugd0tv" path="res://Sprites/Towers/Platforms/tower platform yellow.png" id="3_8dw6m"]
+[ext_resource type="Texture2D" uid="uid://d4mptay2lob3o" path="res://Sprites/Towers/Platforms/tower platform red.png" id="4_callt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csi34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e26h8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8dw6m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_callt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2px0r"]
 resource_local_to_scene = true
@@ -86,8 +105,10 @@ script = ExtResource("1_61sdb")
 
 [node name="TowerShootTimer" type="Timer" parent="."]
 
-[node name="PlatformSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_e26h8")
+[node name="PlatformSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_csi34")
+frame = 2
+frame_progress = 0.479796
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_2px0r")

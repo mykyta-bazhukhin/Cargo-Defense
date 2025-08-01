@@ -15,6 +15,7 @@ func _process(delta):
 	velocity = Vector2.DOWN * speed
 	
 	if health <= 0:
+		enemy_dead.emit(position, scrap_value)
 		queue_free()
 		#emit_signal("dead")
 
