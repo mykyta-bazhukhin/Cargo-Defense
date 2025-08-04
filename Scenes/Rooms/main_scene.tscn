@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dku3lihfaohyl"]
+[gd_scene load_steps=39 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scripts/Rooms/main_scene.gd" id="1_qvt8r"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/Main scene objects/space_background.tscn" id="2_b35hd"]
@@ -67,6 +67,9 @@ load_path = "res://.godot/imported/circular cooldown texture.png-1725ea6e64a554f
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qabl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6n8t3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="MainScene" type="Node2D"]
 script = ExtResource("1_qvt8r")
 
@@ -107,7 +110,8 @@ position = Vector2(1049, 65)
 position = Vector2(1024, 64)
 
 [node name="SpawnEnemyTimer" type="Timer" parent="Enemies"]
-wait_time = 0.5
+wait_time = 15.0
+one_shot = true
 autostart = true
 
 [node name="Projectiles" type="Node2D" parent="."]
@@ -546,6 +550,21 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 texture = ExtResource("19_6n8t3")
 stretch_mode = 3
+
+[node name="WaveProgressContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 464.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6n8t3")
+
+[node name="WaveProgressBar" type="ProgressBar" parent="CanvasLayer/WaveProgressContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+value = 12.0
+rounded = true
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]

@@ -55,8 +55,9 @@ size = Vector2(80, 48)
 
 [node name="BasicMiner" instance=ExtResource("1_jppjt")]
 speed = 100
-health = 300
+health = 270
 scrap_value = 2
+cost = 3
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_j6xey")

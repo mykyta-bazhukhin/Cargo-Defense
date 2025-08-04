@@ -1,8 +1,9 @@
 extends CharacterBody2D
 var direction = Vector2.DOWN
-var speed = 50
-var health = 20
+var speed = 75
+var health = 360
 var scrap_value = 3
+var cost = 2
 signal enemy_dead(pos, scrap_val)
 signal dead()
 

@@ -1,7 +1,7 @@
 extends BaseTower
 
 var enemies_array:Array
-var damage = 10
+var damage = 100
 
 func _ready() -> void:
 	super()

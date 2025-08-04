@@ -4,7 +4,7 @@ var SlowTimerScene = preload("res://Scenes/Status timers/slow_timer.tscn")
 
 var direction = Vector2.UP
 const speed = 1000
-var damage = 5
+var damage = 50
 
 
 

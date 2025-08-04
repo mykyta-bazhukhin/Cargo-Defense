@@ -13,9 +13,6 @@ var tower_selection_array: Array = Global.selected_towers
 
 func _process(_delta: float) -> void:
 	pass
-	
-	
-
 
 func _ready():
 	#NOTE: setting up UI code

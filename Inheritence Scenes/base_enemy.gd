@@ -4,6 +4,7 @@ class_name BaseEnemy
 @export var speed : int
 @export var health : int
 @export var scrap_value : int 
+@export var cost : int
 var in_range_targets : Array
 var damage = 30
 signal enemy_dead(pos, scrap_val)

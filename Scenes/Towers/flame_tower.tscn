@@ -50,7 +50,8 @@ gravity = Vector3(0, 0, 0)
 
 [node name="FlameTower" instance=ExtResource("1_0hapy")]
 script = ExtResource("2_jbt6f")
-cooldown = 3
+cost = 5
+cooldown = 7
 
 [node name="TowerShootTimer" parent="." index="0"]
 wait_time = 0.5

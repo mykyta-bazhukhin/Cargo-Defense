@@ -1,11 +1,11 @@
 extends Area2D
 
 var bounces = 5
-var chain_damage = 3
+var chain_damage = 30
 var chain_range = 300
 var direction = Vector2.UP
 var speed = 400
-var damage = 4
+var damage = 40
 var icon = "res://Sprites/UI stuff/taser icon.png"
 var cooldown = 0.8
 

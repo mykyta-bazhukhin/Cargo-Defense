@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 var mouse_pos:Vector2
 var direction:Vector2
-var primary_ready = true
-var secondary_ready = true
+var primary_ready = false
+var secondary_ready = false
 var speed = 0
 var distance = 0
 var health = 100
@@ -23,19 +23,19 @@ func _process(_delta):
 	if (Input.is_action_just_pressed("toggle_primary_auto_fire")):
 		if ($PrimaryTimer.one_shot == true): #button pressed when auto fire is off
 			$PrimaryTimer.one_shot = false
-			$PrimaryTimer.start()
 			if (primary_ready == true):
 				shoot_primary.emit(global_position, $PrimaryTimer.wait_time)
 				primary_ready = false
+				$PrimaryTimer.start()
 		else:
 			$PrimaryTimer.one_shot = true
 	if (Input.is_action_just_pressed("toggle_secondary_auto_fire")):
 		if ($SecondaryTimer.one_shot == true): #button pressed when auto fire is off
 			$SecondaryTimer.one_shot = false
-			$SecondaryTimer.start()
 			if (secondary_ready == true):
 				shoot_secondary.emit(global_position, $SecondaryTimer.wait_time)
 				secondary_ready = false
+				$SecondaryTimer.start()
 		else:
 			$SecondaryTimer.one_shot = true
 	
