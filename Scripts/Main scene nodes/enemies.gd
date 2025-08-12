@@ -3,6 +3,8 @@ extends Node2D
 var EnemySampleScene = preload("res://Scenes/Enemies/enemy_placeholder.tscn")
 var EnemyCarrierScene = preload("res://Scenes/Enemies/enemy_carrier.tscn")
 var BasicMinerScene = preload("res://Scenes/Enemies/basic_miner.tscn")
+var InterMinerScene = preload("res://Scenes/Enemies/intermediate_miner.tscn")
+var AdvMinerScene = preload("res://Scenes/Enemies/advanced_enemy.tscn")
 
 
 signal create_scrap(pos: Vector2, val: int)
@@ -11,7 +13,7 @@ var wave_amount = 0
 var wave_num = 0
 var cur_wave_max_health = 0
 var cur_wave_enemies: Array
-var enemy_list: Array = [EnemySampleScene, EnemyCarrierScene, BasicMinerScene]
+var enemy_list: Array = [InterMinerScene, AdvMinerScene, BasicMinerScene]
 var enemy_spawns_x: Array = [256, 384, 512, 640, 768, 896, 1024]
 
 func _ready() -> void:

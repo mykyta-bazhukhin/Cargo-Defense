@@ -54,10 +54,9 @@ size = Vector2(128, 128)
 size = Vector2(80, 48)
 
 [node name="BasicMiner" instance=ExtResource("1_jppjt")]
-speed = 100
 health = 270
-scrap_value = 2
-cost = 3
+scrap_value = 1
+cost = 1
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_j6xey")
@@ -70,18 +69,6 @@ autoplay = "Moving"
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_xpwfa")
 
-[node name="AttackRange" type="Area2D" parent="." index="3"]
-collision_layer = 0
-collision_mask = 64
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange" index="0"]
+[node name="CollisionShape2D" parent="AttackRange" index="0"]
 position = Vector2(0, 40)
 shape = SubResource("RectangleShape2D_j6xey")
-debug_color = Color(0.914875, 0.248599, 0.388793, 0.42)
-
-[node name="AttackTimer" type="Timer" parent="." index="4"]
-wait_time = 0.7
-
-[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
-[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
-[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

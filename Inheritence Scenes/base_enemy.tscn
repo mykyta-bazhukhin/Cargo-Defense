@@ -76,6 +76,7 @@ _data = {
 collision_layer = 2
 collision_mask = 20
 script = ExtResource("1_jhcly")
+speed = 50
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_b6m4r")
@@ -88,4 +89,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_mbko6")
 }
 
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+debug_color = Color(0.914875, 0.248599, 0.388793, 0.42)
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.7
+
 [connection signal="dead" from="." to="." method="_on_dead"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

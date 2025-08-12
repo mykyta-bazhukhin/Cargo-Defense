@@ -5,6 +5,7 @@ class_name BaseEnemy
 @export var health : int
 @export var scrap_value : int 
 @export var cost : int
+@export var earliest_wave_spawn: int
 var in_range_targets : Array
 var damage = 30
 signal enemy_dead(pos, scrap_val)

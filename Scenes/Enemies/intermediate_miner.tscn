@@ -1,0 +1,74 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgh36smrdgoto"]
+
+[ext_resource type="PackedScene" uid="uid://by8id0mvemn86" path="res://Inheritence Scenes/base_enemy.tscn" id="1_g1ca5"]
+[ext_resource type="Shader" uid="uid://bskn66k320law" path="res://Shaders/hit_flash.gdshader" id="2_70bvj"]
+[ext_resource type="Texture2D" uid="uid://c504n5dxt2epr" path="res://Sprites/Enemies/Intermediate miner/attack animation/intermediate enemy attacking1.png" id="3_31dfd"]
+[ext_resource type="Texture2D" uid="uid://b2ssav8muyc2q" path="res://Sprites/Enemies/Intermediate miner/attack animation/intermediate enemy attacking2.png" id="4_d2fyw"]
+[ext_resource type="Texture2D" uid="uid://b873cukq2ourw" path="res://Sprites/Enemies/Intermediate miner/attack animation/intermediate enemy attacking3.png" id="5_cw2qa"]
+[ext_resource type="Texture2D" uid="uid://cj6mwvmytsxu" path="res://Sprites/Enemies/Intermediate miner/moving animation/intermediate enemy move1.png" id="6_w3r37"]
+[ext_resource type="Texture2D" uid="uid://dwbwlm4tluacc" path="res://Sprites/Enemies/Intermediate miner/moving animation/intermediate enemy move2.png" id="7_08ui1"]
+[ext_resource type="Texture2D" uid="uid://mpe1krg3f1ts" path="res://Sprites/Enemies/Intermediate miner/moving animation/intermediate enemy move3.png" id="8_u3hfq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m60ei"]
+resource_local_to_scene = true
+shader = ExtResource("2_70bvj")
+shader_parameter/flash_color = Vector4(1, 1, 1, 1)
+shader_parameter/flash_on = false
+shader_parameter/flash_mix = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7err5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_31dfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_d2fyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cw2qa")
+}],
+"loop": true,
+"name": &"Attacking",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_w3r37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_08ui1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_u3hfq")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsl0c"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8gdro"]
+size = Vector2(80, 48)
+
+[node name="IntermediateMiner" instance=ExtResource("1_g1ca5")]
+health = 540
+scrap_value = 2
+cost = 2
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_m60ei")
+scale = Vector2(1.3, 1.3)
+sprite_frames = SubResource("SpriteFrames_7err5")
+animation = &"Moving"
+autoplay = "Moving"
+frame_progress = 0.300001
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_gsl0c")
+
+[node name="CollisionShape2D" parent="AttackRange" index="0"]
+position = Vector2(0, 40)
+shape = SubResource("RectangleShape2D_8gdro")
