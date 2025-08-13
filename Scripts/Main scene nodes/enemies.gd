@@ -9,11 +9,12 @@ var AdvMinerScene = preload("res://Scenes/Enemies/advanced_enemy.tscn")
 
 signal create_scrap(pos: Vector2, val: int)
 
+var wave_bank = 0
 var wave_amount = 0
 var wave_num = 0
 var cur_wave_max_health = 0
 var cur_wave_enemies: Array
-var enemy_list: Array = [InterMinerScene, AdvMinerScene, BasicMinerScene]
+var enemy_list: Array = [BasicMinerScene, InterMinerScene, AdvMinerScene]
 var enemy_spawns_x: Array = [256, 384, 512, 640, 768, 896, 1024]
 
 func _ready() -> void:
@@ -30,18 +31,24 @@ func _process(delta: float) -> void:
 		$SpawnEnemyTimer.start()
 
 func spawn_next_wave():
+	wave_num += 1
+	wave_bank = wave_num
 	cur_wave_max_health = 0
 	cur_wave_enemies = []
-	for i in range(0, 5+wave_num):
+	while wave_bank > 0:
 		#NOTE: choosing what enemy to send prob goes here
 		var random_enemy_num = randi_range(0, len(enemy_list)-1)
 		spawn_enemy(random_enemy_num)
 	$SpawnEnemyTimer.wait_time = 15
 	$SpawnEnemyTimer.start()
-	wave_num += 1
 	
 func spawn_enemy(random_enemy_num):
 	var enemy = enemy_list[random_enemy_num].instantiate()
+	if enemy.cost <= wave_bank and enemy.earliest_wave_spawn <= wave_num:
+		wave_bank -= enemy.cost
+	else:
+		enemy.queue_free()
+		return "cost too much for wave bank"
 	var spawn_x_pos = enemy_spawns_x[randi_range(0, len(enemy_spawns_x)-1)] + randi_range(-10, 10)
 	var spawn_y_pos = randf_range(-100, -200)
 	add_child(enemy)
