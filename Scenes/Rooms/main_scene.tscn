@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dku3lihfaohyl"]
+[gd_scene load_steps=38 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scripts/Rooms/main_scene.gd" id="1_qvt8r"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/Main scene objects/space_background.tscn" id="2_b35hd"]
@@ -60,9 +60,6 @@ bg_color = Color(0.0980392, 0.0980392, 0.0980392, 0.188235)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0vbk4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8edxt"]
-load_path = "res://.godot/imported/circular cooldown texture.png-1725ea6e64a554fc8dd4e7c0b4675c62.ctex"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qabl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -527,7 +524,7 @@ size_flags_vertical = 4
 step = 0.01
 fill_mode = 5
 texture_under = ExtResource("21_0f2te")
-texture_progress = SubResource("CompressedTexture2D_8edxt")
+texture_progress = ExtResource("20_34y2j")
 
 [node name="CrossedCircleIcons" type="PanelContainer" parent="CanvasLayer/WeaponIconsContainer"]
 layout_mode = 2
