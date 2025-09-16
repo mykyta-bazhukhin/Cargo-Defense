@@ -15,10 +15,30 @@ func _process(_delta: float) -> void:
 	pass
 
 func _ready():
-	#NOTE: setting up UI code
 	$%Towers.tower_selection_array = tower_selection_array
+	
+	#NOTE: setting up UI code
 	$%TowerSlotsVBox.tower_selection_array = tower_selection_array
 	
+	
+
+func _on_towers_get_total_scrap() -> void:
+	$%Towers.total_scrap = $Scraps.total_scrap
+
+func _get_enemies() -> Array:
+	var enemy_array: Array
+	for child in $Enemies.get_children():
+		if child.get_class() == "CharacterBody2D":
+			enemy_array.append(child)
+	return enemy_array
+
+#NOTE: Setting up UI
+func _on_enemies_ready() -> void:
+	$%WaveProgressBar.max_value = $Enemies.wave_amount
+	$CanvasLayer/WaveProgressContainer/Label2.text = "Max wave: " + str($Enemies.wave_amount)
+
+func _on_space_plane_ready() -> void:
+	#WARNING: What if the canvas stuff is not ready?
 	$%WeaponCooldownHBox.plane_primary_timer = $SpacePlane/PrimaryTimer
 	$%WeaponCooldownHBox.plane_secondary_timer = $SpacePlane/SecondaryTimer
 	
@@ -36,13 +56,3 @@ func _ready():
 	
 	primary_weapon.free()
 	secondary_weapon.free()
-
-func _on_towers_get_total_scrap() -> void:
-	$%Towers.total_scrap = $Scraps.total_scrap
-
-func _get_enemies() -> Array:
-	var enemy_array: Array
-	for child in $Enemies.get_children():
-		if child.get_class() == "CharacterBody2D":
-			enemy_array.append(child)
-	return enemy_array

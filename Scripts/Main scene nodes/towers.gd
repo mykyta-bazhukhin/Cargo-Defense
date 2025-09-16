@@ -10,7 +10,7 @@ signal scrap_used(value)
 signal tower_placed(tower_num, cooldown_time)
 
 func _ready() -> void:
-	await get_node("../").ready
+	#await get_node("../").ready
 	tower_points_array = get_node("../TowerPoints").get_children()
 	var i = 0
 	for tower_scene in tower_selection_array:

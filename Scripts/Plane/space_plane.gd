@@ -11,6 +11,8 @@ const max_speed = 5000
 
 signal shoot_primary(pos: Vector2, cooldown_time: float)
 signal shoot_secondary(pos: Vector2, cooldown_time: float)
+signal toggle_primary_fire_()
+signal toggle_secondary_fire()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,7 +23,7 @@ func _ready():
 func _process(_delta):
 	#NOTE: Input code for toggling auto fire mode
 	if (Input.is_action_just_pressed("toggle_primary_auto_fire")):
-		if ($PrimaryTimer.one_shot == true): #button pressed when auto fire is off
+		if ($PrimaryTimer.one_shot == true): #intent: turn autofire back on
 			$PrimaryTimer.one_shot = false
 			if (primary_ready == true):
 				shoot_primary.emit(global_position, $PrimaryTimer.wait_time)
@@ -30,7 +32,7 @@ func _process(_delta):
 		else:
 			$PrimaryTimer.one_shot = true
 	if (Input.is_action_just_pressed("toggle_secondary_auto_fire")):
-		if ($SecondaryTimer.one_shot == true): #button pressed when auto fire is off
+		if ($SecondaryTimer.one_shot == true): #intent: turn autofire back on
 			$SecondaryTimer.one_shot = false
 			if (secondary_ready == true):
 				shoot_secondary.emit(global_position, $SecondaryTimer.wait_time)
@@ -59,11 +61,11 @@ func _on_primary_timer_timeout():
 	if ($PrimaryTimer.one_shot == false):
 		shoot_primary.emit(global_position, $PrimaryTimer.wait_time)
 	else:
-		primary_ready = true
+		primary_ready = true #stores the shot if weapon isn't auto firing
 
 
 func _on_secondary_timer_timeout():
 	if ($SecondaryTimer.one_shot == false):
 		shoot_secondary.emit(global_position, $SecondaryTimer.wait_time)
 	else:
-		secondary_ready = true
+		secondary_ready = true #stores the shot if weapon isn't auto firing

@@ -8,6 +8,7 @@ var AdvMinerScene = preload("res://Scenes/Enemies/advanced_enemy.tscn")
 
 
 signal create_scrap(pos: Vector2, val: int)
+signal next_wave()
 
 var wave_bank = 0
 var wave_amount = 0
@@ -22,25 +23,25 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var next_wave_time_to_wait = 3
-	var total_wave_health = 0
+	var cur_wave_health = 0
 	for enemy in cur_wave_enemies:
 		if enemy != null:
-			total_wave_health += enemy.health
-	if (total_wave_health < cur_wave_max_health/2) and $SpawnEnemyTimer.time_left > next_wave_time_to_wait:
+			cur_wave_health += enemy.health
+	if (cur_wave_health < cur_wave_max_health/2) and $SpawnEnemyTimer.time_left > next_wave_time_to_wait:
 		$SpawnEnemyTimer.wait_time = next_wave_time_to_wait
 		$SpawnEnemyTimer.start()
 
 func spawn_next_wave():
 	wave_num += 1
-	wave_bank = wave_num
+	wave_bank = floor(wave_num * 1.2)
 	cur_wave_max_health = 0
 	cur_wave_enemies = []
 	while wave_bank > 0:
-		#NOTE: choosing what enemy to send prob goes here
 		var random_enemy_num = randi_range(0, len(enemy_list)-1)
 		spawn_enemy(random_enemy_num)
 	$SpawnEnemyTimer.wait_time = 15
 	$SpawnEnemyTimer.start()
+	next_wave.emit()
 	
 func spawn_enemy(random_enemy_num):
 	var enemy = enemy_list[random_enemy_num].instantiate()

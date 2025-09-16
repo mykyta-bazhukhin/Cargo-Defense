@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dku3lihfaohyl"]
+[gd_scene load_steps=39 format=3 uid="uid://dku3lihfaohyl"]
 
 [ext_resource type="Script" uid="uid://qndcepltfjhk" path="res://Scripts/Rooms/main_scene.gd" id="1_qvt8r"]
 [ext_resource type="PackedScene" uid="uid://cgun2rd46use7" path="res://Scenes/Main scene objects/space_background.tscn" id="2_b35hd"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://b867v87ed7uya" path="res://Sprites/UI stuff/circular cooldown texture.png" id="20_34y2j"]
 [ext_resource type="Texture2D" uid="uid://cttpp11tv7s7p" path="res://Sprites/UI stuff/guide rocket icon.png" id="21_0f2te"]
 [ext_resource type="PackedScene" uid="uid://dwbsi2exjl82l" path="res://Scenes/Enemies/basic_miner.tscn" id="24_6n8t3"]
+[ext_resource type="Script" uid="uid://bh8ut5b3viuoi" path="res://Scripts/UI/wave_progress_bar.gd" id="25_0vbk4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e6e4k"]
 bg_color = Color(0.209169, 0.744583, 0.714062, 0.286275)
@@ -553,15 +554,29 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -128.0
-offset_bottom = 464.0
+offset_top = 224.0
+offset_bottom = 312.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_6n8t3")
 
 [node name="WaveProgressBar" type="ProgressBar" parent="CanvasLayer/WaveProgressContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
-value = 12.0
 rounded = true
+script = ExtResource("25_0vbk4")
+
+[node name="Label" type="Label" parent="CanvasLayer/WaveProgressContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Wave progress"
+
+[node name="Label2" type="Label" parent="CanvasLayer/WaveProgressContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Max wave:"
 
 [connection signal="scrap_changed" from="Scraps" to="CanvasLayer/ScrapPanelContainer/VBoxContainer/ScrapAmountLabel" method="_on_scraps_scrap_changed"]
 [connection signal="scrap_used" from="Towers" to="Scraps" method="_on_towers_scrap_used"]
@@ -570,8 +585,13 @@ rounded = true
 [connection signal="timeout" from="Towers/TowerCooldown1" to="Towers" method="_on_tower_cooldown_1_timeout"]
 [connection signal="timeout" from="Towers/TowerCooldown2" to="Towers" method="_on_tower_cooldown_2_timeout"]
 [connection signal="create_scrap" from="Enemies" to="Scraps" method="_on_enemies_create_scrap"]
+[connection signal="next_wave" from="Enemies" to="CanvasLayer/WaveProgressContainer/WaveProgressBar" method="_on_enemies_next_wave"]
+[connection signal="ready" from="Enemies" to="." method="_on_enemies_ready"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="Enemies" method="_on_spawn_enemy_timer_timeout"]
+[connection signal="ready" from="SpacePlane" to="." method="_on_space_plane_ready"]
 [connection signal="shoot_primary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_primary" from="SpacePlane" to="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox" method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_secondary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox" method="_on_space_plane_shoot_secondary"]
+[connection signal="toggle_primary_fire_" from="SpacePlane" to="CanvasLayer/WeaponIconsContainer/CrossedCircleIcons" method="_on_space_plane_toggle_primary_fire_"]
+[connection signal="toggle_secondary_fire" from="SpacePlane" to="CanvasLayer/WeaponIconsContainer/CrossedCircleIcons" method="_on_space_plane_toggle_secondary_fire"]
