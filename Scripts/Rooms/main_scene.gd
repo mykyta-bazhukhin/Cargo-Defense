@@ -15,11 +15,9 @@ func _process(_delta: float) -> void:
 	pass
 
 func _ready():
-	$%Towers.tower_selection_array = tower_selection_array
-	
-	#NOTE: setting up UI code
-	$%TowerSlotsVBox.tower_selection_array = tower_selection_array
-	
+	setup_towers_and_towers_UI()
+	setup_plane_UI()
+	setup_wave_UI()
 	
 
 func _on_towers_get_total_scrap() -> void:
@@ -32,15 +30,17 @@ func _get_enemies() -> Array:
 			enemy_array.append(child)
 	return enemy_array
 
-#NOTE: Setting up UI
-func _on_enemies_ready() -> void:
-	$%WaveProgressBar.max_value = $Enemies.wave_amount
-	$CanvasLayer/WaveProgressContainer/Label2.text = "Max wave: " + str($Enemies.wave_amount)
+func setup_towers_and_towers_UI():
+	$%Towers.tower_selection_array = tower_selection_array
+	$%TowerSlotsVBox.tower_selection_array = tower_selection_array
 
-func _on_space_plane_ready() -> void:
-	#WARNING: What if the canvas stuff is not ready?
+func setup_plane_UI():
 	$%WeaponCooldownHBox.plane_primary_timer = $SpacePlane/PrimaryTimer
 	$%WeaponCooldownHBox.plane_secondary_timer = $SpacePlane/SecondaryTimer
+
+func setup_wave_UI():
+	$%WaveProgressBar.max_value = $Enemies.wave_amount
+	$CanvasLayer/WaveProgressContainer/Label2.text = "Max wave: " + str($Enemies.wave_amount)
 	
 	#NOTE: Setting up other things from global WARNING: I need to put other global set up stuff in here
 	var primary_weapon = Global.selected_weapons[0].instantiate()

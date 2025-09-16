@@ -588,7 +588,6 @@ text = "Max wave:"
 [connection signal="next_wave" from="Enemies" to="CanvasLayer/WaveProgressContainer/WaveProgressBar" method="_on_enemies_next_wave"]
 [connection signal="ready" from="Enemies" to="." method="_on_enemies_ready"]
 [connection signal="timeout" from="Enemies/SpawnEnemyTimer" to="Enemies" method="_on_spawn_enemy_timer_timeout"]
-[connection signal="ready" from="SpacePlane" to="." method="_on_space_plane_ready"]
 [connection signal="shoot_primary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_primary" from="SpacePlane" to="CanvasLayer/WeaponIconsContainer/WeaponCooldownHBox" method="_on_space_plane_shoot_primary"]
 [connection signal="shoot_secondary" from="SpacePlane" to="Projectiles" method="_on_space_plane_shoot_secondary"]
